@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+/* @import "../../../_custom.scss";
+@import "~node_modules/@swimlane/ngx-datatable/release/index";
+@import "~node_modules/@swimlane/ngx-datatable/release/themes/material";
+@import "~node_modules/@swimlane/ngx-datatable/release/themes/bootstrap";
+@import "~node_modules/@swimlane/ngx-datatable/release/assets/icons"; */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+#toolbarMenu {
+    cursor: pointer;
+    margin-right: 20px;
+}
+#mainToolbar .toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+#mainToolbar .toolbar-icon {
+    cursor: pointer;
+    margin: 0 8px;
+}
+
+#sidenavContainer {
+    margin-top: 64px;
+}
+
+#sidenav {
+    width: 240px;
+}
+
+#sidenav.menu-close {
+    width: 72px
+}
+
+#sidenav.menu-open {
+    width: 240px
+}
+
+#sidenav .avatar {
+    /* background-image: url('http://i.pravatar.cc/300'); */
+    background-size: cover;
+}
+
+#sidenav .mat-list-item-content {
+    padding: 0;
+}
+
+#sidenav .menu-item {
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+    padding: 10px;
+}
+
+#sidenav .menu-item:hover {
+  background: #eee;
+}
+#sidenav .menu-item mat-icon {
+    margin-right: 20px;
+    margin-left: 12px;
+}
+
+.dash-list h3 {
+    padding: 12px;
+}
+/* Login css */
+mat-card {
+      max-width: 400px;
+      margin: 2em auto;
+      text-align: center;
+      margin-top: 10%;
+      
+    }
+    mat-form-field {
+      display: block;
+    }
+    .example-container .mat-form-field + .mat-form-field {
+        margin-left: 8px;
+      }
+/* ============================================ */
+table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }

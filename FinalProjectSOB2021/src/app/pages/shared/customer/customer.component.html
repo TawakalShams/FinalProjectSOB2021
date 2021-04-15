@@ -1,0 +1,64 @@
+
+    <mat-tab-group mat-align-tabs="center" style="margin-left: 10px;">
+        <mat-tab label="Customer Regstraion"> 
+
+<div class="container">
+    <h3 style="text-align: center; margin-top: 5%;font-size: 24px;"><strong>Customer Regstraion</strong></h3>
+<form  [formGroup] = "form" (ngSubmit)="onSubmit()">
+    <div class="row">
+            <div class="col-sm-4">
+                <mat-form-field class="full-width-input">
+                    <input  matInput placeholder="Full Name" formControlName="fname" autocomplete="off"  required>
+                    <mat-error>
+                        Full name is required
+                      </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Address" formControlName="address" autocomplete="off"  required>
+                    <mat-error>
+                        Address is required
+                      </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field class="full-width-input">
+                    <input type="number" matInput placeholder="Phone number" formControlName="phone" autocomplete="off"  required>
+                    <mat-error>
+                        Phone number is required
+                      </mat-error>
+                </mat-form-field>
+            </div>
+     </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+                <input type="date" matInput placeholder="Date of birth" formControlName="dob" autocomplete="off"  required>
+                <mat-error>
+                    Date number is required
+                  </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+                       <label for="gender">Gender:</label>
+            <select class="form-control" name="gender"  formControlName="gender">
+                <option>-------Select gender-----</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+</div>
+<div>
+  
+      <button class="btn btn-primary" [disabled]="form.invalid">Regster</button>
+</div>
+</form>
+</div>
+</mat-tab>
+
+<mat-tab label="View Customers"> 
+    <app-viewcustomer></app-viewcustomer>
+</mat-tab>
+
+</mat-tab-group>
