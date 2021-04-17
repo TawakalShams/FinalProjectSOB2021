@@ -9,4 +9,11 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class ImsModule { }
+
+
+export class ImsModule { 
+
+  rows = [];
+  temp = [];
+
+}

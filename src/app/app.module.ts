@@ -20,6 +20,7 @@ import { CustomerComponent } from './pages/shared/customer/customer.component';
 import { ViewAgentComponent } from './pages/agent/view-agent/view-agent.component';
 import { CommissionComponent } from './pages/commission/commission.component';
 import { ViewcustomerComponent } from './pages/shared/customer/viewcustomer/viewcustomer.component';
+import { AgentComponent } from './dialog/agent/agent.component';
 // import { DefaultComponent } from './framework/layouts/default/default.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ViewcustomerComponent } from './pages/shared/customer/viewcustomer/view
     ViewAgentComponent,
     CommissionComponent,
     ViewcustomerComponent,
+    AgentComponent,
     // DefaultComponent,
    
  

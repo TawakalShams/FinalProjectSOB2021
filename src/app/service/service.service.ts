@@ -1,6 +1,6 @@
 import { Injectable,EventEmitter ,Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Users } from '../users';
@@ -21,6 +21,11 @@ export class ServiceService {
   constructor(private httpClient : HttpClient) {}
  
   redirectUrl: any;
+  private _refreshNeeded$ = new Subject<void>();
+  
+  get refreshNeeded$(){
+      return this._refreshNeeded$
+  }
 
   login(data: any) {
     return this.httpClient.post<any>(this.baseUrl + '/login.php', data)
@@ -55,6 +60,10 @@ getToken() {
 
 viewAgent(){
   return this.httpClient.get<[ImsModule]>(this.baseUrl + '/viewAgents.php')
+}
+
+getSingleAgent(){
+  
 }
  
 deleteToken() {

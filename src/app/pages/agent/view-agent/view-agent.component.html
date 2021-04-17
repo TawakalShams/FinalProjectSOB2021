@@ -1,0 +1,47 @@
+<div > 
+    <mat-form-field class="full-width-input">
+    <input matInput type="text"
+     placeholder="Search by email" 
+      autocomplete="off"
+      (keyup)="updateFilter($event)"
+      ></mat-form-field>
+    <ngx-datatable
+      #table
+      class="material"
+      [columns]="columns"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      rowHeight="auto"
+      [limit]="10"
+      [rows]="rows"
+    > 
+        <ngx-datatable-column name="No">
+         
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Fname">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Email">
+        </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="Gender">
+        </ngx-datatable-column> -->
+        <ngx-datatable-column name="Address">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Branch">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Phone">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Action">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template >
+              <div> 
+                <button mat-icon-button color="primary" (click)="edit()" type="button">
+                  <mat-icon>create</mat-icon>
+                </button>
+                <button mat-icon-button color="warn"  (click)="delete(rows.agentId)" type="button">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+              </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
