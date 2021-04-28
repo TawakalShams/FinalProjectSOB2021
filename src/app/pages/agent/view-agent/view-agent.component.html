@@ -14,10 +14,12 @@
       [footerHeight]="50"
       rowHeight="auto"
       [limit]="10"
-      [rows]="rows"
+      [rows]="filteredRows"
     > 
         <ngx-datatable-column name="No">
-         
+          <ng-template let-row="row" let-rowIndex="rowIndex"  ngx-datatable-cell-template>
+             {{ rowIndex + 1  }}
+          </ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column name="Fname">
         </ngx-datatable-column>

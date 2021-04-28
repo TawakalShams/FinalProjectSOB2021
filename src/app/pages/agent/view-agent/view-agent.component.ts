@@ -18,6 +18,7 @@ import { AgentComponent } from 'src/app/dialog/agent/agent.component';
 })
 export class ViewAgentComponent implements OnInit {
   rows: any;
+  filteredRows: any[] = [];
   temp = [];
 
   columns = [{ prop: 'No' },{ name: 'fname' }, { name: 'Email' }, { name: 'Gender' }, { name: 'Address' }, { name: 'Phone' }, { name: 'Branch' }, { name: 'Actions' }];
@@ -39,8 +40,11 @@ export class ViewAgentComponent implements OnInit {
       ) { }
 
   ngOnInit(): void {
-      this.service.viewAgent().subscribe((data: ImsModule[] )=>
-        this.rows = data
+      this.service.viewAgent().subscribe((data: ImsModule[] ) => {
+        this.rows = data;
+        this.filteredRows = data
+      }
+        
       )
 
     }
@@ -58,14 +62,13 @@ export class ViewAgentComponent implements OnInit {
     
     updateFilter(event: any) {
       const val = event.target.value.toLowerCase();
+     
       // filter our data
-      const temp = this.temp.filter(function (d) {
-        //return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+      this.filteredRows = this.rows.filter(function (d: any) {
+        
+       return d.email.toLowerCase().includes(val)
         
       });
-  
-      // update the rows
-      this.rows = temp;
       // Whenever the filter changes, always go back to the first page
       this.table.offset = 0;
     }
