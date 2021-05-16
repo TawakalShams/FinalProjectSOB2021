@@ -92,3 +92,13 @@ table {
   th.mat-sort-header-sorted {
     color: black;
   }
+  .isLoading{
+      position: absolute;
+      height: 100%;
+      background-color: black;
+      opacity: 0.5;
+      width: 100%;
+      z-index: 99;
+    
+
+  }

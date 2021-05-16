@@ -1,0 +1,39 @@
+
+    <mat-tab-group mat-align-tabs="center" style="margin-left: 10px;">
+        <mat-tab label="Customer Regstraion"> 
+
+<div class="container">
+    <h3 style="text-align: center; margin-top: 5%;font-size: 24px;"><strong>Vehicle Regstraion</strong></h3>
+<form  [formGroup] = "form" (ngSubmit)="onSubmit()">
+    <div class="row">
+            <div class="col-sm-4">
+                <mat-form-field class="full-width-input">
+                    <input  matInput placeholder="Plate number " formControlName="platenumber" autocomplete="off"  required>
+                    <mat-error>
+                       Plate number is required
+                      </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Type of Vehicle" formControlName="type" autocomplete="off"  required>
+                    <mat-error>
+                        Type is required
+                      </mat-error>
+                </mat-form-field>
+            </div>
+     </div>
+
+<div>
+  
+      <button class="btn btn-primary" [disabled]="form.invalid">Regster</button>
+</div>
+</form>
+</div>
+</mat-tab>
+
+<mat-tab label="View Customers"> 
+    <app-view-vehicles></app-view-vehicles>
+</mat-tab>
+
+</mat-tab-group>

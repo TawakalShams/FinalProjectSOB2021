@@ -10,9 +10,9 @@ import { HeadnavComponent } from './framework/layouts/headnav/headnav.component'
 import { ToastrModule } from 'ngx-toastr';
 // import { PaymentComponent } from './pages/shared/payment/payment.component';
 import { AgentregstrationComponent } from './pages/agent/agentregstration/agentregstration.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/shared/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AcidentComponent } from './pages/shared/acident/acident.component';
 // import { InsuaranceComponent } from './pages/shared/insuarance/insuarance.component';
 // import { InsuaredComponent } from './pages/shared/insuared/insuared.component';
@@ -21,25 +21,38 @@ import { ViewAgentComponent } from './pages/agent/view-agent/view-agent.componen
 import { CommissionComponent } from './pages/commission/commission.component';
 import { ViewcustomerComponent } from './pages/shared/customer/viewcustomer/viewcustomer.component';
 import { AgentComponent } from './dialog/agent/agent.component';
+import { ViewAdminComponent } from './pages/admin/view-admin/view-admin.component';
+import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
+import { ViewCommsionComponent } from './pages/commission/view-commsion/view-commsion.component';
+import { ServiceService } from './service/service.service';
+import { ConfirmDeleteAgentComponent } from './dialog/confirm-delete-agent/confirm-delete-agent.component';
+import { VehiclesComponent } from './pages/shared/vehicles/vehicles/vehicles.component';
+import { ViewVehiclesComponent } from './pages/shared/vehicles/view-vehicles/view-vehicles.component';
 // import { DefaultComponent } from './framework/layouts/default/default.component';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+
+export const tokenGetter = () => {
+  return localStorage.getItem('token');
+};
 
 @NgModule({
   declarations: [
     AppComponent,
-    // DashboardComponent,
     HeadnavComponent,
-    // PaymentComponent,
     AgentregstrationComponent,
     LoginComponent,
     AcidentComponent,
-    // InsuaranceComponent,
-    // InsuaredComponent,
     CustomerComponent,
     ViewAgentComponent,
     CommissionComponent,
     ViewcustomerComponent,
     AgentComponent,
-    // DefaultComponent,
+    ViewAdminComponent,
+    AdminloginComponent,
+    ViewCommsionComponent,
+    ConfirmDeleteAgentComponent,
+    VehiclesComponent,
+    ViewVehiclesComponent,
    
  
   ],
@@ -51,14 +64,24 @@ import { AgentComponent } from './dialog/agent/agent.component';
     MaterialModule,
     ReactiveFormsModule,
     NgxDatatableModule ,
+    FormsModule,
+    
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 2000,
       progressBar: true,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
-    })
+    }),
+
+        JwtModule.forRoot({
+      config: {
+        tokenGetter,
+      },
+    }),
   ],
-  providers: [],
+  providers: [
+ 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

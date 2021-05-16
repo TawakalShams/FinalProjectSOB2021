@@ -1,10 +1,11 @@
 <h2 mat-dialog-title>UPDATE </h2>
 <mat-dialog-content class="mat-typography">
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="update">
       <div class="row">
         <div class="col-sm-4">
+          
             <mat-form-field class="full-width-input">
-              <input matInput placeholder="Full Name" formControlName="fname" autocomplete="off"  required>
+              <input matInput placeholder="Full Name" formControlName="fullName" name="fullName"  autocomplete="off" [(ngModel)]="agent.fullName" required >
               <mat-error>
                   Full name is required
                 </mat-error>
@@ -12,7 +13,7 @@
         </div>
         <div class="col-sm-4">
           <mat-form-field class="full-width-input">
-            <input matInput placeholder="Email" formControlName="email" autocomplete="off"  required>
+            <input matInput placeholder="Email" formControlName="email" autocomplete="off"  ng-model="agent.email" required>
             <mat-error>
                 Email is required
               </mat-error>
@@ -20,7 +21,7 @@
       </div>
       <div class="col-sm-4">
         <mat-form-field class="full-width-input">
-          <input matInput placeholder="Password" formControlName="password" autocomplete="off"  required>
+          <input matInput placeholder="Password" formControlName="password" autocomplete="off" required>
           <mat-error>
               Password is required
             </mat-error>
@@ -30,7 +31,7 @@
     <div class="row">
       <div class="col-sm-4">
           <mat-form-field class="full-width-input">
-            <input matInput placeholder="Address" formControlName="address" autocomplete="off"  required>
+            <input matInput placeholder="Address" formControlName="address" autocomplete="off" required>
             <mat-error>
                  Addressis required
               </mat-error>
@@ -46,7 +47,7 @@
     </div>
     <div class="col-sm-4">
       <mat-form-field class="full-width-input">
-        <input matInput type="date" formControlName="dob" autocomplete="off"  required>
+        <input matInput type="date" formControlName="dob" autocomplete="off"required>
         <mat-error>
             Date is required
           </mat-error>
@@ -62,17 +63,9 @@
                     </mat-error>
                 </mat-form-field>
             </div>
-            <!-- <div class="col-sm-4">
-              <mat-form-field class="full-width-input">
-                <input matInput placeholder="Full Name" formControlName="fname" autocomplete="off"  required>
-                <mat-error>
-                    Full name is required
-                  </mat-error>
-              </mat-form-field>
-          </div> -->
           <div class="col-sm-4">
             <mat-form-field class="full-width-input">
-              <input matInput placeholder="Gender" formControlName="gender" autocomplete="off"  required>
+              <input matInput placeholder="Gender" formControlName="gender" autocomplete="off" required>
               <mat-error>
                   Gender is required
                 </mat-error>
@@ -83,6 +76,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <!-- [mat-dialog-close]="true" -->
-  <button mat-button  (click)="update()" class="btn btn-primary">Update</button>
-  <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+  <button mat-button  class="btn btn-primary">Update</button>
+  <button mat-button mat-dialog-close class="btn btn-danger" routerLink="agent">Cancel</button>
 </mat-dialog-actions>

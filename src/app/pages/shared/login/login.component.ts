@@ -42,14 +42,17 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.service.login(this.loginForm.value).subscribe((data) => {
+    this.service.login(this.loginForm.value).subscribe((data: any) => {
+      this.service.setToken(data);
        if (this.service.isLoggedIn()) {
-          const redirect = this.service.redirectUrl ? this.service.redirectUrl : '/agent';
+          const redirect = this.service.redirectUrl ? this.service.redirectUrl : '';
           this.router.navigate([redirect]);
+          
           this.toast.success('Success to login', 'Success');
         } else {
           this.toast.error('Incorrect email or password!', 'Error Message!');
         }
+      // console.log(data)
       },
       // error => this.error = error
     );

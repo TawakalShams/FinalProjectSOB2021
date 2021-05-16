@@ -1,1 +1,49 @@
-<p>viewcustomer works!</p>
+<div > 
+    <mat-form-field class="full-width-input">
+    <input matInput type="text"
+     placeholder="Search by Full name" 
+      autocomplete="off"
+      (keyup)="updateFilter($event)"
+      ></mat-form-field>
+    <ngx-datatable
+      #table
+      class="material"
+      [columns]="columns"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      rowHeight="auto"
+      [limit]="10"
+      [rows]="filteredRows"
+    > 
+        <ngx-datatable-column name="No">
+          <ng-template let-row="row" let-rowIndex="rowIndex"  ngx-datatable-cell-template>
+             {{ rowIndex + 1  }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Fname">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Gender">
+        </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="Gender">
+        </ngx-datatable-column> -->
+        <ngx-datatable-column name="Dob">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Address">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Phone">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Action">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template >
+              <div> 
+                <button mat-icon-button color="primary" type="button">
+                  <mat-icon>pay</mat-icon>
+                </button>
+                <button mat-icon-button color="warn"  type="button">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+              </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+  </div>

@@ -1,0 +1,80 @@
+
+    <mat-tab-group mat-align-tabs="center" style="margin-left: 10px;">
+        <mat-tab label="Admin Login"> 
+
+<div class="container">
+    <h3 style="text-align: center; margin-top: 5%;font-size: 24px;"><strong>Add Admin Login</strong></h3>
+<form  [formGroup] = "form" (ngSubmit)="onSubmit()">
+    <div class="row">
+            <div class="col-sm-4">
+                <mat-form-field class="full-width-input">
+                    <input  matInput placeholder="Full Name" formControlName="fname" autocomplete="off"  required>
+                    <mat-error>
+                        Full name is required
+                      </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Email" formControlName="email" autocomplete="off"  required>
+                    <mat-error>
+                        Email is required
+                      </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field class="full-width-input">
+                    <input type="text" matInput placeholder="Password" formControlName="password" autocomplete="off"  required>
+                    <mat-error>
+                        Password is required
+                      </mat-error>
+                </mat-form-field>
+            </div>
+     </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+                <input type="number" matInput placeholder="Addresss" formControlName="address" autocomplete="off"  required>
+                <mat-error>
+                    Address is required
+                  </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+                <input type="number" matInput placeholder="Phone number" formControlName="phone" autocomplete="off"  required>
+                <mat-error>
+                    Phone number is required
+                  </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+                <input type="text" matInput placeholder="Re-confirm password " formControlName="cpassword" autocomplete="off"  required>
+                <mat-error>
+                   Re confirm password is required
+                  </mat-error>
+            </mat-form-field>
+        </div>
+        <!-- <div class="col-sm-2">
+                       <label for="gender">Gender:</label>
+            <select class="form-control" name="gender"  formControlName="gender">
+                <option>-------Select gender-----</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div> -->
+</div>
+<div>
+  
+      <button class="btn btn-primary" [disabled]="form.invalid">Regster</button>
+</div>
+</form>
+</div>
+</mat-tab>
+
+<mat-tab label="View "> 
+    <app-view-admin></app-view-admin>
+</mat-tab>
+
+</mat-tab-group>

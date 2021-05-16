@@ -5,17 +5,25 @@
       id="toolbarMenu">subject</mat-icon>
       Insuarance Management System
 
-      <!-- <div style="align-self: center;">
-        <img mat-card-image src="assets/image/ims.png" alt="image">
-      </div> -->
-
     <span class="toolbar-spacer"></span>
     <mat-icon
       class="toolbar-icon"
-      matBadge="8"
       matBadgePosition="after"
       matBadgeColor="accent"
-    >notifications</mat-icon>
+    >settings</mat-icon>
+    <!-- <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>settings</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <button class="menu-item" mat-flat-button routerLink="admin">
+          Admin
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion> -->
+
 </mat-toolbar>
                   <!-- End header -->
           
@@ -32,9 +40,10 @@
     
     <mat-list id="menus">
       <mat-card>
-        <mat-card-header>
-          <mat-card-title>Tawakal Shams</mat-card-title>
-          <mat-card-subtitle>Admin</mat-card-subtitle>
+        <mat-card-header style="font-family: 'Courier New', Courier, monospace;">
+          <mat-card-title>{{fullName}}</mat-card-title>
+          <mat-card-subtitle>{{role}}</mat-card-subtitle>
+          <mat-card-subtitle style="margin-right:5%;">{{email}}</mat-card-subtitle>
         </mat-card-header>
       </mat-card>
       
@@ -46,12 +55,20 @@
         Dashboard</button>
       </mat-list-item>
 
-      <mat-list-item>
+        <mat-list-item>
           <button 
           class="menu-item"
             mat-flat-button routerLink="agent">
             <mat-icon>Agents</mat-icon>
             Agents</button>
+        </mat-list-item>
+        
+        <mat-list-item>
+          <button 
+          class="menu-item"
+            mat-flat-button routerLink="vehicle">
+            <mat-icon>Agents</mat-icon>
+            Vehicle</button>
         </mat-list-item>
 
         <mat-list-item>
@@ -69,6 +86,13 @@
               <mat-icon>style</mat-icon>
             Insuarance</button>
           </mat-list-item>
+          <mat-list-item>
+            <button 
+            class="menu-item"
+              mat-flat-button routerLink="commission">
+              <mat-icon>style</mat-icon>
+            Commision</button>
+          </mat-list-item>
           <mat-accordion>
             <mat-expansion-panel (opened)="panelOpenState = true"
                                   (closed)="panelOpenState = false">
@@ -76,14 +100,19 @@
                 <mat-panel-title>
                   <mat-icon>pending_actions</mat-icon>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                      Reports
+                      Pay Customer
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <button 
               class="menu-item"
                 mat-flat-button>
                 <!-- <mat-icon>pending_actions</mat-icon> -->
-              Reports</button>
+              Acident</button>
+              <button 
+              class="menu-item"
+                mat-flat-button>
+                <!-- <mat-icon>pending_actions</mat-icon> -->
+              Pay Insuared</button>
             </mat-expansion-panel>
           </mat-accordion>
 
@@ -92,28 +121,44 @@
                                   (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <mat-icon>settings</mat-icon>
+                  <mat-icon>pending_actions</mat-icon>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                      Setting
+                      Report
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <button 
               class="menu-item"
                 mat-flat-button>
                 <!-- <mat-icon>pending_actions</mat-icon> -->
-              Reports</button>
-            </mat-expansion-panel>
-          </mat-accordion>
-
-          <!-- thisn -->
-
-          <mat-list-item>
+              Acident</button>
+              <button 
+              class="menu-item"
+                mat-flat-button>
+                <!-- <mat-icon>pending_actions</mat-icon> -->
+              Customers
+            </button>
             <button 
             class="menu-item"
               mat-flat-button>
-              <mat-icon>logout</mat-icon>
-            Logout</button>
-          </mat-list-item>
+              <!-- <mat-icon>pending_actions</mat-icon> -->
+            Vehicles
+          </button>
+              <button 
+              class="menu-item"
+                mat-flat-button>
+                <!-- <mat-icon>pending_actions</mat-icon> -->
+              Pay Insuared</button>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+
+      <mat-list-item>
+        <button class="menu-item" mat-flat-button routerLink="vehicle">
+          <mat-icon>logout</mat-icon>
+          logout
+        </button>
+      </mat-list-item>
+          <!-- thisn -->
           
     </mat-list>
 

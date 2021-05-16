@@ -1,3 +1,6 @@
+<mat-tab-group mat-align-tabs="center" style="margin-left: 10px;">
+    <mat-tab label="Commision"> 
+        
 <div class="container">
     <h3 style="text-align: center; margin-top: 5%;font-size: 24px;"><strong>Commission</strong></h3>
 <form  [formGroup] = "form" (ngSubmit)="onSubmit()">
@@ -7,17 +10,24 @@
         <div class="col-sm-6">
             <label for="id">Agent Number:</label>
             <select class="form-control" name="id"  formControlName="id">
-                <option>-------Select agent number-----</option>
-                <option value="male">1</option>
+                <option>-------Select number of agent -----</option>
+                <option>1</option>
             </select>
         </div>
-
-
+        <div class="col-sm-6">
+            <label for="id">Number of Customers Regstared</label>
+            <input type="text"  class="form-control" readonly>
+        </div>
 </div>
+    <br>
 <div class="row">
     <div class="col-sm-6">
-        <label for="pnone">Amount:</label>
-        <input type="number"  formControlName="amount" class="form-control"  placeholder="Enter amount" name="amount" required>
+        <mat-form-field class="full-width-input">
+            <input  type="number" matInput placeholder="Enter amount" formControlName="amount" autocomplete="off"  required>
+            <mat-error>
+              Amount is required
+              </mat-error>
+        </mat-form-field>
     </div>
 </div><br>
 <div>
@@ -26,4 +36,10 @@
 </div>
 </form>
 </div>
+    </mat-tab>
+    <mat-tab label="View commssion"> 
+        <app-view-commsion></app-view-commsion>
+    </mat-tab>
+</mat-tab-group>
+
 

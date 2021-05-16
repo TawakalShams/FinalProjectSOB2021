@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from 'src/app/service/service.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { DecodedToken } from 'src/app/module/ims/ims.module';
 
 
 @Component({
@@ -11,16 +13,23 @@ import { ServiceService } from 'src/app/service/service.service';
   styleUrls: ['./agentregstration.component.css']
 })
 export class AgentregstrationComponent implements OnInit {
- 
-    emailParttern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\/[a-z]{2.4}$";
+submitted = false;
+fullName?: string;
+
 
   constructor(
     private service: ServiceService,
     private toastr: ToastrService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private helper: JwtHelperService
+  ) { 
+        const token = localStorage.getItem('token');
+        const decodedToken: DecodedToken = helper.decodeToken(token as string);
+
+    this.fullName = decodedToken.fullName;
+  }
     form = new FormGroup({
-      fname: new FormControl('',[
+      fullName: new FormControl('',[
         Validators.required
       ]),
       email: new FormControl('',[
@@ -29,7 +38,7 @@ export class AgentregstrationComponent implements OnInit {
       password: new FormControl('',[
         Validators.required
       ]),
-      confirmPassword: new FormControl('',[
+      retypePassword: new FormControl('',[
           Validators.required
       ]),
       gender: new FormControl('',[
@@ -47,22 +56,25 @@ export class AgentregstrationComponent implements OnInit {
       phone: new FormControl('',[
         Validators.required
       ]),
+       created_by: new FormControl(),
     })
  
   ngOnInit(): void {
   }
   onSubmit() {
-    
-    console.log(this.form.value)
-
     this.service.createAgent(this.form.value)
-    .subscribe(data =>{
-      this.router.navigate(['login'])
-      if(this.service){
-        this.toastr.success('Success to loggin!', 'Success!');
-      }else{
-        this.toastr.warning('Success to loggin!', 'Success!');
+    .subscribe(res =>{
+      this.submitted = true;
+      this.toastr.success('Agent Successfully to Create', 'Successfully');
+      this.router.navigateByUrl('/');
+      this.form.reset();
+      
+    }, 
+      error =>{
+        // console.log(error);
+        this.toastr.error('Agent not Successfully to Create', 'Error');
       }
-    })
+    )
+    
     } 
 }

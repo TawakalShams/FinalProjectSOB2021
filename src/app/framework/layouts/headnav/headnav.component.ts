@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DecodedToken } from 'src/app/module/ims/ims.module';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-headnav',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadnavComponent implements OnInit {
   panelOpenState = false;
-  constructor() { }
+  fullName?: string;
+  role?: string;
+  email?: string;
+  constructor(private helper: JwtHelperService) {
+        const token = localStorage.getItem('token');
+        const decodedToken: DecodedToken = helper.decodeToken(token as string);
+
+    this.fullName = decodedToken.fullName;
+    this.role = decodedToken.role;
+    this.email = decodedToken.email;
+   }
 
   ngOnInit(): void {
   }

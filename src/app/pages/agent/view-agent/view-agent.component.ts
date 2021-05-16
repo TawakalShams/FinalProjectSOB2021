@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServiceService } from 'src/app/service/service.service';
 import {MatTableDataSource} from '@angular/material/table';
-//import { Component, ViewChild } from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 import { ImsModule } from '../../../module/ims/ims.module';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AgentComponent } from 'src/app/dialog/agent/agent.component';
+import { BehaviorSubject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { ConfirmDeleteAgentComponent } from 'src/app/dialog/confirm-delete-agent/confirm-delete-agent.component';
 
 
 @Component({
@@ -21,28 +23,46 @@ export class ViewAgentComponent implements OnInit {
   filteredRows: any[] = [];
   temp = [];
 
+  @ViewChild('ngxDatatable')
+  ngxDatatable!: DatatableComponent;
+
+  
   columns = [{ prop: 'No' },{ name: 'fname' }, { name: 'Email' }, { name: 'Gender' }, { name: 'Address' }, { name: 'Phone' }, { name: 'Branch' }, { name: 'Actions' }];
   @ViewChild(DatatableComponent)
   table!: DatatableComponent;
 
   ColumnMode = ColumnMode;
   mydata: any;
+  agent:any;
+ 
+
 
   public getRowIndex(row: any): number {
       return this.table.bodyComponent.getRowIndex(row);   // row being data object passed into the template
+  
   }
-
+ public isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false) ;
+  
   constructor(
       private service: ServiceService,
       private Http: HttpClient,
       private router: Router,
-      public dialog: MatDialog
-      ) { }
+      public dialog: MatDialog,
+      private toastr: ToastrService
+      
+      ) { 
+
+        this.service.getSingleAgent
+      }
+
+    
 
   ngOnInit(): void {
-      this.service.viewAgent().subscribe((data: ImsModule[] ) => {
-        this.rows = data;
-        this.filteredRows = data
+      this.service.viewAgent().subscribe((data: any) => {
+        
+        this.rows = data.agents;
+        this.filteredRows = data.agents;
+        // this.isLoading = false;
       }
         
       )
@@ -73,17 +93,19 @@ export class ViewAgentComponent implements OnInit {
       this.table.offset = 0;
     }
 
-delete(agentId: any){
-  console.log(agentId)
-}
-edit(){
-  // alert("Edit is work")
-  const dialogRef = this.dialog.open(AgentComponent);
-  width: '250px'
-  dialogRef.afterClosed().subscribe(result => {
-    // console.log(`Dialog result: ${result}`);
+delete(row: any){
+  const dialogRef = this.dialog.open(ConfirmDeleteAgentComponent, {
+    data: row
   });
+
 }
+edit(row: any){
+  const dialogRef = this.dialog.open(AgentComponent, {
+    data: row
+  });
+
+}
+// document.getElementById('loader-container').style:any.display = 'none';
 
 
 // End
