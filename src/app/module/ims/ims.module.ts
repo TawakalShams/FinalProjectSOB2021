@@ -15,11 +15,12 @@ export interface DecodedToken {
 })
 
 
-export class ImsModule { 
+export class ImsModule {
+  customerid(customerid: any) {
+    throw new Error('Method not implemented.');
+  } 
 
-  rows = [];
-  temp = [];
-  fullName:string = '';
+  fullName:string | undefined ;
   email:any;
   password:any;
   gender:any;
@@ -27,5 +28,6 @@ export class ImsModule {
   branch:any;
   dob:any;
   phone:any;
+  platenumber:any;
 
 }

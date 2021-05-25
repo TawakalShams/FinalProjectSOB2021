@@ -55,7 +55,7 @@
         Dashboard</button>
       </mat-list-item>
 
-        <mat-list-item>
+        <mat-list-item *ngIf="role=='Admin'">
           <button 
           class="menu-item"
             mat-flat-button routerLink="agent">
@@ -86,35 +86,19 @@
               <mat-icon>style</mat-icon>
             Insuarance</button>
           </mat-list-item>
-          <mat-list-item>
+          <mat-list-item *ngIf="role=='Admin'">
+            <button class="menu-item" mat-flat-button routerLink="commission">
+              <mat-icon>style</mat-icon>
+              Acident
+            </button>
+          </mat-list-item>
+          <mat-list-item  *ngIf="role=='Admin'">
             <button 
             class="menu-item"
               mat-flat-button routerLink="commission">
               <mat-icon>style</mat-icon>
             Commision</button>
           </mat-list-item>
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                  (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <mat-icon>pending_actions</mat-icon>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                      Pay Customer
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <button 
-              class="menu-item"
-                mat-flat-button>
-                <!-- <mat-icon>pending_actions</mat-icon> -->
-              Acident</button>
-              <button 
-              class="menu-item"
-                mat-flat-button>
-                <!-- <mat-icon>pending_actions</mat-icon> -->
-              Pay Insuared</button>
-            </mat-expansion-panel>
-          </mat-accordion>
 
           <mat-accordion>
             <mat-expansion-panel (opened)="panelOpenState = true"
@@ -152,8 +136,8 @@
           </mat-accordion>
 
 
-      <mat-list-item>
-        <button class="menu-item" mat-flat-button routerLink="vehicle">
+      <mat-list-item *ngIf="isLoggedIn">
+        <button class="menu-item" mat-flat-button (click)="logout()">
           <mat-icon>logout</mat-icon>
           logout
         </button>

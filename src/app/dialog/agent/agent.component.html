@@ -1,9 +1,8 @@
 <h2 mat-dialog-title>UPDATE </h2>
 <mat-dialog-content class="mat-typography">
-    <form [formGroup]="form" (ngSubmit)="update">
+    <form [formGroup]="form" >
       <div class="row">
         <div class="col-sm-4">
-          
             <mat-form-field class="full-width-input">
               <input matInput placeholder="Full Name" formControlName="fullName" name="fullName"  autocomplete="off" [(ngModel)]="agent.fullName" required >
               <mat-error>
@@ -72,10 +71,15 @@
             </mat-form-field>
         </div>
         </div>
+          <div class="row">
+            <input type="hidden" formControlName="created_by" name="created_by" id="created_by" ngModel='{{fullName}}'>
+             <input type="hidden" formControlName="role" name="role" id="role" ngModel='{{role}}'>
+          </div>
+        <div align="end">
+          <button mat-button  class="btn btn-primary" (click)="update()">Update</button>
+          &nbsp;&nbsp;
+          <button mat-button mat-dialog-close class="btn btn-danger" routerLink="agent">Cancel</button>
+        </div>
     </form>      
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <!-- [mat-dialog-close]="true" -->
-  <button mat-button  class="btn btn-primary">Update</button>
-  <button mat-button mat-dialog-close class="btn btn-danger" routerLink="agent">Cancel</button>
-</mat-dialog-actions>
+

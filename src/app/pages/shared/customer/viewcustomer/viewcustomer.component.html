@@ -21,29 +21,41 @@
              {{ rowIndex + 1  }}
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Fname">
+        <ngx-datatable-column name="FullName">
         </ngx-datatable-column>
         <ngx-datatable-column name="Gender">
         </ngx-datatable-column>
         <!-- <ngx-datatable-column name="Gender">
         </ngx-datatable-column> -->
-        <ngx-datatable-column name="Dob">
-        </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="Dob">
+        </ngx-datatable-column> -->
         <ngx-datatable-column name="Address">
         </ngx-datatable-column>
         <ngx-datatable-column name="Phone">
         </ngx-datatable-column>
+        <ngx-datatable-column name="Type">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Platenumber">
+        </ngx-datatable-column>
         <ngx-datatable-column name="Action">
-            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template >
-              <div> 
-                <button mat-icon-button color="primary" type="button">
-                  <mat-icon>pay</mat-icon>
-                </button>
-                <button mat-icon-button color="warn"  type="button">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div class="row">
+              <a class="btn" mat-icon-button color="primary" (click)="payment(row)" type="button">
+                <mat-icon>payment</mat-icon>
+              </a>
+              <a class="btn" mat-icon-button color="primary" (click)="edit(row)" type="button">
+                <mat-icon>edit_note</mat-icon>
+              </a>
+              <!-- <a class="btn" mat-icon-button color="warn"  (click)="delete(row.agentid)" type="button">
+                          <mat-icon>delete</mat-icon>
+                        </a> *ngIf="role=='Admin'"-->
+            <div *ngIf="role=='Admin'">
+                <a class="btn" mat-icon-button color="warn" (click)="delete(row.customerid)" type="button">
                   <mat-icon>delete</mat-icon>
-                </button>
-              </div>
-              </ng-template>
+                </a>
+            </div>
+            </div>
+          </ng-template>
         </ngx-datatable-column>
     </ngx-datatable>
   </div>

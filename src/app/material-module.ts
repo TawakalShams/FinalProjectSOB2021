@@ -18,6 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 // import {MatSort} from '@angular/material/sort';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
 
 
 const MaterialComponents = [
@@ -39,7 +40,8 @@ const MaterialComponents = [
   MatExpansionModule,
   MatSortModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSelectModule,
   // MatTableDataSource
   // MatSort
   // MatTableDataSource

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { ToastrService } from 'ngx-toastr';
+import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
   selector: 'app-payment',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+
+  ) { }
 
   ngOnInit(): void {
   }
+
+  
 
 }

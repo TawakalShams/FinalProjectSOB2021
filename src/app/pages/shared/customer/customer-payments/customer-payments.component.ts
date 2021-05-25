@@ -1,20 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
-import { ConfirmDeleteCustomerComponent } from 'src/app/dialog/confirm-delete-customer/confirm-delete-customer.component';
-import { CustomerPaymentComponent } from 'src/app/dialog/customer-payment/customer-payment.component';
-import { UpdateCustomerComponent } from 'src/app/dialog/update-customer/update-customer.component';
-import { DecodedToken, ImsModule } from 'src/app/module/ims/ims.module';
+import { DecodedToken } from 'src/app/module/ims/ims.module';
 import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
-  selector: 'app-viewcustomer',
-  templateUrl: './viewcustomer.component.html',
-  styleUrls: ['./viewcustomer.component.css']
+  selector: 'app-customer-payments',
+  templateUrl: './customer-payments.component.html',
+  styleUrls: ['./customer-payments.component.css']
 })
-export class ViewcustomerComponent implements OnInit {
+export class CustomerPaymentsComponent implements OnInit {
   rows: any;
   filteredRows: any[] = [];
   temp = [];
@@ -23,8 +20,8 @@ export class ViewcustomerComponent implements OnInit {
 role?: string;
 
 
-columns = [{ prop: 'No' },{ name: 'fullName' }, { name: 'Gender' }, { name: 'Address' }, { name: 'Phone' }, { name: 'Type' }, { name: 'Actions' }];
-  @ViewChild(DatatableComponent)
+columns = [{ prop: 'No' },{ name: 'FullName' }, { name: 'amount' }, { name: 'Actions' }];
+ @ViewChild(DatatableComponent)
   table!: DatatableComponent;
 
   ColumnMode = ColumnMode;
@@ -43,9 +40,9 @@ columns = [{ prop: 'No' },{ name: 'fullName' }, { name: 'Gender' }, { name: 'Add
    }
 
   ngOnInit(): void {
-        this.service.viewCustomers().subscribe((data: any) => {
-        this.rows = data.customers;
-        this.filteredRows = data.customers;
+        this.service.viewPayment().subscribe((data: any) => {
+        this.rows = data.payment;
+        this.filteredRows = data.payment;
         
       });
 
@@ -75,22 +72,22 @@ columns = [{ prop: 'No' },{ name: 'fullName' }, { name: 'Gender' }, { name: 'Add
     this.table.offset = 0;
   }
    payment(row: any){
-  const dialogRef = this.dialog.open(CustomerPaymentComponent, {
-    data: row
-  });
+  // const dialogRef = this.dialog.open(CustomerPaymentComponent, {
+  //   data: row
+  // });
 }
 
    delete(row: any){
-  const dialogRef = this.dialog.open(ConfirmDeleteCustomerComponent, {
-    data: row
-  });
+  // const dialogRef = this.dialog.open(ConfirmDeleteCustomerComponent, {
+  //   data: row
+  // });
 
 }
 
 edit(row: any){
- const dialogRef = this.dialog.open(UpdateCustomerComponent, {
-    data: row
-  });
+//  const dialogRef = this.dialog.open(UpdateCustomerComponent, {
+//     data: row
+//   });
 
   
 }

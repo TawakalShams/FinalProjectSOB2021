@@ -67,7 +67,7 @@ fullName?: string;
       this.submitted = true;
       this.toastr.success('Agent Successfully to Create', 'Successfully');
       this.router.navigateByUrl('/');
-      this.form.reset();
+      // this.form.reset();
       
     }, 
       error =>{

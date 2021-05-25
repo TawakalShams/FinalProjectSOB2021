@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServiceService } from 'src/app/service/service.service';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatSort} from '@angular/material/sort';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
-import { ImsModule } from '../../../module/ims/ims.module';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AgentComponent } from 'src/app/dialog/agent/agent.component';
@@ -19,6 +16,7 @@ import { ConfirmDeleteAgentComponent } from 'src/app/dialog/confirm-delete-agent
   styleUrls: ['./view-agent.component.css']
 })
 export class ViewAgentComponent implements OnInit {
+  [x: string]: any;
   rows: any;
   filteredRows: any[] = [];
   temp = [];
@@ -38,74 +36,73 @@ export class ViewAgentComponent implements OnInit {
 
 
   public getRowIndex(row: any): number {
-      return this.table.bodyComponent.getRowIndex(row);   // row being data object passed into the template
+      return this.table.bodyComponent.getRowIndex(row);   
+      // row being data object passed into the template
   
   }
  public isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false) ;
   
   constructor(
       private service: ServiceService,
-      private Http: HttpClient,
-      private router: Router,
       public dialog: MatDialog,
-      private toastr: ToastrService
+      
       
       ) { 
-
-        this.service.getSingleAgent
+        // this.service.getSingleAgent
       }
 
     
 
   ngOnInit(): void {
       this.service.viewAgent().subscribe((data: any) => {
-        
         this.rows = data.agents;
         this.filteredRows = data.agents;
-        // this.isLoading = false;
-      }
         
-      )
+      });
 
     }
     
     fetch(cb:any) {
       const req = new XMLHttpRequest();
       req.open('GET', `assets/data/company.json`);
-  
       req.onload = () => {
         cb(JSON.parse(req.response));
       };
-  
       req.send();
     }
     
     updateFilter(event: any) {
       const val = event.target.value.toLowerCase();
-     
       // filter our data
       this.filteredRows = this.rows.filter(function (d: any) {
-        
        return d.email.toLowerCase().includes(val)
-        
       });
       // Whenever the filter changes, always go back to the first page
       this.table.offset = 0;
     }
 
-delete(row: any){
+ delete(row: any){
   const dialogRef = this.dialog.open(ConfirmDeleteAgentComponent, {
     data: row
   });
 
+  dialogRef.afterClosed().subscribe(({agentid}) => {
+    this.filteredRows = this.filteredRows.filter(row => row.agentid == agentid);
+   
+  })
+
+  
+  
 }
 edit(row: any){
   const dialogRef = this.dialog.open(AgentComponent, {
     data: row
   });
-
+   dialogRef.afterClosed().subscribe(({agentid}) => {
+    this.filteredRows = this.filteredRows.filter(row => row.agentid !== agentid);
+     
+  })
 }
-// document.getElementById('loader-container').style:any.display = 'none';
 
 
 // End

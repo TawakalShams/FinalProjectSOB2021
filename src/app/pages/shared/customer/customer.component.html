@@ -8,7 +8,7 @@
     <div class="row">
             <div class="col-sm-4">
                 <mat-form-field class="full-width-input">
-                    <input  matInput placeholder="Full Name" formControlName="fname" autocomplete="off"  required>
+                    <input  matInput placeholder="Full Name" formControlName="fullName" autocomplete="off"  required>
                     <mat-error>
                         Full name is required
                       </mat-error>
@@ -40,13 +40,31 @@
                   </mat-error>
             </mat-form-field>
         </div>
-        <div class="col-sm-2">
-                       <label for="gender">Gender:</label>
-            <select class="form-control" name="gender"  formControlName="gender">
-                <option>-------Select gender-----</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
+        <div class="col-sm-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Select gender</mat-label>
+                <mat-select disableRipple name="gender"  formControlName="gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                </mat-select>
+                <mat-error>
+                    Gender is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Vehicle id</mat-label>
+                <mat-select disableRipple name="vehicleid" formControlName="vehicleid">
+                    <mat-option   value="14" >14</mat-option>
+                </mat-select>
+                <mat-error>
+                    Platenumber is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <input type="hidden" formControlName="created_by" name="created_by" id="created_by" ngModel='{{fullName}}'>
         </div>
 </div>
 <div>
@@ -60,5 +78,7 @@
 <mat-tab label="View Customers"> 
     <app-viewcustomer></app-viewcustomer>
 </mat-tab>
-
+<mat-tab label="Customers Payments">
+    <app-customer-payments></app-customer-payments>
+</mat-tab>
 </mat-tab-group>

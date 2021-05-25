@@ -5,17 +5,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-// import { DashboardComponent } from './framework/dashboard/dashboard.component';
 import { HeadnavComponent } from './framework/layouts/headnav/headnav.component';
 import { ToastrModule } from 'ngx-toastr';
-// import { PaymentComponent } from './pages/shared/payment/payment.component';
 import { AgentregstrationComponent } from './pages/agent/agentregstration/agentregstration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/shared/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AcidentComponent } from './pages/shared/acident/acident.component';
-// import { InsuaranceComponent } from './pages/shared/insuarance/insuarance.component';
-// import { InsuaredComponent } from './pages/shared/insuared/insuared.component';
 import { CustomerComponent } from './pages/shared/customer/customer.component';
 import { ViewAgentComponent } from './pages/agent/view-agent/view-agent.component';
 import { CommissionComponent } from './pages/commission/commission.component';
@@ -28,8 +24,19 @@ import { ServiceService } from './service/service.service';
 import { ConfirmDeleteAgentComponent } from './dialog/confirm-delete-agent/confirm-delete-agent.component';
 import { VehiclesComponent } from './pages/shared/vehicles/vehicles/vehicles.component';
 import { ViewVehiclesComponent } from './pages/shared/vehicles/view-vehicles/view-vehicles.component';
-// import { DefaultComponent } from './framework/layouts/default/default.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { ReactiveComponentModule } from '@ngrx/component';
+import { ConfirmDeleteCustomerComponent } from './dialog/confirm-delete-customer/confirm-delete-customer.component';
+import { CustomerPaymentComponent } from './dialog/customer-payment/customer-payment.component';
+import { UpdateCustomerComponent } from './dialog/update-customer/update-customer.component';
+import { ConfirmDeleteVehicleComponent } from './dialog/confirm-delete-vehicle/confirm-delete-vehicle.component';
+import { UpdateVehicleComponent } from './dialog/update-vehicle/update-vehicle.component';
+import { InsuaranceComponent } from './pages/shared/insuarance/insuarance.component';
+import { CustomerPaymentsComponent } from './pages/shared/customer/customer-payments/customer-payments.component';
 
 export const tokenGetter = () => {
   return localStorage.getItem('token');
@@ -53,6 +60,13 @@ export const tokenGetter = () => {
     ConfirmDeleteAgentComponent,
     VehiclesComponent,
     ViewVehiclesComponent,
+    ConfirmDeleteCustomerComponent,
+    CustomerPaymentComponent,
+    UpdateCustomerComponent,
+    ConfirmDeleteVehicleComponent,
+    UpdateVehicleComponent,
+    InsuaranceComponent,
+    CustomerPaymentsComponent,
    
  
   ],
@@ -65,12 +79,24 @@ export const tokenGetter = () => {
     ReactiveFormsModule,
     NgxDatatableModule ,
     FormsModule,
+    ReactiveComponentModule,
     
     ToastrModule.forRoot({
       timeOut: 2000,
       progressBar: true,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
+      // StoreModule.forRoot(reducers, { metaReducers })
+    }),
+      StoreModule.forRoot(reducers, {
+        runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictStateSerializability: true,
+        strictActionSerializability: true,
+        strictActionWithinNgZone: true,
+        strictActionTypeUniqueness: true,
+      },
     }),
 
         JwtModule.forRoot({
@@ -78,6 +104,10 @@ export const tokenGetter = () => {
         tokenGetter,
       },
     }),
+
+        StoreModule.forRoot(reducers, { metaReducers }),
+
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
  

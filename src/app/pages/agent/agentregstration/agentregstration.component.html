@@ -74,13 +74,18 @@
                           </mat-error>
                     </mat-form-field> 
                 </div>
-                <div class="col-sm-2.5">
-                    <label for="gender">Gender:</label>
-                    <select class="form-control" name="gender"  formControlName="gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
+        <div class="col-sm-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Select gender</mat-label>
+                <mat-select disableRipple name="gender" formControlName="gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                </mat-select>
+                <mat-error>
+                    Gender is required
+                </mat-error>
+            </mat-form-field>
+        </div>
         </div>
                 <div class="row">
                     <input type="hidden" formControlName="created_by" 
