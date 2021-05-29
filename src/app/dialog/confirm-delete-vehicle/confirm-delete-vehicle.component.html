@@ -1,9 +1,14 @@
 <mat-dialog-content class="mat-typography">
-    <p>Are you sure you want to delete</p>
-
+  <p>Are you sure you want to delete</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <!-- [mat-dialog-close]="true" -->
-    <button mat-button class="btn btn-outline-danger" mat-dialog-close (click)="vehicle(agentid)">Yes</button>
-    <button mat-button mat-dialog-close class="btn btn-outline-dark">Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    mat-dialog-close
+    (click)="vehicle(agentid)"
+  >
+    Yes
+  </button>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

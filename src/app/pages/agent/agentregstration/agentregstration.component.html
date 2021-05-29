@@ -1,111 +1,150 @@
 <div class="container">
-    <mat-tab-group mat-align-tabs="center" style="margin-left: 10px;">
-        <mat-tab label="Agent Regstraion"> 
-            <h3 style="text-align: center; margin-top: 5%;font-size: 24px;"><strong>Agent Regstraion</strong></h3>
-            <form  [formGroup] = "form" (ngSubmit)="onSubmit()">
-                <div class="row">
-                        <div class="col-sm-4">
-                            <mat-form-field class="full-width-input">
-                                <input matInput placeholder="Full Name" formControlName="fullName" autocomplete="off"  required>
-                                <mat-error>
-                                    Full name is required
-                                  </mat-error>
-                            </mat-form-field>
-        
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field class="full-width-input">
-                                <input matInput placeholder="Email"  name="email" formControlName="email" autocomplete="off"  required>
-                                <mat-error>
-                                    Email is required
-                                  </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-form-field class="full-width-input">
-                                <input matInput type="password" placeholder="Password" formControlName="password" autocomplete="off"  required>
-                             
-                                <mat-error>
-                                    Password is required
-                                  </mat-error>
-                            </mat-form-field>                            
-                        </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width-input">
-                            <input matInput placeholder="Address" formControlName="address" autocomplete="off"  required>
-                            <mat-error>
-                                Address is required
-                              </mat-error>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4"> 
-                        <mat-form-field class="full-width-input">
-                            <input matInput placeholder="Branch" formControlName="branch" autocomplete="off"  required>
-                            <mat-error>
-                                Branch is required
-                             </mat-error>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-sm-4">
-                        <mat-form-field class="full-width-input">
-                            <input matInput type="password"  id="retypePassword" placeholder="Re-type Password" formControlName="retypePassword" autocomplete="off" >
-                            <mat-error>
-                                Re-type Password is required
-                              </mat-error>
-                        </mat-form-field> 
-                    </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <mat-form-field class="full-width-input">
-                        <input matInput type="date" placeholder="Date of birth" formControlName="dob" autocomplete="off"  required>
-                        <mat-error>
-                            Date is required
-                          </mat-error>
-                    </mat-form-field>   
-                </div>
-                <div class="col-sm-4">
-                    <mat-form-field class="full-width-input">
-                        <input matInput type="number" placeholder="Phone number" formControlName="phone" autocomplete="off"  required>
-                        <mat-error>
-                            Phone number is required
-                          </mat-error>
-                    </mat-form-field> 
-                </div>
-        <div class="col-sm-4">
-            <mat-form-field appearance="fill">
-                <mat-label>Select gender</mat-label>
-                <mat-select disableRipple name="gender" formControlName="gender">
-                    <mat-option value="Male">Male</mat-option>
-                    <mat-option value="Female">Female</mat-option>
-                </mat-select>
-                <mat-error>
-                    Gender is required
-                </mat-error>
+  <mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
+    <mat-tab label="Agent Regstraion">
+      <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
+        <strong>Agent Regstraion</strong>
+      </h3>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                placeholder="Full Name"
+                formControlName="fullName"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Full name is required </mat-error>
             </mat-form-field>
-        </div>
-        </div>
-                <div class="row">
-                    <input type="hidden" formControlName="created_by" 
-                    name="created_by" id="created_by"  ngModel='{{fullName}}'>
-                </div>
-        <br>
-            <div>
-                  <button class="btn btn-primary" [disabled]="form.invalid">Regster</button>
-            </div>
-            </form>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                placeholder="Email"
+                name="email"
+                formControlName="email"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Email is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                type="password"
+                placeholder="Password"
+                formControlName="password"
+                autocomplete="off"
+                required
+              />
 
-        </mat-tab>
-        <!-- View Agents tab -->
-        <mat-tab label="View Regstraion"> 
-                <app-view-agent></app-view-agent>
-        </mat-tab>
-      </mat-tab-group>
-    
+              <mat-error> Password is required </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                placeholder="Address"
+                formControlName="address"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Address is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                placeholder="Branch"
+                formControlName="branch"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Branch is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                type="password"
+                id="retypePassword"
+                placeholder="Re-type Password"
+                formControlName="retypePassword"
+                autocomplete="off"
+              />
+              <mat-error> Re-type Password is required </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                type="date"
+                placeholder="Date of birth"
+                formControlName="dob"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Date is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                type="number"
+                placeholder="Phone number"
+                formControlName="phone"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Phone number is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Select gender</mat-label>
+              <mat-select disableRipple name="gender" formControlName="gender">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+              </mat-select>
+              <mat-error> Gender is required </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <input
+            type="hidden"
+            formControlName="created_by"
+            name="created_by"
+            id="created_by"
+            ngModel="{{ fullName }}"
+          />
+        </div>
+        <br />
+        <div>
+          <button mat-raised-button color="primary" [disabled]="form.invalid">
+            Save
+          </button>
+        </div>
+      </form>
+    </mat-tab>
+    <!-- View Agents tab -->
+    <mat-tab label="View Regstraion">
+      <app-view-agent></app-view-agent>
+    </mat-tab>
+  </mat-tab-group>
 </div>
 
-<div>
-    
-</div>
+<div></div>

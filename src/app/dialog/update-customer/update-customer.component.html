@@ -1,68 +1,116 @@
-<h2 mat-dialog-title>UPDATE </h2>
+<h2 mat-dialog-title>UPDATE</h2>
 <mat-dialog-content class="mat-typography">
-    <form [formGroup]="form">
-        <div class="row">
-            <div class="col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Full Name" formControlName="fullName" name="fullName"
-                        autocomplete="off" [(ngModel)]="agent.fullName" required>
-                    <mat-error>
-                        Full name is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Gender" formControlName="gender" autocomplete="off"
-                        ng-model="agent.gender" required>
-                    <mat-error>
-                        Gender is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input matInput type="date" placeholder="Date of birth" formControlName="dob" autocomplete="off" required>
-                    <mat-error>
-                        Date of birth is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Address" formControlName="address" autocomplete="off" required>
-                    <mat-error>
-                        Addressis required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input matInput type="number" placeholder="Phone number" formControlName="phone" autocomplete="off" required>
-                    <mat-error>
-                        Phone number is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Vehicle id"  formControlName="vehicleid" autocomplete="off" required>
-                    <mat-error>
-                        Vehicle id is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-    
-        <div class="row">
-            <input type="hidden" formControlName="created_by" name="created_by" id="created_by" ngModel='{{fullName}}'>
-        </div>
-        <div align="end">
-            <button mat-button class="btn btn-primary" (click)="update()" >Update</button>
-            &nbsp;&nbsp;
-            <button mat-button mat-dialog-close class="btn btn-danger" routerLink="customer">Cancel</button>
-        </div>
-    </form>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            placeholder="Full Name"
+            formControlName="fullName"
+            name="fullName"
+            autocomplete="off"
+            [(ngModel)]="agent.fullName"
+            required
+          />
+          <mat-error> Full name is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            placeholder="Gender"
+            formControlName="gender"
+            autocomplete="off"
+            ng-model="agent.gender"
+            required
+          />
+          <mat-error> Gender is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            type="date"
+            placeholder="Date of birth"
+            formControlName="dob"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Date of birth is required </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            placeholder="Address"
+            formControlName="address"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Addressis required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            type="number"
+            placeholder="Phone number"
+            formControlName="phone"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Phone number is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            placeholder="Vehicle id"
+            formControlName="vehicleid"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Vehicle id is required </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <input
+        type="hidden"
+        formControlName="created_by"
+        name="created_by"
+        id="created_by"
+        ngModel="{{ fullName }}"
+      />
+    </div>
+    <div align="end">
+      <!-- <button mat-button class="btn btn-primary" (click)="update()" >Update</button> -->
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid"
+        (click)="update()"
+      >
+        Update
+      </button>
+      &nbsp;&nbsp;
+      <button
+        mat-raised-button
+        mat-dialog-close
+        color="warn"
+        routerLink="customer"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
 </mat-dialog-content>

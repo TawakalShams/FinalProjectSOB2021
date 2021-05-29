@@ -1,0 +1,83 @@
+<div class="table-responsive" id="summary">
+  <table class="table table-bordered table-hover table-light mb-0">
+    <tr class="rounded-top">
+      <th colspan="2" style="text-align: center">
+        STATEMENT OF COMPRIHENSIVE INCOME (P&L)
+      </th>
+    </tr>
+    <tr>
+      <th class="bg-primary text-white"></th>
+      <th class="bg-primary text-white">Tzs</th>
+      <th class="bg-primary text-white">Tzs</th>
+    </tr>
+    <!-- <tr *ngFor="let v of payment" style="color: black">
+      <td>{{ v.fullName }}</td>
+      <td></td>
+      <td>{{ v.amount | number }}</td>
+    </tr> -->
+    <tr></tr>
+    <tr>
+      <td>Sales</td>
+      <td></td>
+      <td>
+        {{ sum | number }}
+      </td>
+    </tr>
+    <tr>
+      <td>Sales return</td>
+      <td></td>
+      <td>(0)</td>
+    </tr>
+    <tr>
+      <td>Net Sales</td>
+      <td></td>
+      <td>
+        <b>
+          {{ sum | number }}
+        </b>
+      </td>
+    </tr>
+    <tr *ngIf="payment == 0">
+      <td colspan="2">No sales found.</td>
+    </tr>
+    <tr>
+      <th class="bg-danger text-white">Less: Cost of goods sold</th>
+      <th class="bg-danger text-white"></th>
+      <th class="bg-danger text-white"></th>
+    </tr>
+    <tr>
+      <td>Opening stock</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Add: Purchase</td>
+      <td>0</td>
+      <td>
+        <b> (0) </b>
+      </td>
+    </tr>
+    <tr>
+      <th class="bg-danger text-white">EXPENSES</th>
+      <th class="bg-danger text-white"></th>
+      <th class="bg-danger text-white"></th>
+    </tr>
+    <!-- <tr *ngFor="let pay of insuaredpayment" style="color: black">
+      <td>{{ pay.fullName }}</td>
+      <td>{{ pay.amount | number }}</td>
+    </tr> -->
+    <tr>
+      <td><b>Total Expense</b></td>
+      <td></td>
+      <td>
+        <b>({{ sum2 | number }})</b>
+      </td>
+      <hr />
+    </tr>
+    <tr>
+      <th>Net profi / Losse</th>
+      <th></th>
+      <th>{{ profiteLoss | number }}</th>
+      <!-- <th>{{netRevenue | currency:preference.defaultCurrency}}</th> -->
+    </tr>
+  </table>
+</div>

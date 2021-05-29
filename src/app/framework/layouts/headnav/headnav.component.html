@@ -1,163 +1,105 @@
-        <!-- Start header -->
+<!-- Start header -->
 <mat-toolbar id="mainToolbar" color="primary">
-    <mat-icon
-      (click)="onToolbarMenuToggle()"
-      id="toolbarMenu">subject</mat-icon>
-      Insuarance Management System
+  <mat-icon (click)="onToolbarMenuToggle()" id="toolbarMenu">subject</mat-icon>
+  Insuarance Management System
 
-    <span class="toolbar-spacer"></span>
-    <mat-icon
-      class="toolbar-icon"
-      matBadgePosition="after"
-      matBadgeColor="accent"
-    >settings</mat-icon>
-    <!-- <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-icon>settings</mat-icon>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <button class="menu-item" mat-flat-button routerLink="admin">
-          Admin
-        </button>
-      </mat-expansion-panel>
-    </mat-accordion> -->
-
+  <!-- <mat-list-item *ngIf="isLoggedIn">
+    <button class="menu-item" mat-flat-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-list-item> -->
+  <span class="toolbar-spacer"></span>
+  <mat-icon
+    class="toolbar-icon"
+    matBadgePosition="after"
+    matBadgeColor="accent"
+    (click)="logout()"
+    >logout</mat-icon
+  >
 </mat-toolbar>
-                  <!-- End header -->
-          
-<mat-sidenav-container
-  id="sidenavContainer"
-  fullscreen>
+<!-- End header -->
+
+<mat-sidenav-container id="sidenavContainer" fullscreen>
   <mat-sidenav
     mode="side"
     #sidenav
     id="sidenav"
     [class.menu-open]="isMenuOpen"
     [class.menu-close]="!isMenuOpen"
-    opened>
-    
+    opened
+  >
     <mat-list id="menus">
       <mat-card>
-        <mat-card-header style="font-family: 'Courier New', Courier, monospace;">
-          <mat-card-title>{{fullName}}</mat-card-title>
-          <mat-card-subtitle>{{role}}</mat-card-subtitle>
-          <mat-card-subtitle style="margin-right:5%;">{{email}}</mat-card-subtitle>
+        <mat-card-header style="font-family: 'Courier New', Courier, monospace">
+          <mat-card-title>{{ fullName }}</mat-card-title>
+          <mat-card-subtitle>{{ role }}</mat-card-subtitle>
+          <mat-card-subtitle style="margin-right: 5%">{{
+            email
+          }}</mat-card-subtitle>
         </mat-card-header>
       </mat-card>
-      
+
       <mat-list-item>
-        <button 
-        class="menu-item"
-          mat-flat-button routerLink="/">
+        <button class="menu-item" mat-flat-button routerLink="/">
           <mat-icon>dashboard</mat-icon>
-        Dashboard</button>
+          Dashboard
+        </button>
       </mat-list-item>
 
-        <mat-list-item *ngIf="role=='Admin'">
-          <button 
-          class="menu-item"
-            mat-flat-button routerLink="agent">
-            <mat-icon>Agents</mat-icon>
-            Agents</button>
-        </mat-list-item>
-        
-        <mat-list-item>
-          <button 
-          class="menu-item"
-            mat-flat-button routerLink="vehicle">
-            <mat-icon>Agents</mat-icon>
-            Vehicle</button>
-        </mat-list-item>
+      <mat-list-item *ngIf="role == 'Admin'">
+        <button class="menu-item" mat-flat-button routerLink="agent">
+          <mat-icon>supervised_user_circle</mat-icon>
+          Agents
+        </button>
+      </mat-list-item>
 
-        <mat-list-item>
-            <button 
-            class="menu-item"
-              mat-flat-button routerLink="customer">
-              <mat-icon>customers</mat-icon>
-            Customer</button>
-          </mat-list-item>
+      <mat-list-item>
+        <button class="menu-item" mat-flat-button routerLink="vehicle">
+          <mat-icon>electric_car</mat-icon>
+          Vehicle
+        </button>
+      </mat-list-item>
 
-          <mat-list-item>
-            <button 
-            class="menu-item"
-              mat-flat-button routerLink="insuarance">
-              <mat-icon>style</mat-icon>
-            Insuarance</button>
-          </mat-list-item>
-          <mat-list-item *ngIf="role=='Admin'">
-            <button class="menu-item" mat-flat-button routerLink="commission">
-              <mat-icon>style</mat-icon>
-              Acident
-            </button>
-          </mat-list-item>
-          <mat-list-item  *ngIf="role=='Admin'">
-            <button 
-            class="menu-item"
-              mat-flat-button routerLink="commission">
-              <mat-icon>style</mat-icon>
-            Commision</button>
-          </mat-list-item>
+      <mat-list-item>
+        <button class="menu-item" mat-flat-button routerLink="customer">
+          <mat-icon>supervised_user_circle</mat-icon>
+          Customer
+        </button>
+      </mat-list-item>
 
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                  (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <mat-icon>pending_actions</mat-icon>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                      Report
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <button 
-              class="menu-item"
-                mat-flat-button>
-                <!-- <mat-icon>pending_actions</mat-icon> -->
-              Acident</button>
-              <button 
-              class="menu-item"
-                mat-flat-button>
-                <!-- <mat-icon>pending_actions</mat-icon> -->
-              Customers
-            </button>
-            <button 
-            class="menu-item"
-              mat-flat-button>
-              <!-- <mat-icon>pending_actions</mat-icon> -->
-            Vehicles
-          </button>
-              <button 
-              class="menu-item"
-                mat-flat-button>
-                <!-- <mat-icon>pending_actions</mat-icon> -->
-              Pay Insuared</button>
-            </mat-expansion-panel>
-          </mat-accordion>
-
-
-      <mat-list-item *ngIf="isLoggedIn">
+      <mat-list-item>
+        <button class="menu-item" mat-flat-button routerLink="insuarance">
+          <mat-icon>style</mat-icon>
+          Insuarance
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="role == 'Admin'">
+        <button class="menu-item" mat-flat-button routerLink="commission">
+          <mat-icon>style</mat-icon>
+          Acident
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="role == 'Admin'">
+        <button class="menu-item" mat-flat-button routerLink="commission">
+          <mat-icon>account_balance</mat-icon>
+          Commision
+        </button>
+      </mat-list-item>
+      <!-- <mat-list-item *ngIf="isLoggedIn">
         <button class="menu-item" mat-flat-button (click)="logout()">
           <mat-icon>logout</mat-icon>
           logout
         </button>
-      </mat-list-item>
-          <!-- thisn -->
-          
+      </mat-list-item> -->
+      <!-- thisn -->
     </mat-list>
 
     <!-- ============================================== -->
 
-
     <!-- ============================================= -->
   </mat-sidenav>
-      
-  <mat-sidenav-content
-  [ngStyle]="{ 'margin-left.px': contentMargin }">
 
-  <router-outlet></router-outlet>
-    
-
-  </mat-sidenav-content> 
-
-  </mat-sidenav-container>
+  <mat-sidenav-content [ngStyle]="{ 'margin-left.px': contentMargin }">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

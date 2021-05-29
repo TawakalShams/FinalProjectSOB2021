@@ -11,14 +11,15 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-insuarance',
   templateUrl: './insuarance.component.html',
-  styleUrls: ['./insuarance.component.css']
+  styleUrls: ['./insuarance.component.css'],
 })
 export class InsuaranceComponent implements OnInit {
-fullName?: string;
-role?: string;
-submitted = false;
-vehcle: String | undefined;
-platenumber: String | undefined;
+  fullName?: string;
+  role?: string;
+  submitted = false;
+  platenumber: any;
+  vehcleid: any;
+  vehcle: any;
 
   constructor(
     private service: ServiceService,
@@ -26,47 +27,42 @@ platenumber: String | undefined;
     private router: Router,
     private helper: JwtHelperService
   ) {
-        const token = localStorage.getItem('token');
-        const decodedToken: DecodedToken = helper.decodeToken(token as string);
-        this.fullName = decodedToken.fullName;
-        this.role = decodedToken.role;
-
- 
-   }
+    const token = localStorage.getItem('token');
+    const decodedToken: DecodedToken = helper.decodeToken(token as string);
+    this.fullName = decodedToken.fullName;
+    this.role = decodedToken.role;
+  }
 
   form = new FormGroup({
-    vehicleid: new FormControl('',[
-      Validators.required
-    ]),
-  
-    date1: new FormControl('',[
-      Validators.required
-    ]),
-       date2: new FormControl('',[
-      Validators.required
-    ]),
-       created_by: new FormControl(),
-  })
+    vehicleid: new FormControl('', [Validators.required]),
+    color: new FormControl('', [Validators.required]),
+    seat: new FormControl('', [Validators.required]),
+    manufacture: new FormControl('', [Validators.required]),
+    startdate: new FormControl('', [Validators.required]),
+    enddate: new FormControl('', [Validators.required]),
+    value: new FormControl('', [Validators.required]),
+    create_by: new FormControl(),
+  });
 
-
-ngOnInit(): void {
-        this.service.viewVehicles().subscribe((data: any) =>{
-        this.vehcle = data;
-        //  console.log(data)
-      });
-}
-onSubmit() {
-    this.service.createCustomer(this.form.value)
-    .subscribe(res =>{
-      this.submitted = true;
-      this.toastr.success('Customer Successfully to Create', 'Successfully');
-      this.router.navigateByUrl('/');
-      this.form.reset();
-    }, 
-      error =>{
-        console.log(error);
-        this.toastr.error('Customer not Successfully to Create', 'Error');
+  ngOnInit(): void {
+    this.service.viewVehicles().subscribe((data: any) => {
+      this.vehcle = data.vehicles;
+      // console.log(this.form.value);
+    });
+  }
+  onSubmit() {
+    this.service.createInsuarance(this.form.value).subscribe(
+      (res) => {
+        this.submitted = true;
+        this.toastr.success('Successfully', 'Successfully');
+        this.router.navigateByUrl('/');
+        this.form.reset();
+        console.log(res);
+      },
+      (error) => {
+        // console.log(error);
+        this.toastr.error('Not Successfully', 'Error');
       }
-    )
-  } 
+    );
+  }
 }

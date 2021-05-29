@@ -10,7 +10,7 @@ import { UpdateVehicleComponent } from 'src/app/dialog/update-vehicle/update-veh
 @Component({
   selector: 'app-view-vehicles',
   templateUrl: './view-vehicles.component.html',
-  styleUrls: ['./view-vehicles.component.css']
+  styleUrls: ['./view-vehicles.component.css'],
 })
 export class ViewVehiclesComponent implements OnInit {
   [x: string]: any;
@@ -19,71 +19,74 @@ export class ViewVehiclesComponent implements OnInit {
   temp = [];
   fullName?: string;
   role?: string;
+  loading = true;
 
-  columns = [{ prop: 'No' },{ name: 'Platenumber' },{ name: 'Type' }];
+  columns = [{ prop: 'No' }, { name: 'Platenumber' }, { name: 'Type' }];
 
   ColumnMode = ColumnMode;
   mydata: any;
-  agent:any;
-      
-  constructor(private service: ServiceService,
-      public dialog: MatDialog,
-      private helper: JwtHelperService,
+  agent: any;
 
-    
-    ) { 
-        const token = localStorage.getItem('token');
-        const decodedToken: DecodedToken = helper.decodeToken(token as string);
-        this.fullName = decodedToken.fullName;
-        this.role = decodedToken.role;
-    }
+  constructor(
+    private service: ServiceService,
+    public dialog: MatDialog,
+    private helper: JwtHelperService
+  ) {
+    const token = localStorage.getItem('token');
+    const decodedToken: DecodedToken = helper.decodeToken(token as string);
+    this.fullName = decodedToken.fullName;
+    this.role = decodedToken.role;
+  }
 
   public getRowIndex(row: any): number {
-      return this.table.bodyComponent.getRowIndex(row);   
-      // row being data object passed into the template
+    return this.table.bodyComponent.getRowIndex(row);
+    // row being data object passed into the template
   }
-  
+
   ngOnInit(): void {
-        this.service.viewVehicles().subscribe((data: any) => {
-        this.rows = data.vehicles;
-        this.filteredRows = data.vehicles;
-      });
-
+    this.service.viewVehicles().subscribe((data: any) => {
+      this.rows = data.vehicles;
+      this.filteredRows = data.vehicles;
+      // console.log(data)
+      // console.log(data.vehicleid)
+      setTimeout(() => {
+        this.loading = false;
+      }, 2000);
+    });
   }
 
-     fetch(cb:any) {
-      const req = new XMLHttpRequest();
-      req.open('GET', `assets/data/company.json`);
-      req.onload = () => {
-        cb(JSON.parse(req.response));
-      };
-      req.send();
-    }
-    
-    updateFilter(event: any) {
-      const val = event.target.value.toLowerCase();
-      // filter our data
-      this.filteredRows = this.rows.filter(function (d: any) {
-       return d.platenumber.toLowerCase().includes(val)
-      });
-    }
+  fetch(cb: any) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/data/company.json`);
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+    req.send();
+  }
 
- deleteVehicle(row: any){
-   
-  const dialogRef = this.dialog.open(ConfirmDeleteVehicleComponent, {
-    data: row
-  });
-    dialogRef.afterClosed().subscribe(({vehicleid}) => {
-    this.filteredRows = this.filteredRows
-    .filter(row => row.vehicleid !== vehicleid);
-//  console.log(vehicleid)
-  })
-  // console.log(row)
-}
-edit(row: any){
-  const dialogRef = this.dialog.open(UpdateVehicleComponent, {
-    data: row
-  });
-}
+  updateFilter(event: any) {
+    const val = event.target.value.toLowerCase();
+    // filter our data
+    this.filteredRows = this.rows.filter(function (d: any) {
+      return d.platenumber.toLowerCase().includes(val);
+    });
+  }
 
+  deleteVehicle(row: any) {
+    const dialogRef = this.dialog.open(ConfirmDeleteVehicleComponent, {
+      data: row,
+    });
+    dialogRef.afterClosed().subscribe(({ vehicleid }) => {
+      this.filteredRows = this.filteredRows.filter(
+        (row) => row.vehicleid !== vehicleid
+      );
+      //  console.log(vehicleid)
+    });
+    // console.log(row)
+  }
+  edit(row: any) {
+    const dialogRef = this.dialog.open(UpdateVehicleComponent, {
+      data: row,
+    });
+  }
 }

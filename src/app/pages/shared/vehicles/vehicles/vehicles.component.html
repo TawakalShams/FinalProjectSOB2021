@@ -1,47 +1,63 @@
+<mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
+  <mat-tab label="Vehicle Regstraion">
+    <div class="container">
+      <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
+        <strong>Vehicle Regstraion</strong>
+      </h3>
 
-    <mat-tab-group mat-align-tabs="center" style="margin-left: 10px;">
-        <mat-tab label="Vehicle Regstraion"> 
-
-<div class="container" >
-    <h3 style="text-align: center; margin-top: 5%;font-size: 24px;"><strong>Vehicle Regstraion</strong></h3>
-    
-    <form  [formGroup] = "form" (ngSubmit)="onSubmit()">
-    <div class="row">
-        <div class="offset-sm-5 col-sm-4">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="offset-sm-5 col-sm-4">
             <mat-form-field class="full-width-input">
-                <input matInput placeholder="Plate number " formControlName="platenumber" autocomplete="off" required>
-                <mat-error>
-                    Plate number is required
-                </mat-error>
+              <input
+                matInput
+                placeholder="Plate number "
+                formControlName="platenumber"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Plate number is required </mat-error>
             </mat-form-field>
+          </div>
         </div>
-    </div>
-    <div class="row">
-            <div class="offset-sm-5 col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Type of Vehicle" formControlName="type" autocomplete="off"  required>
-                    <mat-error>
-                        Type is required
-                      </mat-error>
-                </mat-form-field>
-            </div>
-     </div>
-<div>
-    <div class="row">
-        <input type="hidden" formControlName="created_by" name="created_by" id="created_by" ngModel='{{fullName}}'>
-    </div>
-    <div class="row">
-            <div  class="offset-sm-5">
+        <div class="row">
+          <div class="offset-sm-5 col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                placeholder="Type of Vehicle"
+                formControlName="type"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Type is required </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <div class="row">
+            <input
+              type="hidden"
+              formControlName="created_by"
+              name="created_by"
+              id="created_by"
+              ngModel="{{ fullName }}"
+            />
+          </div>
+          <div class="row">
+            <button mat-raised-button color="primary" [disabled]="form.invalid">
+              Regster
+            </button>
+            <!-- <div  class="offset-sm-5">
                   <button class="btn btn-primary" [disabled]="form.invalid">Regster</button>
-            </div>
+            </div> -->
+          </div>
+        </div>
+      </form>
     </div>
-</div>
-</form>
-</div>
-</mat-tab>
+  </mat-tab>
 
-<mat-tab label="View Vehicles"> 
+  <mat-tab label="View Vehicles">
     <app-view-vehicles></app-view-vehicles>
-</mat-tab>
-
+  </mat-tab>
 </mat-tab-group>

@@ -1,0 +1,71 @@
+<!-- <h2 mat-dialog-title>Update Payment</h2>
+<h2 mat-dialog-title style="text-align: center">to</h2>
+<h2 style="text-align: center">{{ fullName }}</h2> -->
+<h2 mat-dialog-title style="text-align: center">Update Payment</h2>
+<mat-dialog-content class="mat-typography">
+  <div style="text-align: center">
+    <h3>from</h3>
+    <h2>{{ fullName }}</h2>
+    <!-- <h2>{{ customerid }}</h2> -->
+  </div>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-4">
+        <input
+          type="hidden"
+          formControlName="customerid"
+          name="customerid"
+          id="customerid"
+          ngModel="{{ customerid }}"
+        />
+        <!-- <mat-form-field class="full-width-input">
+          <input
+            matInput
+            type="hidden"
+            formControlName="customerid"
+            autocomplete="off"
+            required
+          />
+        </mat-form-field> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            type="number"
+            matInput
+            placeholder="Amount"
+            formControlName="amount"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Amount is required </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <input
+        type="hidden"
+        formControlName="create_by"
+        name="create_by"
+        id="create_by"
+        ngModel="{{ fullName }}"
+      />
+    </div>
+    <div align="end">
+      <!-- <button mat-button class="btn btn-primary" (click)="update()" mat-dialog-close>Update</button> -->
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid"
+        (click)="update()"
+      >
+        Update
+      </button>
+      &nbsp;&nbsp;
+      <!-- <button mat-button mat-dialog-close class="btn btn-danger" routerLink="vehicle">Cancel</button> -->
+      <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    </div>
+  </form>
+</mat-dialog-content>

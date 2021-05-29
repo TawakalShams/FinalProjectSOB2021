@@ -37,6 +37,15 @@ import { ConfirmDeleteVehicleComponent } from './dialog/confirm-delete-vehicle/c
 import { UpdateVehicleComponent } from './dialog/update-vehicle/update-vehicle.component';
 import { InsuaranceComponent } from './pages/shared/insuarance/insuarance.component';
 import { CustomerPaymentsComponent } from './pages/shared/customer/customer-payments/customer-payments.component';
+import { ViewInsuaranceComponent } from './pages/shared/insuarance/view-insuarance/view-insuarance.component';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { UpdateCustomerPaymentComponent } from './dialog/update-customer-payment/update-customer-payment.component';
+import { ConfirmDeletePaymentComponent } from './dialog/confirm-delete-payment/confirm-delete-payment.component';
+import { UpdateInsuranceComponent } from './dialog/update-insurance/update-insurance.component';
+import { ConfirmInsuaranceComponent } from './dialog/confirm-insuarance/confirm-insuarance.component';
+import { DashboardComponent } from './framework/dashboard/dashboard.component';
+import { ReportTableComponent } from './framework/AccountStatement/report-table/report-table.component';
 
 export const tokenGetter = () => {
   return localStorage.getItem('token');
@@ -67,8 +76,13 @@ export const tokenGetter = () => {
     UpdateVehicleComponent,
     InsuaranceComponent,
     CustomerPaymentsComponent,
-   
- 
+    ViewInsuaranceComponent,
+    UpdateCustomerPaymentComponent,
+    ConfirmDeletePaymentComponent,
+    UpdateInsuranceComponent,
+    ConfirmInsuaranceComponent,
+    DashboardComponent,
+    ReportTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,10 +91,12 @@ export const tokenGetter = () => {
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    NgxDatatableModule ,
+    NgxDatatableModule,
     FormsModule,
     ReactiveComponentModule,
-    
+    LoadingBarModule,
+    LoadingBarRouterModule,
+
     ToastrModule.forRoot({
       timeOut: 2000,
       progressBar: true,
@@ -88,8 +104,8 @@ export const tokenGetter = () => {
       preventDuplicates: true,
       // StoreModule.forRoot(reducers, { metaReducers })
     }),
-      StoreModule.forRoot(reducers, {
-        runtimeChecks: {
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,
         strictStateSerializability: true,
@@ -99,19 +115,17 @@ export const tokenGetter = () => {
       },
     }),
 
-        JwtModule.forRoot({
+    JwtModule.forRoot({
       config: {
         tokenGetter,
       },
     }),
 
-        StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, { metaReducers }),
 
-        !environment.production ? StoreDevtoolsModule.instrument() : [],
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [
- 
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,84 +1,114 @@
-
-    <mat-tab-group mat-align-tabs="center" style="margin-left: 10px;">
-        <mat-tab label="Customer Regstraion"> 
-
-<div class="container">
-    <h3 style="text-align: center; margin-top: 5%;font-size: 24px;"><strong>Customer Regstraion</strong></h3>
-<form  [formGroup] = "form" (ngSubmit)="onSubmit()">
-    <div class="row">
-            <div class="col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input  matInput placeholder="Full Name" formControlName="fullName" autocomplete="off"  required>
-                    <mat-error>
-                        Full name is required
-                      </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Address" formControlName="address" autocomplete="off"  required>
-                    <mat-error>
-                        Address is required
-                      </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-4">
-                <mat-form-field class="full-width-input">
-                    <input type="number" matInput placeholder="Phone number" formControlName="phone" autocomplete="off"  required>
-                    <mat-error>
-                        Phone number is required
-                      </mat-error>
-                </mat-form-field>
-            </div>
-     </div>
-    <div class="row">
-        <div class="col-sm-4">
+<mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
+  <mat-tab label="Customer Regstraion">
+    <div class="container">
+      <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
+        <strong>Customer Regstraion</strong>
+      </h3>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-sm-4">
             <mat-form-field class="full-width-input">
-                <input type="date" matInput placeholder="Date of birth" formControlName="dob" autocomplete="off"  required>
-                <mat-error>
-                    Date number is required
-                  </mat-error>
+              <input
+                matInput
+                placeholder="Full Name"
+                formControlName="fullName"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Full name is required </mat-error>
             </mat-form-field>
-        </div>
-        <div class="col-sm-4">
-            <mat-form-field appearance="fill">
-                <mat-label>Select gender</mat-label>
-                <mat-select disableRipple name="gender"  formControlName="gender">
-                    <mat-option value="Male">Male</mat-option>
-                    <mat-option value="Female">Female</mat-option>
-                </mat-select>
-                <mat-error>
-                    Gender is required
-                </mat-error>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                placeholder="Address"
+                formControlName="address"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Address is required </mat-error>
             </mat-form-field>
-        </div>
-        <div class="col-sm-4">
-            <mat-form-field appearance="fill">
-                <mat-label>Vehicle id</mat-label>
-                <mat-select disableRipple name="vehicleid" formControlName="vehicleid">
-                    <mat-option   value="14" >14</mat-option>
-                </mat-select>
-                <mat-error>
-                    Platenumber is required
-                </mat-error>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                type="number"
+                matInput
+                placeholder="Phone number"
+                formControlName="phone"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Phone number is required </mat-error>
             </mat-form-field>
+          </div>
         </div>
         <div class="row">
-            <input type="hidden" formControlName="created_by" name="created_by" id="created_by" ngModel='{{fullName}}'>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                type="date"
+                matInput
+                placeholder="Date of birth"
+                formControlName="dob"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Date number is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Select gender</mat-label>
+              <mat-select disableRipple name="gender" formControlName="gender">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+              </mat-select>
+              <mat-error> Gender is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Platenumber</mat-label>
+              <mat-select
+                disableRipple
+                name="vehicleid"
+                formControlName="vehicleid"
+              >
+                <mat-option [value]="v.vehicleid" *ngFor="let v of vehcle">{{
+                  v.platenumber
+                }}</mat-option>
+              </mat-select>
+              <mat-error>Platenumber is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <input
+              type="hidden"
+              formControlName="created_by"
+              name="created_by"
+              id="created_by"
+              ngModel="{{ fullName }}"
+            />
+          </div>
         </div>
-</div>
-<div>
-  
-      <button class="btn btn-primary" [disabled]="form.invalid">Regster</button>
-</div>
-</form>
-</div>
-</mat-tab>
+        <div>
+          <!-- <button class="btn btn-primary" [disabled]="form.invalid">
+            Regster
+          </button> -->
+          <button mat-raised-button color="primary" [disabled]="form.invalid">
+            Regster
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-tab>
 
-<mat-tab label="View Customers"> 
+  <mat-tab label="View Customers">
     <app-viewcustomer></app-viewcustomer>
-</mat-tab>
-<mat-tab label="Customers Payments">
+  </mat-tab>
+  <mat-tab label="Customers Payments">
     <app-customer-payments></app-customer-payments>
-</mat-tab>
+  </mat-tab>
 </mat-tab-group>
