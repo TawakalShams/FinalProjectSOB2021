@@ -45,7 +45,7 @@ export class InsuaranceComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.service.viewVehicles().subscribe((data: any) => {
+    this.service.vehiclesPayed().subscribe((data: any) => {
       this.vehcle = data.vehicles;
       // console.log(this.form.value);
     });
@@ -61,7 +61,10 @@ export class InsuaranceComponent implements OnInit {
       },
       (error) => {
         // console.log(error);
-        this.toastr.error('Not Successfully', 'Error');
+        this.toastr.error(
+          'Not Successfully, Platenumber is already used',
+          'Error'
+        );
       }
     );
   }

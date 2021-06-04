@@ -46,6 +46,8 @@ import { UpdateInsuranceComponent } from './dialog/update-insurance/update-insur
 import { ConfirmInsuaranceComponent } from './dialog/confirm-insuarance/confirm-insuarance.component';
 import { DashboardComponent } from './framework/dashboard/dashboard.component';
 import { ReportTableComponent } from './framework/AccountStatement/report-table/report-table.component';
+import { InsuranceReportComponent } from './reports/insurance-report/insurance-report.component';
+import { NgxPrintModule } from 'ngx-print';
 
 export const tokenGetter = () => {
   return localStorage.getItem('token');
@@ -83,6 +85,7 @@ export const tokenGetter = () => {
     ConfirmInsuaranceComponent,
     DashboardComponent,
     ReportTableComponent,
+    InsuranceReportComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,7 @@ export const tokenGetter = () => {
     ReactiveComponentModule,
     LoadingBarModule,
     LoadingBarRouterModule,
-
+    NgxPrintModule,
     ToastrModule.forRoot({
       timeOut: 2000,
       progressBar: true,

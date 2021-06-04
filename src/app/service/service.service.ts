@@ -46,6 +46,10 @@ export class ServiceService {
   }
   // =============================Vehicles CRUD======================================
 
+  vehiclesPayed() {
+    return this.httpClient.get(baseUrl + '/vehiclesPayed');
+  }
+
   createVehicle(data: any): Observable<any> {
     return this.httpClient.post(baseUrl + '/vehicles', data);
   }
@@ -106,6 +110,13 @@ export class ServiceService {
   }
   deletePayInsuard(payid: any) {
     return this.httpClient.delete(baseUrl + '/payinsuared' + '/' + payid);
+  }
+  // ================================Report CRUD=========================================
+
+  getSingleCustomerReport(insuaranceid: any) {
+    return this.httpClient.get(
+      baseUrl + '/customerReport' + '/' + insuaranceid
+    );
   }
   // ================================Payment CRUD=========================================
   createPayment(data: any): Observable<any> {

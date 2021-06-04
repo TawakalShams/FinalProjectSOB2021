@@ -1,8 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { RouterLinkWithHref } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
+import {
+  ColumnMode,
+  DatatableComponent,
+  sortRows,
+} from '@swimlane/ngx-datatable';
+// import { ConsoleReporter } from 'jasmine';
 import { ConfirmDeletePaymentComponent } from 'src/app/dialog/confirm-delete-payment/confirm-delete-payment.component';
 import { UpdateCustomerPaymentComponent } from 'src/app/dialog/update-customer-payment/update-customer-payment.component';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
@@ -47,6 +53,7 @@ export class CustomerPaymentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.viewPayment().subscribe((data: any) => {
+      // console.log((this.rows = data.payment));
       this.rows = data.payment;
       this.filteredRows = data.payment;
       setTimeout(() => {
@@ -76,9 +83,11 @@ export class CustomerPaymentsComponent implements OnInit {
     this.table.offset = 0;
   }
 
-  delete(row: any) {
+  delete(rows: any) {
+    // console.log(rows);
+    // console.log((this.rows = rows.payment));
     const dialogRef = this.dialog.open(ConfirmDeletePaymentComponent, {
-      data: row,
+      data: rows,
     });
   }
 

@@ -18,7 +18,7 @@ import { ServiceService } from 'src/app/service/service.service';
 export class ConfirmDeletePaymentComponent implements OnInit {
   deteleData: any;
   paymentId: any;
-  agentidi: any;
+  customerid: any;
   @ViewChild('myTable') myTable: any;
   @ViewChild('ngxDatatable')
   ngxDatatable!: DatatableComponent;
@@ -26,7 +26,7 @@ export class ConfirmDeletePaymentComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA)
-    public agentData: any,
+    public Datas: any,
     private service: ServiceService,
     private toastr: ToastrService,
     private router: Router,
@@ -35,16 +35,17 @@ export class ConfirmDeletePaymentComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.agentData)
+    // console.log('Datas' + this.Datas);
   }
 
-  yes(paymentId: any) {
-    paymentId = this.agentData;
-    this.service.deletePayment(paymentId).subscribe((data) => {
-      this.deteleData = data;
+  yes(customerid: any) {
+    customerid = this.Datas;
+    this.service.deletePayment(customerid).subscribe((data) => {
+      this.deteleData = this.Datas;
       if (this.deteleData) {
         this.toastr.success(' Successfully to Delete', 'Successfully');
         this.router.navigateByUrl('/customer');
-        this.dialogRef.close({ paymentId });
+        this.dialogRef.close({ customerid });
       } else {
         this.toastr.error('Not Successfully to Delete', 'Error');
       }

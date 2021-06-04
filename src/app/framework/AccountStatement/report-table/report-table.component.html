@@ -1,3 +1,9 @@
+<div>
+  <button mat-raised-button color="primary" printSectionId="summary" ngxPrint>
+    <mat-icon>print</mat-icon>
+  </button>
+</div>
+
 <div class="table-responsive" id="summary">
   <table class="table table-bordered table-hover table-light mb-0">
     <tr class="rounded-top">
@@ -7,7 +13,7 @@
     </tr>
     <tr>
       <th class="bg-primary text-white"></th>
-      <th class="bg-primary text-white">Tzs</th>
+      <td class="bg-primary text-white">Tzs</td>
       <th class="bg-primary text-white">Tzs</th>
     </tr>
     <!-- <tr *ngFor="let v of payment" style="color: black">
@@ -41,7 +47,7 @@
       <td colspan="2">No sales found.</td>
     </tr>
     <tr>
-      <th class="bg-danger text-white">Less: Cost of goods sold</th>
+      <td class="bg-danger text-white">Less: Cost of goods sold</td>
       <th class="bg-danger text-white"></th>
       <th class="bg-danger text-white"></th>
     </tr>
@@ -57,7 +63,7 @@
       </td>
     </tr>
     <tr>
-      <th class="bg-danger text-white">EXPENSES</th>
+      <td class="bg-danger text-white">EXPENSES</td>
       <th class="bg-danger text-white"></th>
       <th class="bg-danger text-white"></th>
     </tr>
@@ -74,7 +80,7 @@
       <hr />
     </tr>
     <tr>
-      <th>Net profi / Losse</th>
+      <td>Net profi / Losse</td>
       <th></th>
       <th>{{ profiteLoss | number }}</th>
       <!-- <th>{{netRevenue | currency:preference.defaultCurrency}}</th> -->

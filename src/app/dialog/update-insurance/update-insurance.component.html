@@ -1,1 +1,133 @@
-<p>update-insurance works!</p>
+<div class="container">
+  <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
+    <strong>Update Insuarance</strong>
+  </h3>
+  <form [formGroup]="form" (ngSubmit)="update()">
+    <div class="row">
+      <div class="col-md-4">
+        <input
+          type="hidden"
+          formControlName="vehicleid"
+          name="vehicleid"
+          id="vehicleid"
+        />
+        <div class="col-md-4">
+          <mat-form-field class="full-width-input">
+            <input
+              type="number"
+              matInput
+              placeholder="Value"
+              formControlName="value"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Value of vehicle is required </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <mat-form-field class="full-width-input">
+          <input
+            type="hidden"
+            matInput
+            placeholder="Platenumber"
+            formControlName="vehicleid"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Platenumber is required </mat-error>
+        </mat-form-field> -->
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            placeholder="Color of body"
+            formControlName="color"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Color of body is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full-width-input">
+          <input
+            type="number"
+            matInput
+            placeholder="Seat capacity "
+            formControlName="seat"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Seat capacity is required </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field class="full-width-input">
+          <input
+            type="date"
+            matInput
+            placeholder="Year of manufacture"
+            formControlName="manufacture"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Year of manufacture is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            type="date"
+            matInput
+            placeholder="Start date of Insuarance"
+            formControlName="startdate"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Start date of Insuarance is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="full-width-input">
+          <input
+            type="date"
+            matInput
+            placeholder="End date of Insuarance"
+            formControlName="enddate"
+            autocomplete="off"
+            required
+          />
+          <mat-error>End date is required </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <input
+        type="hidden"
+        formControlName="create_by"
+        name="create_by"
+        id="create_by"
+        ngModel="{{ fullName }}"
+      />
+    </div>
+    <br />
+    <div align="end">
+      <!-- <button mat-button class="btn btn-primary" (click)="update()" mat-dialog-close>Update</button> -->
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid"
+        (click)="update()"
+      >
+        Update
+      </button>
+      &nbsp;&nbsp;
+      <!-- <button mat-button mat-dialog-close class="btn btn-danger" routerLink="vehicle">Cancel</button> -->
+      <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    </div>
+  </form>
+</div>

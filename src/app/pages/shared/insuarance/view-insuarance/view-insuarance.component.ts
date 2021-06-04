@@ -6,6 +6,7 @@ import { DatatableComponent, ColumnMode } from '@swimlane/ngx-datatable';
 import { ConfirmInsuaranceComponent } from 'src/app/dialog/confirm-insuarance/confirm-insuarance.component';
 import { UpdateInsuranceComponent } from 'src/app/dialog/update-insurance/update-insurance.component';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
+import { InsuranceReportComponent } from 'src/app/reports/insurance-report/insurance-report.component';
 import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
@@ -77,9 +78,9 @@ export class ViewInsuaranceComponent implements OnInit {
     this.table.offset = 0;
   }
   print(row: any) {
-    // const dialogRef = this.dialog.open(CustomerPaymentComponent, {
-    //   data: row
-    // });
+    const dialogRef = this.dialog.open(InsuranceReportComponent, {
+      data: row,
+    });
   }
 
   delete(row: any) {

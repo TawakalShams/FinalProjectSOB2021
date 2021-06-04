@@ -1,0 +1,97 @@
+<div align="end">
+  <button mat-raised-button color="primary" printSectionId="summary" ngxPrint>
+    Print</button
+  >&nbsp;
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+</div>
+<br />
+
+<div class="container" id="summary">
+  <div class="row">
+    <div class="col-md-4" style="text-align: left">
+      <address>
+        <b><h2>Payment</h2></b> <br />
+        <b>Customer:</b>{{ fullName | uppercase }} TAWAKL SHAMS KHAMIS<br />
+        <b>Amount: Tzs</b> 6899 <br />
+        <b>Address:</b> {{ address | uppercase }} TOMONDO<br />
+      </address>
+    </div>
+
+    <div class="col-md-4" style="text-align: center; float: center">
+      <img src="../../../assets/image/ims.png" height="30%" width="30%" />
+    </div>
+    <div class="col-md-4" style="float: right">
+      <address>
+        <b><h2>INVOICE</h2></b><br />
+        <b>Invoice #:</b>&nbsp;{{ randam }}
+        <br />
+
+        <b>Issued by:</b> {{ fullNameLogin | uppercase }}
+      </address>
+    </div>
+  </div>
+  <div style="clear: both"></div>
+
+  <hr />
+
+  <fieldset>
+    <legend>Customer Details</legend>
+    <div class="row">
+      <div class="col-md-4">
+        <b>Fullname:</b><br />{{ fullName | uppercase }} Yussuf Shams Khamis
+      </div>
+      <div class="col-md-4">
+        <b>Gender:</b><br />{{ gender | uppercase }} Male
+      </div>
+      <div class="col-md-4">
+        <b>Dob:</b><br />{{ dob }}
+        12-12-1995
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <b>Address:</b><br />{{ address | uppercase }}
+        Uroa
+      </div>
+      <div class="col-md-4">
+        <b>Phone:</b><br />{{ phone }}
+        +2557887544
+      </div>
+    </div>
+  </fieldset>
+  <hr />
+  <fieldset>
+    <legend>Vehicle Details</legend>
+    <div class="row">
+      <div class="col-md-4" id="platenumber">
+        <b>Platenumber:</b><br />{{ platenumber | uppercase }}
+      </div>
+      <div class="col-md-4"><b>Type:</b><br />{{ type | uppercase }}</div>
+      <div class="col-md-4"><b>Value:</b><br />Tzs {{ value }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"><b>Color:</b><br />{{ color | uppercase }}</div>
+      <div class="col-md-4">
+        <b>Manufatured date:</b><br />{{ manufacture }}
+      </div>
+      <div class="col-md-4"><b>Seats:</b><br />{{ seat }}</div>
+    </div>
+  </fieldset>
+  <hr />
+
+  <fieldset>
+    <legend>Insurance Details</legend>
+    <div class="row">
+      <div class="col-md-4"><b>Date of issue:</b><br />{{ startdate }}</div>
+      <div class="col-md-4"><b>Expired date:</b><br />{{ enddate }}</div>
+    </div>
+  </fieldset>
+  <br /><br />
+  <div class="row">
+    <div class="col-md-4"><b>Issued by:</b>{{ fullNameLogin | uppercase }}</div>
+    <br />
+    <p>Sign.................................</p>
+    <br />
+    <div class="col-md-4"><b>Date and Time:</b>{{ created_at }}</div>
+  </div>
+</div>
