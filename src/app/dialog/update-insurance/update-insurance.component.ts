@@ -25,7 +25,7 @@ export class UpdateInsuranceComponent implements OnInit {
   fullName?: string;
   role?: string;
   customerid: any;
-
+  vehicleid: any;
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public DATA: any,
@@ -63,7 +63,7 @@ export class UpdateInsuranceComponent implements OnInit {
   ngOnInit(): void {
     const fullName = (this.fullName = this.DATA.fullName);
     const customerid = (this.customerid = this.DATA.customerid);
-    // console.log(this.DATA.insuaranceid);
+    // console.log(this.form.value);
     // this.insuarance();
     this.service
       .getSingleInsuarance(this.DATA.insuaranceid)
@@ -76,30 +76,21 @@ export class UpdateInsuranceComponent implements OnInit {
         this.form.controls.startdate.setValue(this.DATA.startdate);
         this.form.controls.enddate.setValue(this.DATA.enddate);
         this.form.controls.value.setValue(this.DATA.value);
+        this.form.controls.vehicleid.setValue(this.DATA.vehicleid);
+        this.form.controls.create_by.setValue(this.DATA.create_by);
         // console.log(data);
       });
   }
 
-  // insuarance() {
-  //   this.service
-  //     .getSingleInsuarance(this.DATA.insuaranceid)
-  //     .subscribe((data: any) => {
-  //       // this.Data = data;
-  //       this.insuaranceid = data;
-  //       const insuarance = data.insuaranceid;
-  //       // // this.form.controls.fullName.setValue(vehicles.customerid);
-  //       this.form.controls.color.setValue(insuarance.color);
-  //       this.form.updateValueAndValidity();
-  //     });
-  // }
-
   update() {
     const updatae = this.service
-      .updatePayment(this.DATA.paymentId, this.form.value)
-      .subscribe((res) => {});
+      .updateInsuarance(this.DATA.insuaranceid, this.form.value)
+      .subscribe((res) => {
+        // console.log(res);
+      });
     if (updatae) {
       this.toastr.success('Updated', 'Successfully');
-      this.router.navigateByUrl('customer');
+      this.router.navigateByUrl('insuarance');
       this.dialogRef.close();
     } else {
       this.toastr.success('Not Success', 'Error');

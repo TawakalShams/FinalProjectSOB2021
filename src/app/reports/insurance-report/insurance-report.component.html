@@ -1,31 +1,36 @@
 <div align="end">
-  <button mat-raised-button color="primary" printSectionId="summary" ngxPrint>
+  <button
+    printTitle="Insurance"
+    mat-raised-button
+    [useExistingCss]="true"
+    [printStyle]="{ img: { height: '150px', width: '150px', float: 'center' } }"
+    color="primary"
+    printSectionId="summary"
+    ngxPrint
+  >
     Print</button
   >&nbsp;
   <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
 </div>
 <br />
-
 <div class="container" id="summary">
   <div class="row">
-    <div class="col-md-4" style="text-align: left">
+    <div class="col-md-4">
       <address>
         <b><h2>Payment</h2></b> <br />
-        <b>Customer:</b>{{ fullName | uppercase }} TAWAKL SHAMS KHAMIS<br />
-        <b>Amount: Tzs</b> 6899 <br />
-        <b>Address:</b> {{ address | uppercase }} TOMONDO<br />
+        <b>Customer:&nbsp;</b>{{ fullName | uppercase }}<br />
+        <b>Status:&nbsp;PAID FULL</b> <br />
+        <b>Address:</b> {{ address | uppercase }} <br />
       </address>
     </div>
-
-    <div class="col-md-4" style="text-align: center; float: center">
-      <img src="../../../assets/image/ims.png" height="30%" width="30%" />
+    <div class="col-md-4" style="float: center">
+      <img src="../../../assets/image/ims.png" height="50%" width="50%" />
     </div>
-    <div class="col-md-4" style="float: right">
+    <div class="col-md-4" style="float: left">
       <address>
-        <b><h2>INVOICE</h2></b><br />
-        <b>Invoice #:</b>&nbsp;{{ randam }}
+        <b><h2>INSURANCE</h2></b><br />
+        <b>No: #:</b>&nbsp;{{ randam }}
         <br />
-
         <b>Issued by:</b> {{ fullNameLogin | uppercase }}
       </address>
     </div>
@@ -38,25 +43,14 @@
     <legend>Customer Details</legend>
     <div class="row">
       <div class="col-md-4">
-        <b>Fullname:</b><br />{{ fullName | uppercase }} Yussuf Shams Khamis
+        <b>Fullname:</b><br />{{ fullName | uppercase }}
       </div>
-      <div class="col-md-4">
-        <b>Gender:</b><br />{{ gender | uppercase }} Male
-      </div>
-      <div class="col-md-4">
-        <b>Dob:</b><br />{{ dob }}
-        12-12-1995
-      </div>
+      <div class="col-md-4"><b>Gender:</b><br />{{ gender | uppercase }}</div>
+      <div class="col-md-4"><b>Dob:</b><br />{{ dob }}</div>
     </div>
     <div class="row">
-      <div class="col-md-4">
-        <b>Address:</b><br />{{ address | uppercase }}
-        Uroa
-      </div>
-      <div class="col-md-4">
-        <b>Phone:</b><br />{{ phone }}
-        +2557887544
-      </div>
+      <div class="col-md-4"><b>Address:</b><br />{{ address | uppercase }}</div>
+      <div class="col-md-4"><b>Phone:</b><br />{{ phone }}</div>
     </div>
   </fieldset>
   <hr />

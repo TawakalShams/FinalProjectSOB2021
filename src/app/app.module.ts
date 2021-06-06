@@ -48,6 +48,7 @@ import { DashboardComponent } from './framework/dashboard/dashboard.component';
 import { ReportTableComponent } from './framework/AccountStatement/report-table/report-table.component';
 import { InsuranceReportComponent } from './reports/insurance-report/insurance-report.component';
 import { NgxPrintModule } from 'ngx-print';
+import { ClockComponent } from './clock/clock.component';
 
 export const tokenGetter = () => {
   return localStorage.getItem('token');
@@ -86,6 +87,7 @@ export const tokenGetter = () => {
     DashboardComponent,
     ReportTableComponent,
     InsuranceReportComponent,
+    ClockComponent,
   ],
   imports: [
     BrowserModule,

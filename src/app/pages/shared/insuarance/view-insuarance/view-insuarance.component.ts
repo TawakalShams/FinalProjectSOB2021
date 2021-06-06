@@ -53,7 +53,6 @@ export class ViewInsuaranceComponent implements OnInit {
     this.service.viewInsuarance().subscribe((data: any) => {
       this.rows = data.insuarances;
       this.filteredRows = data.insuarance;
-      // console.log(data.insuarance);
     });
   }
   fetch(cb: any) {
@@ -66,17 +65,23 @@ export class ViewInsuaranceComponent implements OnInit {
 
     req.send();
   }
-
   updateFilter(event: any) {
     const val = event.target.value.toLowerCase();
-
     // filter our data
     this.filteredRows = this.rows.filter(function (d: any) {
-      return d.create_by.toLowerCase().includes(val);
+      return d.vehicleid.toLowerCase().includes(val);
     });
-    // Whenever the filter changes, always go back to the first page
-    this.table.offset = 0;
   }
+  // updateFilter(event: any) {
+  //   const val = event.target.value.toLowerCase();
+
+  //   // filter our data
+  //   this.filteredRows = this.rows.filter(function (d: any) {
+  //     return d.create_by.toLowerCase().includes(val);
+  //   });
+  //   // Whenever the filter changes, always go back to the first page
+  //   this.table.offset = 0;
+  // }
   print(row: any) {
     const dialogRef = this.dialog.open(InsuranceReportComponent, {
       data: row,
@@ -93,5 +98,6 @@ export class ViewInsuaranceComponent implements OnInit {
     const dialogRef = this.dialog.open(UpdateInsuranceComponent, {
       data: row,
     });
+    // console.log(row);
   }
 }

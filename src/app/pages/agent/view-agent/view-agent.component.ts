@@ -5,9 +5,10 @@ import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AgentComponent } from 'src/app/dialog/agent/agent.component';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, interval, Observable, Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmDeleteAgentComponent } from 'src/app/dialog/confirm-delete-agent/confirm-delete-agent.component';
+import { validateBasis } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-view-agent',
@@ -20,6 +21,8 @@ export class ViewAgentComponent implements OnInit {
   filteredRows: any[] = [];
   temp = [];
   loading = true;
+  lod: any;
+  private updateSubscription: Subscription | undefined;
 
   @ViewChild('ngxDatatable')
   ngxDatatable!: DatatableComponent;
@@ -51,6 +54,18 @@ export class ViewAgentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.id = interval(1000).subscribe((val) => {
+    this.viewAgents();
+    //   // console.log(val);
+    // });
+  }
+  ngOnDestroy() {
+    if (this.id == 7) {
+      clearInterval(this.id);
+    }
+  }
+  viewAgents() {
+    // this.id = interval(1000).subscribe((val) => {
     this.service.viewAgent().subscribe((data: any) => {
       this.rows = data.agents;
       this.filteredRows = data.agents;
@@ -58,6 +73,7 @@ export class ViewAgentComponent implements OnInit {
         this.loading = false;
       }, 2000);
     });
+    // });
   }
 
   fetch(cb: any) {
@@ -95,8 +111,9 @@ export class ViewAgentComponent implements OnInit {
     const dialogRef = this.dialog.open(AgentComponent, {
       data: row,
     });
-
+    // console.log(row);
     dialogRef.afterClosed().subscribe(({ agent }) => {
+      // this.id = interval(1000).subscribe((val) => {
       if (agent) {
         const index = this.filteredRows.findIndex(
           (ag) => ag.agentid === agent.agentid
@@ -105,9 +122,10 @@ export class ViewAgentComponent implements OnInit {
         const rows = this.filteredRows;
         rows[index] = agent;
         this.filteredRows = rows;
-        console.log(this.filteredRows);
+        // console.log(this.filteredRows);
       }
     });
+    // });
   }
 
   // End

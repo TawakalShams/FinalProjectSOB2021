@@ -1,6 +1,46 @@
 <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="First"> Content 1 </mat-tab>
-    <mat-tab label="Second"> Content 2 </mat-tab>
-    <mat-tab label="Third"> Content 3 </mat-tab>
-  </mat-tab-group>
+  <mat-tab label="Acident Verification">
+    <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
+      <strong>Acident Verification</strong>
+    </h3>
 
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="offset-sm-5 col-sm-4">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Plate number "
+            formControlName="platenumber"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Plate number is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="offset-sm-5 col-sm-4">
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+          ></textarea>
+        </mat-form-field>
+        <!-- <mat-form-field>
+          <input
+            matInput
+            placeholder="Plate number "
+            formControlName="platenumber"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Plate number is required </mat-error>
+        </mat-form-field> -->
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="View"> Content 2 </mat-tab>
+</mat-tab-group>

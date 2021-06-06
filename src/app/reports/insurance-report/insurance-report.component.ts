@@ -38,6 +38,7 @@ export class InsuranceReportComponent implements OnInit {
   randam: any;
   customerid: any;
   insuaranceid: any;
+  customerData: any;
 
   constructor(
     public dialog: MatDialog,
@@ -55,10 +56,9 @@ export class InsuranceReportComponent implements OnInit {
     this.fullNameLogin = decodedToken.fullName;
   }
   ngOnInit(): void {
-    const randam = (this.randam = Math.floor(Math.random() * this.max));
-    // console.log(randam); =
-    this.vehicle();
     this.getsinglecustomer();
+    const randam = (this.randam = Math.floor(Math.random() * this.max));
+    this.vehicle();
   }
 
   vehicle() {
@@ -80,8 +80,17 @@ export class InsuranceReportComponent implements OnInit {
   }
 
   getsinglecustomer() {
-    this.service.getSingleCustomerReport(this.customerid).subscribe((data) => {
-      console.log(data);
-    });
+    this.service
+      .getSingleCustomerReport(this.Datas.vehicleid)
+      .subscribe((data) => {
+        // console.log(data);
+        this.customerData = data;
+        const fullName = (this.fullName = this.customerData.customers.fullName);
+        // const value = (this.value = this.customerData.customers.value);
+        const address = (this.address = this.customerData.customers.address);
+        const gender = (this.gender = this.customerData.customers.gender);
+        const dob = (this.dob = this.customerData.customers.dob);
+        const phone = (this.phone = this.customerData.customers.phone);
+      });
   }
 }

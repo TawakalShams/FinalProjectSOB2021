@@ -12,6 +12,7 @@ import { ServiceService } from 'src/app/service/service.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-agent',
@@ -25,7 +26,7 @@ export class AgentComponent implements OnInit {
   agent = new ImsModule();
   fullName?: string;
   role?: string;
-
+  datas = [];
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public agentData: any,
@@ -85,13 +86,14 @@ export class AgentComponent implements OnInit {
     const updatae = this.service
       .updateAgent(this.agentData.agentid, this.form.value)
       .subscribe((res: any) => {
-        console.log(res);
+        // console.log(res);
         //  this.dialogRef.close();
         this.toastr.success('Updated', 'Successfully');
         // const agentid = this.agentData.agentid;
         // const agentid = res
         this.dialogRef.close({ agent: res.agents });
         // this.router.navigateByUrl('agent');
+        // this.service.viewAgent().subscribe((data) => {});
       });
 
     // if (updatae) {

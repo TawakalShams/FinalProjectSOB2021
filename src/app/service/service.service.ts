@@ -113,10 +113,8 @@ export class ServiceService {
   }
   // ================================Report CRUD=========================================
 
-  getSingleCustomerReport(insuaranceid: any) {
-    return this.httpClient.get(
-      baseUrl + '/customerReport' + '/' + insuaranceid
-    );
+  getSingleCustomerReport(vehicleid: any) {
+    return this.httpClient.get(baseUrl + '/customerReport' + '/' + vehicleid);
   }
   // ================================Payment CRUD=========================================
   createPayment(data: any): Observable<any> {

@@ -8,6 +8,7 @@
       <mat-icon>logout</mat-icon>
     </button>
   </mat-list-item> -->
+
   <span class="toolbar-spacer"></span>
   <mat-icon
     class="toolbar-icon"
@@ -74,17 +75,17 @@
         </button>
       </mat-list-item>
       <mat-list-item *ngIf="role == 'Admin'">
-        <button class="menu-item" mat-flat-button routerLink="commission">
+        <button class="menu-item" mat-flat-button routerLink="acident">
           <mat-icon>style</mat-icon>
           Acident
         </button>
       </mat-list-item>
-      <mat-list-item *ngIf="role == 'Admin'">
+      <!-- <mat-list-item *ngIf="role == 'Admin'">
         <button class="menu-item" mat-flat-button routerLink="commission">
           <mat-icon>account_balance</mat-icon>
           Commision
         </button>
-      </mat-list-item>
+      </mat-list-item> -->
       <!-- <mat-list-item *ngIf="isLoggedIn">
         <button class="menu-item" mat-flat-button (click)="logout()">
           <mat-icon>logout</mat-icon>
