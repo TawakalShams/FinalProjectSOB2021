@@ -47,9 +47,10 @@ export class AgentregstrationComponent implements OnInit {
         this.toastr.success('Agent Successfully to Create', 'Successfully');
         this.router.navigateByUrl('/');
         // this.form.reset();
+        // console.log(res);
       },
       (error) => {
-        // console.log(error);
+        console.log(error);
         this.toastr.error(
           'Agent not Successfully to Create, Pleas check email already exist',
           'Error'

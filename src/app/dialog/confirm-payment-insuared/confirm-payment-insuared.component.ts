@@ -1,28 +1,29 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ImsModule } from 'src/app/module/ims/ims.module';
-import { ServiceService } from 'src/app/service/service.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { DecodedToken } from 'src/app/module/ims/ims.module';
 import { ToastrService } from 'ngx-toastr';
+import { DecodedToken, ImsModule } from 'src/app/module/ims/ims.module';
+import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
-  selector: 'app-customer-payment',
-  templateUrl: './customer-payment.component.html',
-  styleUrls: ['./customer-payment.component.css'],
+  selector: 'app-confirm-payment-insuared',
+  templateUrl: './confirm-payment-insuared.component.html',
+  styleUrls: ['./confirm-payment-insuared.component.css'],
 })
-export class CustomerPaymentComponent implements OnInit {
+export class ConfirmPaymentInsuaredComponent implements OnInit {
   rows: any;
-  customerid: any;
+  insuaranceid: any;
   agentDat: any;
   agent = new ImsModule();
-  fullName?: string;
+  platenumber?: string;
   fullNameCreate?: string;
   role?: string;
   amount?: number = 50400;
+  fullName: any;
+  phone: any;
 
   constructor(
     public dialog: MatDialog,
@@ -41,19 +42,20 @@ export class CustomerPaymentComponent implements OnInit {
   }
 
   form = new FormGroup({
-    customerid: new FormControl('', [Validators.required]),
+    insuaranceid: new FormControl('', [Validators.required]),
     amount: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
   actualAmount(): void {}
   ngOnInit(): void {
+    const platenumber = (this.platenumber = this.Datas.platenumber);
+    const insuaranceid = (this.insuaranceid = this.Datas.insuaranceid);
     const fullName = (this.fullName = this.Datas.fullName);
-    const customerid = (this.customerid = this.Datas.customerid);
-    // console.log(this.Datas)
+    const phone = (this.phone = this.Datas.phone);
   }
 
   payment() {
-    this.service.createPayment(this.form.value).subscribe((res) => {
+    this.service.createPayInsuard(this.form.value).subscribe((res) => {
       if (res.error) {
         this.toastr.error(res.message, 'Error');
       } else {

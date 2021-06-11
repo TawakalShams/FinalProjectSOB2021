@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
-import { ServiceService } from 'src/app/service/service.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ColumnMode } from '@swimlane/ngx-datatable';
+import { ConfirmDeleteAcidentComponent } from 'src/app/dialog/confirm-delete-acident/confirm-delete-acident.component';
+import { ConfirmPaymentInsuaredComponent } from 'src/app/dialog/confirm-payment-insuared/confirm-payment-insuared.component';
+import { UpdateAcidentComponent } from 'src/app/dialog/update-acident/update-acident.component';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
-import { ConfirmDeleteVehicleComponent } from 'src/app/dialog/confirm-delete-vehicle/confirm-delete-vehicle.component';
-import { UpdateVehicleComponent } from 'src/app/dialog/update-vehicle/update-vehicle.component';
+import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
-  selector: 'app-view-vehicles',
-  templateUrl: './view-vehicles.component.html',
-  styleUrls: ['./view-vehicles.component.css'],
+  selector: 'app-view-acident',
+  templateUrl: './view-acident.component.html',
+  styleUrls: ['./view-acident.component.css'],
 })
-export class ViewVehiclesComponent implements OnInit {
+export class ViewAcidentComponent implements OnInit {
   [x: string]: any;
   rows: any;
   filteredRows: any[] = [];
@@ -44,11 +45,10 @@ export class ViewVehiclesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.viewVehicles().subscribe((data: any) => {
-      this.rows = data.vehicles;
-      this.filteredRows = data.vehicles;
-      // console.log(data)
-      // console.log(data.vehicleid)
+    this.service.viewAcident().subscribe((data: any) => {
+      this.rows = data.acident;
+      this.filteredRows = data.acident;
+      // console.log(data);
       setTimeout(() => {
         this.loading = false;
       }, 2000);
@@ -71,29 +71,28 @@ export class ViewVehiclesComponent implements OnInit {
       return d.platenumber.toLowerCase().includes(val);
     });
   }
+  payment(row: any) {
+    const dialogRef = this.dialog.open(ConfirmPaymentInsuaredComponent, {
+      data: row,
+    });
+  }
 
-  deleteVehicle(row: any) {
-    const dialogRef = this.dialog.open(ConfirmDeleteVehicleComponent, {
+  deleteAcident(row: any) {
+    const dialogRef = this.dialog.open(ConfirmDeleteAcidentComponent, {
       data: row,
     });
 
-    dialogRef.afterClosed().subscribe(({ vehicleid }) => {
-      this.filteredRows = this.filteredRows.filter(
-        //delete auto removed
-        (row) => row.vehicleid !== vehicleid
-      );
-    });
-    // dialogRef.afterClosed().subscribe(({ vehicleid }) => {
-    //  //
-    //   this.filteredRows = this.filteredRows.filter(
-
-    //     (row) => row.vehicleid !== vehicleid);
-    //  // console.log(this.filteredRows);
-    // });
-    // console.log(row)
+    if (dialogRef) {
+      dialogRef.afterClosed().subscribe(({ acidentid }) => {
+        this.filteredRows = this.filteredRows.filter(
+          //delete auto removed
+          (row) => row.acidentid !== acidentid
+        );
+      });
+    }
   }
   edit(row: any) {
-    const dialogRef = this.dialog.open(UpdateVehicleComponent, {
+    const dialogRef = this.dialog.open(UpdateAcidentComponent, {
       data: row,
     });
   }

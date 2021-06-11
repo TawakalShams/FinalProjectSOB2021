@@ -49,6 +49,11 @@ import { ReportTableComponent } from './framework/AccountStatement/report-table/
 import { InsuranceReportComponent } from './reports/insurance-report/insurance-report.component';
 import { NgxPrintModule } from 'ngx-print';
 import { ClockComponent } from './clock/clock.component';
+import { ViewAcidentComponent } from './pages/shared/acident/view-acident/view-acident.component';
+import { UpdateAcidentComponent } from './dialog/update-acident/update-acident.component';
+import { ConfirmDeleteAcidentComponent } from './dialog/confirm-delete-acident/confirm-delete-acident.component';
+import { ConfirmPaymentInsuaredComponent } from './dialog/confirm-payment-insuared/confirm-payment-insuared.component';
+import { ViewPaymentPayedComponent } from './pages/shared/acident/view-payment-payed/view-payment-payed.component';
 
 export const tokenGetter = () => {
   return localStorage.getItem('token');
@@ -88,6 +93,11 @@ export const tokenGetter = () => {
     ReportTableComponent,
     InsuranceReportComponent,
     ClockComponent,
+    ViewAcidentComponent,
+    UpdateAcidentComponent,
+    ConfirmDeleteAcidentComponent,
+    ConfirmPaymentInsuaredComponent,
+    ViewPaymentPayedComponent,
   ],
   imports: [
     BrowserModule,

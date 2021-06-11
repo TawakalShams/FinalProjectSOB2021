@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { ImsModule } from '../module/ims/ims.module';
 import { baseUrl } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -92,8 +92,23 @@ export class ServiceService {
     return this.httpClient.delete(baseUrl + '/insuarance' + '/' + insuaranceid);
   }
 
-  // =============================Commission CRUD======================================
+  // =============================Acident CRUD======================================
+  createAcident(data: any): Observable<any> {
+    return this.httpClient.post(baseUrl + '/acident', data);
+  }
+  viewAcident() {
+    return this.httpClient.get(baseUrl + '/acident');
+  }
 
+  getSingleAcident(acidentid: any) {
+    return this.httpClient.get(baseUrl + '/acident' + '/' + acidentid);
+  }
+  updateAcident(acidentid: any, data: any) {
+    return this.httpClient.put(baseUrl + '/acident' + '/' + acidentid, data);
+  }
+  deleteAcident(acidentid: any) {
+    return this.httpClient.delete(baseUrl + '/acident' + '/' + acidentid);
+  }
   // =============================PayInsuared CRUD======================================
   createPayInsuard(data: any): Observable<any> {
     return this.httpClient.post(baseUrl + '/payinsuared', data);

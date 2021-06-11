@@ -6,15 +6,19 @@
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="offset-sm-5 col-sm-4">
-        <mat-form-field>
-          <input
-            matInput
-            placeholder="Plate number "
+        <mat-form-field appearance="fill">
+          <mat-label>Select Platenumber</mat-label>
+          <mat-select
+            disableRipple
+            name="customerid"
             formControlName="platenumber"
-            autocomplete="off"
-            required
-          />
-          <mat-error> Plate number is required </mat-error>
+          >
+            <!-- <mat-option value="02">02</mat-option> -->
+            <mat-option [value]="v.platenumber" *ngFor="let v of vehcle">{{
+              v.platenumber
+            }}</mat-option>
+          </mat-select>
+          <mat-error> Platenumber is required </mat-error>
         </mat-form-field>
       </div>
       <div class="offset-sm-5 col-sm-4">
@@ -22,25 +26,34 @@
           <mat-label>Description</mat-label>
           <textarea
             matInput
-            formControlName="description"
+            formControlName="typeofacident"
             cdkTextareaAutosize
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1"
             cdkAutosizeMaxRows="5"
           ></textarea>
         </mat-form-field>
-        <!-- <mat-form-field>
+        <div class="row">
           <input
-            matInput
-            placeholder="Plate number "
-            formControlName="platenumber"
-            autocomplete="off"
-            required
+            type="hidden"
+            formControlName="create_by"
+            name="create_by"
+            id="create_by"
+            ngModel="{{ fullName }}"
           />
-          <mat-error> Plate number is required </mat-error>
-        </mat-form-field> -->
+        </div>
+        <div>
+          <button mat-raised-button color="primary" [disabled]="form.invalid">
+            Regster
+          </button>
+        </div>
       </div>
     </form>
   </mat-tab>
-  <mat-tab label="View"> Content 2 </mat-tab>
+  <mat-tab label="View">
+    <app-view-acident></app-view-acident>
+  </mat-tab>
+  <mat-tab label="View Payment">
+    <app-view-payment-payed></app-view-payment-payed>
+  </mat-tab>
 </mat-tab-group>

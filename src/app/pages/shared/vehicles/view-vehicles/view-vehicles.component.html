@@ -1,39 +1,68 @@
-<br>
-<div   role="status" class="isLoading" *ngIf="loading">
-    <mat-spinner style="top:50%; left:50%"></mat-spinner>
+<br />
+<div role="status" class="isLoading" *ngIf="loading">
+  <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
 </div>
 
 <div>
-    <mat-form-field class="full-width-input">
-        <input matInput type="text" placeholder="Search by platenumber" autocomplete="off" (keyup)="updateFilter($event)">
-    </mat-form-field>
-    <ngx-datatable #table class="material" [columns]="columns" [columnMode]="ColumnMode.force" [headerHeight]="50"
-        [footerHeight]="50" rowHeight="auto" [limit]="10" [rows]="filteredRows">
-        <ngx-datatable-column name="No">
-            <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                {{ rowIndex + 1 }}
-            </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Platenumber">
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Type">
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Action">
-            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <div class="row">
-                    <a class="btn" mat-icon-button color="primary" (click)="edit(row)" type="button">
-                        <mat-icon>edit_note</mat-icon>
-                    </a>
-                    <!-- <a class="btn" mat-icon-button color="warn"  (click)="delete(row.agentid)" type="button">
+  <mat-form-field class="full-width-input">
+    <input
+      matInput
+      type="text"
+      placeholder="Search by platenumber"
+      autocomplete="off"
+      (keyup)="updateFilter($event)"
+    />
+  </mat-form-field>
+  <ngx-datatable
+    #table
+    class="material"
+    [columns]="columns"
+    [columnMode]="ColumnMode.force"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    rowHeight="auto"
+    [limit]="10"
+    [rows]="filteredRows"
+  >
+    <ngx-datatable-column name="No">
+      <ng-template
+        let-row="row"
+        let-rowIndex="rowIndex"
+        ngx-datatable-cell-template
+      >
+        {{ rowIndex + 1 }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
+    <ngx-datatable-column name="Type"> </ngx-datatable-column>
+    <ngx-datatable-column name="Action">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <div class="row">
+          <a
+            class="btn"
+            mat-icon-button
+            color="primary"
+            (click)="edit(row)"
+            type="button"
+          >
+            <mat-icon>edit_note</mat-icon>
+          </a>
+          <!-- <a class="btn" mat-icon-button color="warn"  (click)="delete(row.agentid)" type="button">
                   <mat-icon>delete</mat-icon>
                 </a> -->
-                <div *ngIf="role=='Admin'"> 
-                <a class="btn" mat-icon-button color="warn" (click)="deleteVehicle(row.vehicleid)" type="button">
-                    <mat-icon>delete</mat-icon>
-                </a>
-                </div>
-                </div>
-            </ng-template>
-        </ngx-datatable-column>
-    </ngx-datatable>
+          <div *ngIf="role == 'Admin'">
+            <a
+              class="btn"
+              mat-icon-button
+              color="warn"
+              (click)="deleteVehicle(row.vehicleid)"
+              type="button"
+            >
+              <mat-icon>delete</mat-icon>
+            </a>
+          </div>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
 </div>

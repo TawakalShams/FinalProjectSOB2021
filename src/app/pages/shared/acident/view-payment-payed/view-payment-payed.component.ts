@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
-import { ServiceService } from 'src/app/service/service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
-import { ConfirmDeleteVehicleComponent } from 'src/app/dialog/confirm-delete-vehicle/confirm-delete-vehicle.component';
-import { UpdateVehicleComponent } from 'src/app/dialog/update-vehicle/update-vehicle.component';
+import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
-  selector: 'app-view-vehicles',
-  templateUrl: './view-vehicles.component.html',
-  styleUrls: ['./view-vehicles.component.css'],
+  selector: 'app-view-payment-payed',
+  templateUrl: './view-payment-payed.component.html',
+  styleUrls: ['./view-payment-payed.component.css'],
 })
-export class ViewVehiclesComponent implements OnInit {
+export class ViewPaymentPayedComponent implements OnInit {
   [x: string]: any;
   rows: any;
   filteredRows: any[] = [];
@@ -44,11 +42,10 @@ export class ViewVehiclesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.viewVehicles().subscribe((data: any) => {
-      this.rows = data.vehicles;
-      this.filteredRows = data.vehicles;
-      // console.log(data)
-      // console.log(data.vehicleid)
+    this.service.viewPayInsuard().subscribe((data: any) => {
+      this.rows = data.insuaredPay;
+      this.filteredRows = data.insuaredPay;
+      console.log(data);
       setTimeout(() => {
         this.loading = false;
       }, 2000);
@@ -71,30 +68,28 @@ export class ViewVehiclesComponent implements OnInit {
       return d.platenumber.toLowerCase().includes(val);
     });
   }
-
-  deleteVehicle(row: any) {
-    const dialogRef = this.dialog.open(ConfirmDeleteVehicleComponent, {
-      data: row,
-    });
-
-    dialogRef.afterClosed().subscribe(({ vehicleid }) => {
-      this.filteredRows = this.filteredRows.filter(
-        //delete auto removed
-        (row) => row.vehicleid !== vehicleid
-      );
-    });
-    // dialogRef.afterClosed().subscribe(({ vehicleid }) => {
-    //  //
-    //   this.filteredRows = this.filteredRows.filter(
-
-    //     (row) => row.vehicleid !== vehicleid);
-    //  // console.log(this.filteredRows);
+  payment(row: any) {
+    // const dialogRef = this.dialog.open(ConfirmPaymentInsuaredComponent, {
+    //   data: row,
     // });
-    // console.log(row)
+  }
+
+  deleteAcident(row: any) {
+    // const dialogRef = this.dialog.open(ConfirmDeleteAcidentComponent, {
+    //   data: row,
+    // });
+    // if (dialogRef) {
+    //   dialogRef.afterClosed().subscribe(({ acidentid }) => {
+    //     this.filteredRows = this.filteredRows.filter(
+    //       //delete auto removed
+    //       (row) => row.acidentid !== acidentid
+    //     );
+    //   });
+    // }
   }
   edit(row: any) {
-    const dialogRef = this.dialog.open(UpdateVehicleComponent, {
-      data: row,
-    });
+    // const dialogRef = this.dialog.open(UpdateAcidentComponent, {
+    //   data: row,
+    // });
   }
 }

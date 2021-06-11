@@ -2,12 +2,13 @@
 <div role="status" class="isLoading" *ngIf="loading">
   <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
 </div>
+
 <div>
   <mat-form-field class="full-width-input">
     <input
       matInput
       type="text"
-      placeholder="Search by Full name"
+      placeholder="Search by platenumber"
       autocomplete="off"
       (keyup)="updateFilter($event)"
     />
@@ -33,16 +34,39 @@
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="FullName"> </ngx-datatable-column>
-    <ngx-datatable-column name="'Amount"> </ngx-datatable-column>
-    <ngx-datatable-column name="Action" *ngIf="role == 'Admin'">
+    <ngx-datatable-column name="Address"> </ngx-datatable-column>
+    <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
+    <ngx-datatable-column name="Typeofacident"> </ngx-datatable-column>
+    <ngx-datatable-column name="Action">
       <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
         <div class="row">
-          <div>
+          <div *ngIf="role == 'Admin'">
+            <a
+              class="btn"
+              mat-icon-button
+              color="primary"
+              (click)="payment(row)"
+              type="button"
+            >
+              <mat-icon>payment</mat-icon>
+            </a>
+          </div>
+          <a
+            class="btn"
+            mat-icon-button
+            color="primary"
+            (click)="edit(row)"
+            type="button"
+          >
+            <mat-icon>edit_note</mat-icon>
+          </a>
+
+          <div *ngIf="role == 'Admin'">
             <a
               class="btn"
               mat-icon-button
               color="warn"
-              (click)="delete(row.customerid)"
+              (click)="deleteAcident(row.acidentid)"
               type="button"
             >
               <mat-icon>delete</mat-icon>

@@ -19,6 +19,8 @@ import { ServiceService } from 'src/app/service/service.service';
 })
 export class AcidentComponent implements OnInit {
   fullName?: string;
+  vehcle: any;
+
   @ViewChild('autosize') autosize: CdkTextareaAutosize | undefined;
 
   constructor(
@@ -32,15 +34,21 @@ export class AcidentComponent implements OnInit {
     const decodedToken: DecodedToken = helper.decodeToken(token as string);
     this.fullName = decodedToken.fullName;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.service.vehiclesPayed().subscribe((data: any) => {
+      this.vehcle = data.vehicles;
+      // console.log(data);
+    });
+  }
   form = new FormGroup({
     platenumber: new FormControl('', [Validators.required]),
 
-    description: new FormControl('', [Validators.required]),
-    created_by: new FormControl(),
+    typeofacident: new FormControl('', [Validators.required]),
+    create_by: new FormControl(),
   });
   onSubmit() {
-    this.service.createVehicle(this.form.value).subscribe(
+    // console.log(this.form.value);
+    this.service.createAcident(this.form.value).subscribe(
       (res) => {
         this.toastr.success(' Successfully', 'Successfully');
         this.router.navigateByUrl('/');
@@ -48,7 +56,7 @@ export class AcidentComponent implements OnInit {
       },
       (error) => {
         //  console.log(error);
-        this.toastr.error('Not Successfully', 'Error');
+        this.toastr.error('Platenumber is already verified', 'Error');
       }
     );
   }

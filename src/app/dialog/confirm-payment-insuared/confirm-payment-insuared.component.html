@@ -1,0 +1,70 @@
+<h2 mat-dialog-title style="text-align: center">Insuared Payment</h2>
+<mat-dialog-content class="mat-typography">
+  <div style="text-align: center">
+    <h3>Pay to</h3>
+    <p>{{ fullName }}</p>
+    <p>{{ phone }}</p>
+    <h3>Platenumber</h3>
+    <h1>{{ platenumber }}</h1>
+  </div>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-4">
+        <input
+          type="hidden"
+          formControlName="insuaranceid"
+          name="insuaranceid"
+          id="insuaranceid"
+          ngModel="{{ insuaranceid }}"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            type="number"
+            placeholder="Enter amount"
+            formControlName="amount"
+            autocomplete="off"
+            required
+          />
+          <span matPrefix>Tzs &nbsp;</span>
+          <mat-error> Amount is required Tzs 45000 </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <input
+        type="hidden"
+        formControlName="create_by"
+        name="created_by"
+        id="created_by"
+        ngModel="{{ fullNameCreate }}"
+      />
+    </div>
+    <div align="end">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="payment()"
+        mat-dialog-close
+        [disabled]="form.invalid"
+      >
+        Save
+      </button>
+      &nbsp;&nbsp;
+      <button
+        mat-raised-button
+        color="warn"
+        mat-dialog-close
+        class="btn btn-danger"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

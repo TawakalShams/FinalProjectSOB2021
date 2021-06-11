@@ -49,23 +49,13 @@ export class ViewAgentComponent implements OnInit {
     // row being data object passed into the template
   }
 
-  constructor(private service: ServiceService, public dialog: MatDialog) {
-    // this.service.getSingleAgent
-  }
+  constructor(private service: ServiceService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    // this.id = interval(1000).subscribe((val) => {
     this.viewAgents();
-    //   // console.log(val);
-    // });
   }
-  ngOnDestroy() {
-    if (this.id == 7) {
-      clearInterval(this.id);
-    }
-  }
+
   viewAgents() {
-    // this.id = interval(1000).subscribe((val) => {
     this.service.viewAgent().subscribe((data: any) => {
       this.rows = data.agents;
       this.filteredRows = data.agents;
@@ -73,7 +63,6 @@ export class ViewAgentComponent implements OnInit {
         this.loading = false;
       }, 2000);
     });
-    // });
   }
 
   fetch(cb: any) {
@@ -102,6 +91,7 @@ export class ViewAgentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(({ agentid }) => {
       this.filteredRows = this.filteredRows.filter(
+        //delete auto removed
         (row) => row.agentid !== agentid
       );
     });
@@ -122,7 +112,7 @@ export class ViewAgentComponent implements OnInit {
         const rows = this.filteredRows;
         rows[index] = agent;
         this.filteredRows = rows;
-        // console.log(this.filteredRows);
+        this.rows = [...this.rows];
       }
     });
     // });
