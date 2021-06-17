@@ -53,8 +53,13 @@ export class CustomerComponent implements OnInit {
       (res) => {
         this.submitted = true;
         this.toastr.success('Customer Successfully to Create', 'Successfully');
-        this.router.navigateByUrl('/');
-        this.form.reset();
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['customer']);
+          });
+        // this.router.navigateByUrl('/');
+        // this.form.reset();
       },
       (error) => {
         console.log(error);

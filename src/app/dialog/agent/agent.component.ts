@@ -13,6 +13,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-agent',
@@ -27,6 +28,8 @@ export class AgentComponent implements OnInit {
   fullName?: string;
   role?: string;
   datas = [];
+  conversionDecryptOutput: string | undefined;
+
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public agentData: any,
@@ -75,9 +78,6 @@ export class AgentComponent implements OnInit {
         this.form.controls.dob.setValue(agent.dob);
         this.form.controls.phone.setValue(agent.phone);
         this.form.controls.gender.setValue(agent.gender);
-
-        // console.log('Password:'+ agent.password);
-        // CryptoJS.AES.decrypt()
         this.form.updateValueAndValidity();
       });
   }
@@ -86,22 +86,13 @@ export class AgentComponent implements OnInit {
     const updatae = this.service
       .updateAgent(this.agentData.agentid, this.form.value)
       .subscribe((res: any) => {
-        // console.log(res);
-        //  this.dialogRef.close();
         this.toastr.success('Updated', 'Successfully');
-        // const agentid = this.agentData.agentid;
-        // const agentid = res
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['viewagent']);
+          });
         this.dialogRef.close({ agent: res.agents });
-        // this.router.navigateByUrl('agent');
-        // this.service.viewAgent().subscribe((data) => {});
       });
-
-    // if (updatae) {
-    //   this.toastr.success('Updated', 'Successfully');
-    //   const agentid = this.agentData.agentid;
-    //   // const agentid = res
-    //   this.dialogRef.close({ agentid });
-    //   this.router.navigateByUrl('agent');
-    // }
   }
 }

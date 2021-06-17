@@ -1,55 +1,62 @@
-<br />
-<div role="status" class="isLoading" *ngIf="loading">
-  <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
-</div>
-<div>
-  <mat-form-field class="full-width-input">
-    <input
-      matInput
-      type="text"
-      placeholder="Search by Full name"
-      autocomplete="off"
-      (keyup)="updateFilter($event)"
-    />
-  </mat-form-field>
-  <ngx-datatable
-    #table
-    class="material"
-    [columns]="columns"
-    [columnMode]="ColumnMode.force"
-    [headerHeight]="50"
-    [footerHeight]="50"
-    rowHeight="auto"
-    [limit]="10"
-    [rows]="filteredRows"
-  >
-    <ngx-datatable-column name="No">
-      <ng-template
-        let-row="row"
-        let-rowIndex="rowIndex"
-        ngx-datatable-cell-template
+<mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
+  <mat-tab label="View Payments">
+    <div role="status" class="isLoading" *ngIf="loading">
+      <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
+    </div>
+    <div>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="text"
+          placeholder="Search by Full name"
+          autocomplete="off"
+          (keyup)="updateFilter($event)"
+        />
+      </mat-form-field>
+      <ngx-datatable
+        #table
+        class="material"
+        [columns]="columns"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [limit]="10"
+        [rows]="filteredRows"
       >
-        {{ rowIndex + 1 }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="FullName"> </ngx-datatable-column>
-    <ngx-datatable-column name="'Amount"> </ngx-datatable-column>
-    <ngx-datatable-column name="Action" *ngIf="role == 'Admin'">
-      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-        <div class="row">
-          <div>
-            <a
-              class="btn"
-              mat-icon-button
-              color="warn"
-              (click)="delete(row.customerid)"
-              type="button"
-            >
-              <mat-icon>delete</mat-icon>
-            </a>
-          </div>
-        </div>
-      </ng-template>
-    </ngx-datatable-column>
-  </ngx-datatable>
-</div>
+        <ngx-datatable-column name="No">
+          <ng-template
+            let-row="row"
+            let-rowIndex="rowIndex"
+            ngx-datatable-cell-template
+          >
+            {{ rowIndex + 1 }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="FullName"> </ngx-datatable-column>
+        <ngx-datatable-column name="'Amount"> </ngx-datatable-column>
+        <ngx-datatable-column name="Action" *ngIf="role == 'Admin'">
+          <ng-template
+            let-row="row"
+            let-value="value"
+            ngx-datatable-cell-template
+          >
+            <div class="row">
+              <div>
+                <a
+                  class="btn"
+                  mat-icon-button
+                  color="warn"
+                  (click)="delete(row.customerid)"
+                  type="button"
+                >
+                  <mat-icon>delete</mat-icon>
+                </a>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </mat-tab>
+</mat-tab-group>

@@ -72,7 +72,9 @@ export class UpdateVehicleComponent implements OnInit {
       .subscribe((res) => {});
     if (updatae) {
       this.toastr.success('Updated', 'Successfully');
-      this.router.navigateByUrl('vehicle');
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['viewvehicle']);
+      });
       this.dialogRef.close();
     }
   }

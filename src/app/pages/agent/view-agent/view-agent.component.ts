@@ -89,12 +89,14 @@ export class ViewAgentComponent implements OnInit {
       data: row,
     });
 
-    dialogRef.afterClosed().subscribe(({ agentid }) => {
-      this.filteredRows = this.filteredRows.filter(
-        //delete auto removed
-        (row) => row.agentid !== agentid
-      );
-    });
+    // if (dialogRef) {
+    //   dialogRef.afterClosed().subscribe(({ agentid }) => {
+    //     this.filteredRows = this.filteredRows.filter(
+
+    //       (row) => row.agentid !== agentid
+    //     );
+    //   });
+    // }
   }
 
   edit(row: any) {
@@ -102,19 +104,18 @@ export class ViewAgentComponent implements OnInit {
       data: row,
     });
     // console.log(row);
-    dialogRef.afterClosed().subscribe(({ agent }) => {
-      // this.id = interval(1000).subscribe((val) => {
-      if (agent) {
-        const index = this.filteredRows.findIndex(
-          (ag) => ag.agentid === agent.agentid
-        );
+    // dialogRef.afterClosed().subscribe(({ agent }) => {
 
-        const rows = this.filteredRows;
-        rows[index] = agent;
-        this.filteredRows = rows;
-        this.rows = [...this.rows];
-      }
-    });
+    //   if (agent) {
+    //     const index = this.filteredRows.findIndex(
+    //       (ag) => ag.agentid === agent.agentid
+    //     );
+    //     const rows = this.filteredRows;
+    //     rows[index] = agent;
+    //     this.filteredRows = rows;
+    //     this.rows = [...this.rows];
+    //   }
+    // });
     // });
   }
 

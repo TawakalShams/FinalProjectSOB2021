@@ -82,14 +82,14 @@ export class ViewAcidentComponent implements OnInit {
       data: row,
     });
 
-    if (dialogRef) {
-      dialogRef.afterClosed().subscribe(({ acidentid }) => {
-        this.filteredRows = this.filteredRows.filter(
-          //delete auto removed
-          (row) => row.acidentid !== acidentid
-        );
-      });
-    }
+    // if (dialogRef) {
+    //   dialogRef.afterClosed().subscribe(({ acidentid }) => {
+    //     this.filteredRows = this.filteredRows.filter(
+    //       //delete auto removed
+    //       (row) => row.acidentid !== acidentid
+    //     );
+    //   });
+    // }
   }
   edit(row: any) {
     const dialogRef = this.dialog.open(UpdateAcidentComponent, {

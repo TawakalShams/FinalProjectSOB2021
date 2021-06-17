@@ -20,6 +20,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatTreeModule } from '@angular/material/tree';
+
 const MaterialComponents = [
   MatButtonModule,
   MatDialogModule,
@@ -42,6 +44,7 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatSelectModule,
   TextFieldModule,
+  MatTreeModule,
   // MatTableDataSource
   // MatSort
   // MatTableDataSource

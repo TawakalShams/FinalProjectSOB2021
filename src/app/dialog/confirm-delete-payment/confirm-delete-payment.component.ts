@@ -44,7 +44,13 @@ export class ConfirmDeletePaymentComponent implements OnInit {
       this.deteleData = this.Datas;
       if (this.deteleData) {
         this.toastr.success(' Successfully to Delete', 'Successfully');
-        this.router.navigateByUrl('/customer');
+        this.router
+          .navigateByUrl('/', {
+            skipLocationChange: true,
+          })
+          .then(() => {
+            this.router.navigate(['viewcustomerpayment']);
+          });
         this.dialogRef.close({ customerid });
       } else {
         this.toastr.error('Not Successfully to Delete', 'Error');

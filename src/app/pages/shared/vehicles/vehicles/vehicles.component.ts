@@ -37,8 +37,13 @@ export class VehiclesComponent implements OnInit {
     this.service.createVehicle(this.form.value).subscribe(
       (res) => {
         this.toastr.success('Vehicle Successfully to Create', 'Successfully');
-        this.router.navigateByUrl('/');
-        this.form.reset();
+        // this.router.navigateByUrl('/');
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['vehicle']);
+          });
+        // this.form.reset();
       },
       (error) => {
         //  console.log(error);

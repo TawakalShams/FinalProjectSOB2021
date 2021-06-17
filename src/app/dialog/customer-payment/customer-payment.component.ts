@@ -58,7 +58,13 @@ export class CustomerPaymentComponent implements OnInit {
         this.toastr.error(res.message, 'Error');
       } else {
         this.toastr.success('Successfully', 'Successfully');
-        this.router.navigateByUrl('/');
+        this.router
+          .navigateByUrl('/', {
+            skipLocationChange: true,
+          })
+          .then(() => {
+            this.router.navigate(['viewcustomerpayment']);
+          });
       }
     });
   }

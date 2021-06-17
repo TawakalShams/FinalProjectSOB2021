@@ -42,8 +42,12 @@ export class ConfirmDeleteAcidentComponent implements OnInit {
       this.deteleData = data;
       if (this.deteleData) {
         this.toastr.success('Successfully to Delete', 'Successfully');
-        this.router.navigateByUrl('/acident');
-        this.dialogRef.close({ acidentid });
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['viewacident']);
+          });
+        this.dialogRef.close();
       } else {
         this.toastr.error('Successfully to Delete', 'Error');
       }

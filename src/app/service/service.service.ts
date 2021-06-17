@@ -4,6 +4,8 @@ import { Observable, of, throwError } from 'rxjs';
 import { ImsModule } from '../module/ims/ims.module';
 import { baseUrl } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Refresh } from '@ngrx/store-devtools/src/actions';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +20,8 @@ export class ServiceService {
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(
     private httpClient: HttpClient,
-    public jwtHelper: JwtHelperService
+    public jwtHelper: JwtHelperService,
+    public router: Router //  public toggler: TogglerService,
   ) {}
 
   httpOptions = {
@@ -197,6 +200,20 @@ export class ServiceService {
   logout() {
     localStorage.removeItem('token');
   }
+  toggle(): void {
+    this.toggled ? (this.toggled = false) : (this.toggled = true);
+  }
+  refesh() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['vehicle']);
+    });
+  }
+  // refresh(): any {
+  //   this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+  //     this.router.navigate([this.location.path()]);
+  //   });
+  //   // this.loadingSimple();
+  // }
   // =====================Gurd==========================
   public isAuthenticated(): boolean {
     const token: string | null = this.getToken();

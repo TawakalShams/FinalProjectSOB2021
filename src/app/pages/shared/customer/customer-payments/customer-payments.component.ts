@@ -89,6 +89,12 @@ export class CustomerPaymentsComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeletePaymentComponent, {
       data: rows,
     });
+    // dialogRef.afterClosed().subscribe(({ agentid }) => {
+    //   this.filteredRows = this.filteredRows.filter(
+    //     //delete auto removed
+    //     (row) => row.agentid !== agentid
+    //   );
+    // });
   }
 
   edit(row: any) {

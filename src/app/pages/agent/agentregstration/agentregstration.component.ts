@@ -30,7 +30,7 @@ export class AgentregstrationComponent implements OnInit {
     fullName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.email]),
     password: new FormControl('', [Validators.required]),
-    retypePassword: new FormControl('', [Validators.required]),
+    // retypePassword: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
     dob: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
@@ -45,7 +45,12 @@ export class AgentregstrationComponent implements OnInit {
       (res) => {
         this.submitted = true;
         this.toastr.success('Agent Successfully to Create', 'Successfully');
-        this.router.navigateByUrl('/');
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['agent']);
+          });
+        // this.router.navigateByUrl('/');
         // this.form.reset();
         // console.log(res);
       },

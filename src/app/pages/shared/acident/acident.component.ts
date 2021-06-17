@@ -51,8 +51,13 @@ export class AcidentComponent implements OnInit {
     this.service.createAcident(this.form.value).subscribe(
       (res) => {
         this.toastr.success(' Successfully', 'Successfully');
-        this.router.navigateByUrl('/');
-        this.form.reset();
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['acident']);
+          });
+        // this.router.navigateByUrl('/');
+        // this.form.reset();
       },
       (error) => {
         //  console.log(error);

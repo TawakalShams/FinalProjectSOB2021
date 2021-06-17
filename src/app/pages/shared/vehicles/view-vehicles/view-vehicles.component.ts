@@ -47,8 +47,6 @@ export class ViewVehiclesComponent implements OnInit {
     this.service.viewVehicles().subscribe((data: any) => {
       this.rows = data.vehicles;
       this.filteredRows = data.vehicles;
-      // console.log(data)
-      // console.log(data.vehicleid)
       setTimeout(() => {
         this.loading = false;
       }, 2000);
@@ -76,21 +74,22 @@ export class ViewVehiclesComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeleteVehicleComponent, {
       data: row,
     });
-
-    dialogRef.afterClosed().subscribe(({ vehicleid }) => {
-      this.filteredRows = this.filteredRows.filter(
-        //delete auto removed
-        (row) => row.vehicleid !== vehicleid
-      );
-    });
     // dialogRef.afterClosed().subscribe(({ vehicleid }) => {
-    //  //
+    //   // console.log('id' + vehicleid);
     //   this.filteredRows = this.filteredRows.filter(
-
-    //     (row) => row.vehicleid !== vehicleid);
-    //  // console.log(this.filteredRows);
+    //     //delete auto removed
+    //     (row) => row.vehicleid !== vehicleid
+    //   );
     // });
-    // console.log(row)
+
+    //  dialogRef.afterClosed().subscribe((vehicleid) => {
+    //   console.log('id' + vehicleid);
+    // this.filteredRows = this.filteredRows.filter(
+    //   //delete auto removed
+    //   (row) => row.vehicleid !== vehicleid
+    // );
+    // console.log(row);
+    // });
   }
   edit(row: any) {
     const dialogRef = this.dialog.open(UpdateVehicleComponent, {

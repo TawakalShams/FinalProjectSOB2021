@@ -1,73 +1,81 @@
-<div>
-  <mat-form-field class="full-width-input">
-    <input
-      matInput
-      type="text"
-      placeholder="Search by Platenumber"
-      autocomplete="off"
-      (keyup)="updateFilter($event)"
-    />
-  </mat-form-field>
-  <ngx-datatable
-    #table
-    class="material"
-    [columns]="columns"
-    [columnMode]="ColumnMode.force"
-    [headerHeight]="50"
-    [footerHeight]="50"
-    rowHeight="auto"
-    [limit]="10"
-    [rows]="filteredRows"
-  >
-    <ngx-datatable-column name="No">
-      <ng-template
-        let-row="row"
-        let-rowIndex="rowIndex"
-        ngx-datatable-cell-template
+<mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
+  <mat-tab label="View Insuarance">
+    <div>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="text"
+          placeholder="Search by Platenumber"
+          autocomplete="off"
+          (keyup)="updateFilter($event)"
+        />
+      </mat-form-field>
+      <ngx-datatable
+        #table
+        class="material"
+        [columns]="columns"
+        [columnMode]="ColumnMode.force"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        rowHeight="auto"
+        [limit]="10"
+        [rows]="filteredRows"
       >
-        {{ rowIndex + 1 }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
-    <ngx-datatable-column name="color"> </ngx-datatable-column>
-    <ngx-datatable-column name="seat"> </ngx-datatable-column>
-    <ngx-datatable-column name="value"> </ngx-datatable-column>
-    <ngx-datatable-column name="Startdate"> </ngx-datatable-column>
-    <ngx-datatable-column name="Enddate"> </ngx-datatable-column>
-    <ngx-datatable-column name="Action">
-      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-        <div class="row">
-          <a
-            class="btn"
-            mat-icon-button
-            color="primary"
-            (click)="edit(row)"
-            type="button"
+        <ngx-datatable-column name="No">
+          <ng-template
+            let-row="row"
+            let-rowIndex="rowIndex"
+            ngx-datatable-cell-template
           >
-            <mat-icon>edit_note</mat-icon>
-          </a>
-          <a
-            class="btn"
-            mat-icon-button
-            color="accent"
-            (click)="print(row)"
-            type="button"
+            {{ rowIndex + 1 }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
+        <ngx-datatable-column name="color"> </ngx-datatable-column>
+        <ngx-datatable-column name="seat"> </ngx-datatable-column>
+        <ngx-datatable-column name="value"> </ngx-datatable-column>
+        <ngx-datatable-column name="Startdate"> </ngx-datatable-column>
+        <ngx-datatable-column name="Enddate"> </ngx-datatable-column>
+        <ngx-datatable-column name="Action">
+          <ng-template
+            let-row="row"
+            let-value="value"
+            ngx-datatable-cell-template
           >
-            <mat-icon>print</mat-icon>
-          </a>
-          <div *ngIf="role == 'Admin'">
-            <a
-              class="btn"
-              mat-icon-button
-              color="warn"
-              (click)="delete(row.insuaranceid)"
-              type="button"
-            >
-              <mat-icon>delete</mat-icon>
-            </a>
-          </div>
-        </div>
-      </ng-template>
-    </ngx-datatable-column>
-  </ngx-datatable>
-</div>
+            <div class="row">
+              <a
+                class="btn"
+                mat-icon-button
+                color="primary"
+                (click)="edit(row)"
+                type="button"
+              >
+                <mat-icon>edit_note</mat-icon>
+              </a>
+              <a
+                class="btn"
+                mat-icon-button
+                color="accent"
+                (click)="print(row)"
+                type="button"
+              >
+                <mat-icon>print</mat-icon>
+              </a>
+              <div *ngIf="role == 'Admin'">
+                <a
+                  class="btn"
+                  mat-icon-button
+                  color="warn"
+                  (click)="delete(row.insuaranceid)"
+                  type="button"
+                >
+                  <mat-icon>delete</mat-icon>
+                </a>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </mat-tab>
+</mat-tab-group>

@@ -40,7 +40,11 @@ export class ConfirmInsuaranceComponent implements OnInit {
       this.deteleData = data;
       if (this.deteleData) {
         this.toastr.success('Successfully to Delete', 'Successfully');
-        this.router.navigateByUrl('/insuarance');
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['viewinsuarance']);
+          });
         this.dialogRef.close({ insuaranceid });
       } else {
         this.toastr.error('Not Successfully to Delete', 'Error');

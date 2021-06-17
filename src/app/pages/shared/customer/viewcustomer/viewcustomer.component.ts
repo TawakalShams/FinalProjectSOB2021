@@ -89,6 +89,13 @@ export class ViewcustomerComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeleteCustomerComponent, {
       data: row,
     });
+    // dialogRef.afterClosed().subscribe((customerid) => {
+    //   console.log(customerid);
+    //   this.filteredRows = this.filteredRows.filter(
+    //     //delete auto removed
+    //     (row) => row.customerid !== customerid
+    //   );
+    // });
   }
 
   edit(row: any) {

@@ -45,7 +45,7 @@ export class ViewPaymentPayedComponent implements OnInit {
     this.service.viewPayInsuard().subscribe((data: any) => {
       this.rows = data.insuaredPay;
       this.filteredRows = data.insuaredPay;
-      console.log(data);
+      // console.log(data);
       setTimeout(() => {
         this.loading = false;
       }, 2000);
@@ -67,29 +67,5 @@ export class ViewPaymentPayedComponent implements OnInit {
     this.filteredRows = this.rows.filter(function (d: any) {
       return d.platenumber.toLowerCase().includes(val);
     });
-  }
-  payment(row: any) {
-    // const dialogRef = this.dialog.open(ConfirmPaymentInsuaredComponent, {
-    //   data: row,
-    // });
-  }
-
-  deleteAcident(row: any) {
-    // const dialogRef = this.dialog.open(ConfirmDeleteAcidentComponent, {
-    //   data: row,
-    // });
-    // if (dialogRef) {
-    //   dialogRef.afterClosed().subscribe(({ acidentid }) => {
-    //     this.filteredRows = this.filteredRows.filter(
-    //       //delete auto removed
-    //       (row) => row.acidentid !== acidentid
-    //     );
-    //   });
-    // }
-  }
-  edit(row: any) {
-    // const dialogRef = this.dialog.open(UpdateAcidentComponent, {
-    //   data: row,
-    // });
   }
 }

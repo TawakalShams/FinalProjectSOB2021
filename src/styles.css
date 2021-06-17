@@ -4,6 +4,7 @@
 @import "~@swimlane/ngx-datatable/assets/icons.css";
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
 
 /* @import "../../../_custom.scss";
 @import "~node_modules/@swimlane/ngx-datatable/release/index";

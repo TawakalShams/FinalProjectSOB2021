@@ -1,7 +1,7 @@
 <mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Acident Verification">
+  <mat-tab label="Accident Verification">
     <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
-      <strong>Acident Verification</strong>
+      <strong>Accident Verification</strong>
     </h3>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -49,11 +49,5 @@
         </div>
       </div>
     </form>
-  </mat-tab>
-  <mat-tab label="View">
-    <app-view-acident></app-view-acident>
-  </mat-tab>
-  <mat-tab label="View Payment">
-    <app-view-payment-payed></app-view-payment-payed>
   </mat-tab>
 </mat-tab-group>

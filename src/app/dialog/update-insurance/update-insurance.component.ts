@@ -90,7 +90,9 @@ export class UpdateInsuranceComponent implements OnInit {
       });
     if (updatae) {
       this.toastr.success('Updated', 'Successfully');
-      this.router.navigateByUrl('insuarance');
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['viewinsuarance']);
+      });
       this.dialogRef.close();
     } else {
       this.toastr.success('Not Success', 'Error');

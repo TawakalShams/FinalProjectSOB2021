@@ -66,7 +66,9 @@ export class UpdateAcidentComponent implements OnInit {
     if (updatae) {
       const acidentid = this.Datas.acidentid;
       this.toastr.success('Updated', 'Successfully');
-      this.router.navigateByUrl('acident');
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['viewacident']);
+      });
       this.dialogRef.close({ acidentid });
     }
   }

@@ -55,9 +55,14 @@ export class InsuaranceComponent implements OnInit {
       (res) => {
         this.submitted = true;
         this.toastr.success('Successfully', 'Successfully');
-        this.router.navigateByUrl('/');
-        this.form.reset();
-        console.log(res);
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['insuarance']);
+          });
+        // this.router.navigateByUrl('/');
+        // this.form.reset();
+        // console.log(res);
       },
       (error) => {
         // console.log(error);
