@@ -42,10 +42,21 @@ export class UpdateVehicleComponent implements OnInit {
     this.role = decodedToken.role;
   }
 
+  // form = new FormGroup({
+  //   platenumber: new FormControl('', [Validators.required]),
+  //   type: new FormControl('', [Validators.required]),
+
+  //   created_by: new FormControl(),
+  // });
   form = new FormGroup({
     platenumber: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
-
+    model: new FormControl('', [Validators.required]),
+    chassiNumber: new FormControl('', [Validators.required]),
+    seat: new FormControl('', [Validators.required]),
+    color: new FormControl('', [Validators.required]),
+    yearOfManufacture: new FormControl('', [Validators.required]),
+    value: new FormControl('', [Validators.required]),
     created_by: new FormControl(),
   });
   ngOnInit(): void {
@@ -61,6 +72,14 @@ export class UpdateVehicleComponent implements OnInit {
         const vehicles = data.vehicles;
         this.form.controls.platenumber.setValue(vehicles.platenumber);
         this.form.controls.type.setValue(vehicles.type);
+        this.form.controls.model.setValue(vehicles.model);
+        this.form.controls.chassiNumber.setValue(vehicles.chassiNumber);
+        this.form.controls.seat.setValue(vehicles.seat);
+        this.form.controls.color.setValue(vehicles.color);
+        this.form.controls.yearOfManufacture.setValue(
+          vehicles.yearOfManufacture
+        );
+        this.form.controls.value.setValue(vehicles.value);
 
         this.form.updateValueAndValidity();
       });

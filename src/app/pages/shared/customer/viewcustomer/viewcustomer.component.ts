@@ -22,6 +22,7 @@ export class ViewcustomerComponent implements OnInit {
   fullName?: string;
   role?: string;
   loading = true;
+  allStatus: string | undefined;
 
   columns = [
     { prop: 'No' },
@@ -53,10 +54,13 @@ export class ViewcustomerComponent implements OnInit {
     this.service.viewCustomers().subscribe((data: any) => {
       this.rows = data.customers;
       this.filteredRows = data.customers;
+      // console.log(data);
       setTimeout(() => {
         this.loading = false;
       }, 2000);
     });
+
+    this.status();
   }
   fetch(cb: any) {
     const req = new XMLHttpRequest();
@@ -78,6 +82,16 @@ export class ViewcustomerComponent implements OnInit {
     });
     // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;
+  }
+  status() {
+    this.service.viewPayment().subscribe((data: any) => {
+      const mystatus: any[] = data.payment;
+
+      const allStatus = mystatus.map((item) => item.status);
+
+      // console.log(mystatus);
+      console.log(allStatus);
+    });
   }
   payment(row: any) {
     const dialogRef = this.dialog.open(CustomerPaymentComponent, {

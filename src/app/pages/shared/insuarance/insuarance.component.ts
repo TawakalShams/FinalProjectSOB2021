@@ -35,12 +35,9 @@ export class InsuaranceComponent implements OnInit {
 
   form = new FormGroup({
     vehicleid: new FormControl('', [Validators.required]),
-    color: new FormControl('', [Validators.required]),
-    seat: new FormControl('', [Validators.required]),
-    manufacture: new FormControl('', [Validators.required]),
+    typeOfInsuarance: new FormControl('', [Validators.required]),
     startdate: new FormControl('', [Validators.required]),
     enddate: new FormControl('', [Validators.required]),
-    value: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
 
@@ -60,12 +57,8 @@ export class InsuaranceComponent implements OnInit {
           .then(() => {
             this.router.navigate(['insuarance']);
           });
-        // this.router.navigateByUrl('/');
-        // this.form.reset();
-        // console.log(res);
       },
       (error) => {
-        // console.log(error);
         this.toastr.error(
           'Not Successfully, Platenumber is already used',
           'Error'

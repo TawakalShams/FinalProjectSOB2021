@@ -24,7 +24,7 @@
       </address>
     </div>
     <div class="col-md-4" style="float: center">
-      <img src="../../../assets/image/ims.png" height="50%" width="50%" />
+      <img src="../../../assets/image/Suza.PNG" height="50%" width="50%" />
     </div>
     <div class="col-md-4" style="float: left">
       <address>
@@ -61,14 +61,18 @@
         <b>Platenumber:</b><br />{{ platenumber | uppercase }}
       </div>
       <div class="col-md-4"><b>Type:</b><br />{{ type | uppercase }}</div>
-      <div class="col-md-4"><b>Value:</b><br />Tzs {{ value }}</div>
+      <div class="col-md-4"><b>Value:</b><br />Tzs {{ value | number }}</div>
     </div>
     <div class="row">
       <div class="col-md-4"><b>Color:</b><br />{{ color | uppercase }}</div>
       <div class="col-md-4">
-        <b>Manufatured date:</b><br />{{ manufacture }}
+        <b>Manufatured date:</b><br />{{ yearOfManufacture }}
       </div>
       <div class="col-md-4"><b>Seats:</b><br />{{ seat }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"><b>Model:</b><br />{{ model | uppercase }}</div>
+      <div class="col-md-4"><b>Chasisi number:</b><br />{{ chassiNumber }}</div>
     </div>
   </fieldset>
   <hr />
@@ -76,6 +80,9 @@
   <fieldset>
     <legend>Insurance Details</legend>
     <div class="row">
+      <div class="col-md-4">
+        <b>Tyoe of insuarance:</b><br />{{ typeOfInsuarance }}
+      </div>
       <div class="col-md-4"><b>Date of issue:</b><br />{{ startdate }}</div>
       <div class="col-md-4"><b>Expired date:</b><br />{{ enddate }}</div>
     </div>

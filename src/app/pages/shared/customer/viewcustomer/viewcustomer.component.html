@@ -43,6 +43,7 @@
         <ngx-datatable-column name="Phone"> </ngx-datatable-column>
         <ngx-datatable-column name="Type"> </ngx-datatable-column>
         <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
+        <ngx-datatable-column name="Status"></ngx-datatable-column>
         <!-- <ngx-datatable-column name="Status" class="status"> </ngx-datatable-column> -->
         <ngx-datatable-column name="Action">
           <ng-template
@@ -51,25 +52,31 @@
             ngx-datatable-cell-template
           >
             <div class="row">
-              <a
-                class="btn"
-                mat-icon-button
-                color="primary"
-                (click)="payment(row)"
-                type="button"
-              >
-                <mat-icon>payment</mat-icon>
-              </a>
-              <a
-                class="btn"
-                mat-icon-button
-                color="primary"
-                (click)="edit(row)"
-                type="button"
-              >
-                <mat-icon>edit_note</mat-icon>
-              </a>
-              <div *ngIf="role == 'Admin'">
+              <!-- *ngIf="allStatus == 'PAID'" -->
+              <div class="col-md-4">
+                <a
+                  class="btn"
+                  mat-icon-button
+                  color="primary"
+                  (click)="payment(row)"
+                  type="button"
+                >
+                  <mat-icon>payment</mat-icon>
+                </a>
+              </div>
+              <div class="col-md-2">
+                <a
+                  class="btn"
+                  mat-icon-button
+                  color="primary"
+                  (click)="edit(row)"
+                  type="button"
+                >
+                  <mat-icon>edit_note</mat-icon>
+                </a>
+              </div>
+
+              <div class="col-md-2" *ngIf="role == 'Admin'">
                 <a
                   class="btn"
                   mat-icon-button

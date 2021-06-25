@@ -6,6 +6,139 @@
         <mat-form-field class="full-width-input">
           <input
             matInput
+            placeholder="Plate number "
+            formControlName="platenumber"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Plate number is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            type="text"
+            placeholder="chassis Number"
+            formControlName="chassiNumber"
+            autocomplete="off"
+            required
+          />
+          <mat-error> chassis Number is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            type="number"
+            placeholder="Seats"
+            formControlName="seat"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Seat Number is required </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Type of Vehicle</mat-label>
+          <mat-select disableRipple name="type" formControlName="type">
+            <mat-option value="Car">Car</mat-option>
+            <mat-option value="Motorcycle">Motorcycle</mat-option>
+          </mat-select>
+          <mat-error> Type of Vehicle is required </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Model</mat-label>
+          <mat-select disableRipple name="model" formControlName="model">
+            <mat-option value="toyota">Toyota</mat-option>
+            <mat-option value="prado">Prado</mat-option>
+          </mat-select>
+          <mat-error> Model is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Color</mat-label>
+          <mat-select disableRipple name="color" formControlName="color">
+            <mat-option value="red">Red</mat-option>
+            <mat-option value="yellow">Yellow</mat-option>
+          </mat-select>
+          <mat-error> color is required </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="date"
+              formControlName="yearOfManufacture"
+              autocomplete="off"
+              required
+            />
+            <mat-error> date is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="number"
+              placeholder="Value of vehicle"
+              formControlName="value"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Amount is required </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <input
+          type="hidden"
+          formControlName="created_by"
+          name="created_by"
+          id="created_by"
+          ngModel="{{ fullName }}"
+        />
+      </div>
+
+      <div class="row">
+        <div align="end">
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="form.invalid"
+            (click)="update()"
+          >
+            Update
+          </button>
+          &nbsp;&nbsp;
+          <button mat-raised-button color="warn" mat-dialog-close>
+            Cancel
+          </button>
+        </div>
+        <!-- <button mat-raised-button color="primary" [disabled]="form.invalid">
+              Regster
+            </button> -->
+      </div>
+    </div>
+  </form>
+  <!-- <form [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
             placeholder="Plate number"
             formControlName="platenumber"
             autocomplete="off"
@@ -39,7 +172,6 @@
       />
     </div>
     <div align="end">
-      <!-- <button mat-button class="btn btn-primary" (click)="update()" mat-dialog-close>Update</button> -->
       <button
         mat-raised-button
         color="primary"
@@ -49,8 +181,7 @@
         Update
       </button>
       &nbsp;&nbsp;
-      <!-- <button mat-button mat-dialog-close class="btn btn-danger" routerLink="vehicle">Cancel</button> -->
       <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
     </div>
-  </form>
+  </form> -->
 </mat-dialog-content>

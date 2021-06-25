@@ -29,8 +29,13 @@ export class VehiclesComponent implements OnInit {
 
   form = new FormGroup({
     platenumber: new FormControl('', [Validators.required]),
-
     type: new FormControl('', [Validators.required]),
+    model: new FormControl('', [Validators.required]),
+    chassiNumber: new FormControl('', [Validators.required]),
+    seat: new FormControl('', [Validators.required]),
+    color: new FormControl('', [Validators.required]),
+    yearOfManufacture: new FormControl('', [Validators.required]),
+    value: new FormControl('', [Validators.required]),
     created_by: new FormControl(),
   });
   onSubmit() {

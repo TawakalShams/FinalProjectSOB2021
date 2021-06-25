@@ -7,7 +7,7 @@
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="row">
-          <div class="offset-sm-5 col-sm-4">
+          <div class="col-sm-4">
             <mat-form-field class="full-width-input">
               <input
                 matInput
@@ -19,22 +19,119 @@
               <mat-error> Plate number is required </mat-error>
             </mat-form-field>
           </div>
-        </div>
-        <div class="row">
-          <div class="offset-sm-5 col-sm-4">
+          <div class="col-sm-4">
             <mat-form-field class="full-width-input">
               <input
                 matInput
-                placeholder="Type of Vehicle"
-                formControlName="type"
+                type="text"
+                placeholder="chassis Number"
+                formControlName="chassiNumber"
                 autocomplete="off"
                 required
               />
-              <mat-error> Type is required </mat-error>
+              <mat-error> chassis Number is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                type="number"
+                placeholder="Seats"
+                formControlName="seat"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Seat Number is required </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Type of Vehicle</mat-label>
+              <mat-select disableRipple name="type" formControlName="type">
+                <mat-option value="Car">Car</mat-option>
+                <mat-option value="Motorcycle">Motorcycle</mat-option>
+              </mat-select>
+              <mat-error> Type of Vehicle is required </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Model</mat-label>
+              <mat-select disableRipple name="model" formControlName="model">
+                <mat-option value="bmw">Bmw</mat-option>
+                <mat-option value="hummer">Hummer</mat-option>
+                <mat-option value="isuzu">Isuzu</mat-option>
+                <mat-option value="bmw">Jeep</mat-option>
+                <mat-option value="land rover">Land Rover</mat-option>
+                <mat-option value="lexus">Lexus</mat-option>
+                <mat-option value="mini">Mini</mat-option>
+                <mat-option value="noah">Noah</mat-option>
+                <mat-option value="bmw">Nissan</mat-option>
+                <mat-option value="prado">Prado</mat-option>
+                <mat-option value="pickup">Pickup</mat-option>
+                <mat-option value="suzuki">Suzuku</mat-option>
+                <mat-option value="toyota">Toyota</mat-option>
+                <mat-option value="volvo">Volvo</mat-option>
+                <hr />
+                <mat-option value="vespa">Vespa</mat-option>
+                <mat-option value="honda">Honda</mat-option>
+                <mat-option value="vespa">Kawasaki(BodaBoda)</mat-option>
+                <mat-option value="Other">Other</mat-option>
+              </mat-select>
+              <mat-error> Model is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Color</mat-label>
+              <mat-select disableRipple name="color" formControlName="color">
+                <mat-option value="red">Red</mat-option>
+                <mat-option value="yellow">Yellow</mat-option>
+                <mat-option value="black">Black</mat-option>
+                <mat-option value="brown">Brown</mat-option>
+                <mat-option value="silve">Silve</mat-option>
+                <mat-option value="white">White</mat-option>
+                <mat-option value="blue">Blue</mat-option>
+                <mat-option value="green">Green</mat-option>
+                <mat-option value="pink">Pink</mat-option>
+                <mat-option value="grey">Grey</mat-option>
+              </mat-select>
+              <mat-error> color is required </mat-error>
             </mat-form-field>
           </div>
         </div>
         <div>
+          <div class="row">
+            <div class="col-sm-4">
+              <mat-form-field class="full-width-input">
+                <input
+                  matInput
+                  type="date"
+                  formControlName="yearOfManufacture"
+                  autocomplete="off"
+                  required
+                />
+                <mat-error> date is required </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field class="full-width-input">
+                <input
+                  matInput
+                  type="number"
+                  placeholder="Value of vehicle"
+                  formControlName="value"
+                  autocomplete="off"
+                  required
+                />
+                <mat-error> Amount is required </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
           <div class="row">
             <input
               type="hidden"
@@ -48,9 +145,6 @@
             <button mat-raised-button color="primary" [disabled]="form.invalid">
               Regster
             </button>
-            <!-- <div  class="offset-sm-5">
-                  <button class="btn btn-primary" [disabled]="form.invalid">Regster</button>
-            </div> -->
           </div>
         </div>
       </form>

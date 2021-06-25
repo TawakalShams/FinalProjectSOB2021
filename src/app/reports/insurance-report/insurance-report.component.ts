@@ -22,7 +22,7 @@ export class InsuranceReportComponent implements OnInit {
   platenumber: any;
   value: any;
   seat: any;
-  manufacture: any;
+  yearOfManufacture: any;
   type: any;
   fullName: any;
   fullNameLogin: any;
@@ -39,6 +39,9 @@ export class InsuranceReportComponent implements OnInit {
   customerid: any;
   insuaranceid: any;
   customerData: any;
+  model: any;
+  chassiNumber: any;
+  typeOfInsuarance: any;
 
   constructor(
     public dialog: MatDialog,
@@ -66,7 +69,7 @@ export class InsuranceReportComponent implements OnInit {
     const platenumber = (this.platenumber = this.Datas.platenumber);
     const value = (this.value = this.Datas.value);
     const seat = (this.seat = this.Datas.seat);
-    const manufacture = (this.manufacture = this.Datas.manufacture);
+    const manufacture = (this.yearOfManufacture = this.Datas.yearOfManufacture);
     const type = (this.type = this.Datas.type);
     const fullName = (this.fullName = this.Datas.fullName);
     const gender = (this.gender = this.Datas.gender);
@@ -74,7 +77,11 @@ export class InsuranceReportComponent implements OnInit {
     const address = (this.address = this.Datas.address);
     const phone = (this.phone = this.Datas.phone);
     const date = (this.date = this.Datas.date);
+    const model = (this.model = this.Datas.model);
+    const chassiNumber = (this.chassiNumber = this.Datas.chassiNumber);
     const startdate = (this.startdate = this.Datas.startdate);
+    const typeOfInsuarance = (this.typeOfInsuarance =
+      this.Datas.typeOfInsuarance);
     const starenddatetdate = (this.enddate = this.Datas.enddate);
     const created_at = (this.created_at = this.Datas.created_at);
   }

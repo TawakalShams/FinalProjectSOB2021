@@ -20,6 +20,9 @@ import { ServiceService } from 'src/app/service/service.service';
 export class AcidentComponent implements OnInit {
   fullName?: string;
   vehcle: any;
+  url = '';
+  url2 = '';
+  url3 = '';
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize | undefined;
 
@@ -40,29 +43,60 @@ export class AcidentComponent implements OnInit {
       // console.log(data);
     });
   }
+
+  selectimage1(event: any) {
+    // console.log(event);
+    if (event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+        console.log(event);
+      };
+    }
+  }
+  selectimage2(event: any) {
+    if (event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.url2 = event.target.result;
+      };
+    }
+  }
+  selectimage3(event: any) {
+    if (event.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event: any) => {
+        this.url3 = event.target.result;
+      };
+    }
+  }
+
   form = new FormGroup({
     platenumber: new FormControl('', [Validators.required]),
-
     typeofacident: new FormControl('', [Validators.required]),
+    policeReportNo: new FormControl('', [Validators.required]),
+    image1: new FormControl('', [Validators.required]),
+    image2: new FormControl('', [Validators.required]),
+    image3: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
   onSubmit() {
-    // console.log(this.form.value);
-    this.service.createAcident(this.form.value).subscribe(
-      (res) => {
-        this.toastr.success(' Successfully', 'Successfully');
-        this.router
-          .navigateByUrl('/', { skipLocationChange: true })
-          .then(() => {
-            this.router.navigate(['acident']);
-          });
-        // this.router.navigateByUrl('/');
-        // this.form.reset();
-      },
-      (error) => {
-        //  console.log(error);
-        this.toastr.error('Platenumber is already verified', 'Error');
-      }
-    );
+    console.log(this.form.value);
+    // this.service.createAcident(this.form.value).subscribe(
+    //   (res) => {
+    //     this.toastr.success(' Successfully', 'Successfully');
+    //     this.router
+    //       .navigateByUrl('/', { skipLocationChange: true })
+    //       .then(() => {
+    //         this.router.navigate(['acident']);
+    //       });
+    //   },
+    //   (error) => {
+    //     this.toastr.error('Platenumber is already verified', 'Error');
+    //   }
+    // );
   }
 }

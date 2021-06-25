@@ -59,11 +59,16 @@ export class LoginComponent implements OnInit {
           this.router.navigate([redirect]);
 
           this.toast.success('Success to login', 'Success');
-        } else {
-          this.toast.error('Incorrect email or password!', 'Error Message!');
-          // console.log(data.message);
         }
+        //  else {
+        //   this.toast.error('Incorrect email or password!', 'Error Message!');
+        //   // console.log(data.message);
+        // }
         //  console.log(data);
+      },
+      (error) => {
+        //  console.log(error);
+        this.toast.error('Invalid email or password', 'Error');
       }
       // error => this.error = error
     );

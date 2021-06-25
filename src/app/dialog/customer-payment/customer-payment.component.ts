@@ -22,8 +22,16 @@ export class CustomerPaymentComponent implements OnInit {
   fullName?: string;
   fullNameCreate?: string;
   role?: string;
-  amount?: number = 50400;
+  value?: number;
+  select?: string;
+  events?: string;
+  type?: string = 'part';
 
+  valuess(event: any) {
+    if (event) {
+      const events = (this.select = event.target.value);
+    }
+  }
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA)
@@ -43,11 +51,13 @@ export class CustomerPaymentComponent implements OnInit {
   form = new FormGroup({
     customerid: new FormControl('', [Validators.required]),
     amount: new FormControl('', [Validators.required]),
+    // values: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
   actualAmount(): void {}
   ngOnInit(): void {
     const fullName = (this.fullName = this.Datas.fullName);
+    const value = (this.value = this.Datas.value);
     const customerid = (this.customerid = this.Datas.customerid);
     // console.log(this.Datas)
   }

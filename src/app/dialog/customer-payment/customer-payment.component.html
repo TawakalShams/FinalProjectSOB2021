@@ -1,10 +1,153 @@
-<h2 mat-dialog-title style="text-align: center">Customer Payment</h2>
-<mat-dialog-content class="mat-typography">
+<div mat-dialog-title>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <div align="end" class="col-md-4">
+      <button mat-raised-button mat-dialog-close>
+        <mat-icon>cancell</mat-icon>
+      </button>
+    </div>
+  </div>
   <div style="text-align: center">
     <h3>Payment from</h3>
     <h2>{{ fullName }}</h2>
+    <p>Value of Vehicle Tzs &nbsp; {{ value | number }}</p>
   </div>
+</div>
+<mat-dialog-content class="mat-typography">
   <form [formGroup]="form">
+    <div class="container" id="summary">
+      <div class="row">
+        <div class="col-md-8">
+          <div>
+            From 1 Million to 5 Million &nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+              type="radio"
+              name="amount"
+              formControlName="amount"
+              (change)="valuess($event)"
+              value="300000"
+            />
+            <label> Tzs 300,000</label>
+          </div>
+
+          <div>
+            From 5 Million to 10 Million &nbsp;&nbsp;
+            <input
+              type="radio"
+              formControlName="amount"
+              (click)="valuess($event)"
+              name="amount"
+              value="850000"
+            /><label> Tzs 850,000</label>
+          </div>
+          <div>
+            From 11 Million to 15 Million &nbsp;
+            <input
+              type="radio"
+              formControlName="amount"
+              (change)="valuess($event)"
+              name="amount"
+              value="1300000"
+            /><label> Tzs 1300,000</label>
+          </div>
+          <div>
+            From 16 Million to 20 Million &nbsp;
+            <input
+              type="radio"
+              formControlName="amount"
+              (change)="valuess($event)"
+              name="amount"
+              value="1850000"
+            /><label> Tzs 1,850,000</label>
+          </div>
+          <div>
+            From 21 Million to 25 Million &nbsp;
+            <input
+              type="radio"
+              formControlName="amount"
+              (change)="valuess($event)"
+              name="amount"
+              value="2300000"
+            /><label> Tzs 2,300,000</label>
+          </div>
+          <div>
+            From 26 Million to 30 Million &nbsp;
+            <input
+              type="radio"
+              formControlName="amount"
+              (change)="valuess($event)"
+              name="amount"
+              value="2850000"
+            /><label> Tzs 2,850,000</label>
+          </div>
+          <div>
+            From 31 Million to 35 Million &nbsp;
+            <input
+              type="radio"
+              formControlName="amount"
+              (change)="valuess($event)"
+              name="amount"
+              value="3300000"
+            /><label> Tzs 3,300,000</label>
+          </div>
+          <div>
+            From 36 Million to 40 Million &nbsp;
+            <input
+              type="radio"
+              formControlName="amount"
+              (change)="valuess($event)"
+              name="amount"
+              value="3850000"
+            /><label> Tzs 3,850,000</label>
+          </div>
+          <div>
+            From 41 Million and Above &nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+              type="radio"
+              formControlName="amount"
+              (change)="valuess($event)"
+              name="amount"
+              value="4300000"
+            /><label> Tzs 4,300,000</label>
+          </div>
+        </div>
+
+        <div class="col-md-4" style="float: left">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="number"
+              placeholder="Choose amount"
+              autocomplete="off"
+              required
+              value="{{ select }}"
+              [(ngModel)]="select"
+              [ngModelOptions]="{ standalone: true }"
+              readonly
+            />
+            <span matPrefix>Tzs &nbsp;</span>
+            <mat-error> Amount is required </mat-error>
+          </mat-form-field>
+          <div align="end">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="payment()"
+              mat-dialog-close
+              [disabled]="form.invalid"
+            >
+              Save
+            </button>
+            &nbsp;&nbsp;
+            <p>{{ events }}</p>
+          </div>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+
+    <br />
     <div class="row">
       <div class="col-sm-4">
         <input
@@ -18,23 +161,6 @@
     </div>
     <br />
     <div class="row">
-      <div class="col-sm-4">
-        <mat-form-field class="full-width-input">
-          <input
-            matInput
-            type="number"
-            placeholder="Enter amount"
-            formControlName="amount"
-            autocomplete="off"
-            required
-          />
-          <span matPrefix>Tzs &nbsp;</span>
-          <mat-error> Amount is required Tzs 50400 </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <br />
-    <div class="row">
       <input
         type="hidden"
         formControlName="create_by"
@@ -42,27 +168,6 @@
         id="created_by"
         ngModel="{{ fullNameCreate }}"
       />
-    </div>
-    <div align="end">
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="payment()"
-        mat-dialog-close
-        [disabled]="form.invalid"
-      >
-        Save
-      </button>
-      &nbsp;&nbsp;
-      <button
-        mat-raised-button
-        color="warn"
-        mat-dialog-close
-        class="btn btn-danger"
-        routerLink="customer"
-      >
-        Cancel
-      </button>
     </div>
   </form>
 </mat-dialog-content>
