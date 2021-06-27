@@ -47,9 +47,7 @@ export class ViewVehiclesComponent implements OnInit {
     this.service.viewVehicles().subscribe((data: any) => {
       this.rows = data.vehicles;
       this.filteredRows = data.vehicles;
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
+      this.loading = false;
     });
   }
 

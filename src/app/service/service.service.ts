@@ -56,7 +56,7 @@ export class ServiceService {
   createVehicle(data: any): Observable<any> {
     return this.httpClient.post(baseUrl + '/vehicles', data);
   }
-  viewVehicles() {
+  viewVehicles(): Observable<any> {
     return this.httpClient.get(baseUrl + '/vehicles');
   }
 

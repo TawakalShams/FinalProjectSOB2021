@@ -23,6 +23,7 @@ export class ViewcustomerComponent implements OnInit {
   role?: string;
   loading = true;
   allStatus: string | undefined;
+  customerData: any;
 
   columns = [
     { prop: 'No' },
@@ -52,14 +53,13 @@ export class ViewcustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.viewCustomers().subscribe((data: any) => {
-      this.rows = data.customers;
-      this.filteredRows = data.customers;
-      // console.log(data);
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
-    });
+      this.rows = data;
+      this.filteredRows = data;
 
+      // const fullName = (this.fullName = this.customerData.customers.fullName);
+      // console.log(data);
+      this.loading = false;
+    });
     this.status();
   }
   fetch(cb: any) {
@@ -90,7 +90,7 @@ export class ViewcustomerComponent implements OnInit {
       const allStatus = mystatus.map((item) => item.status);
 
       // console.log(mystatus);
-      console.log(allStatus);
+      // console.log(allStatus);
     });
   }
   payment(row: any) {

@@ -1,5 +1,8 @@
 <mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
   <mat-tab label="View Insuarance">
+    <div role="status" class="isLoading" *ngIf="loading">
+      <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
+    </div>
     <div>
       <mat-form-field class="full-width-input">
         <input
@@ -48,6 +51,7 @@
                 mat-icon-button
                 color="primary"
                 (click)="edit(row)"
+                matTooltip="Edit"
                 type="button"
               >
                 <mat-icon>edit_note</mat-icon>
@@ -57,6 +61,7 @@
                 mat-icon-button
                 color="accent"
                 (click)="print(row)"
+                matTooltip="Print"
                 type="button"
               >
                 <mat-icon>print</mat-icon>
@@ -67,6 +72,7 @@
                   mat-icon-button
                   color="warn"
                   (click)="delete(row.insuaranceid)"
+                  matTooltip="Delete"
                   type="button"
                 >
                   <mat-icon>delete</mat-icon>

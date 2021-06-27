@@ -57,9 +57,9 @@ export class CustomerPaymentComponent implements OnInit {
   actualAmount(): void {}
   ngOnInit(): void {
     const fullName = (this.fullName = this.Datas.fullName);
-    const value = (this.value = this.Datas.value);
+    const value = (this.value = this.Datas.vehicle.value);
     const customerid = (this.customerid = this.Datas.customerid);
-    // console.log(this.Datas)
+    // console.log(this.Datas.vehicle.value);
   }
 
   payment() {

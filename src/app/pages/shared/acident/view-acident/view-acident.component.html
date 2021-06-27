@@ -51,6 +51,7 @@
                 mat-icon-button
                 color="primary"
                 (click)="payment(row)"
+                matTooltip="Payment"
                 type="button"
               >
                 <mat-icon>payment</mat-icon>
@@ -60,6 +61,7 @@
                 mat-icon-button
                 color="primary"
                 (click)="edit(row)"
+                matTooltip="Edit"
                 type="button"
               >
                 <mat-icon>edit_note</mat-icon>
@@ -70,6 +72,7 @@
                   class="btn"
                   mat-icon-button
                   color="warn"
+                  matTooltip="Delete"
                   (click)="deleteAcident(row.acidentid)"
                   type="button"
                 >

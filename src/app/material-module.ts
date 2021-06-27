@@ -21,7 +21,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatTreeModule } from '@angular/material/tree';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTooltipModule } from '@angular/material/tooltip';
 const MaterialComponents = [
   MatButtonModule,
   MatDialogModule,
@@ -45,6 +46,8 @@ const MaterialComponents = [
   MatSelectModule,
   TextFieldModule,
   MatTreeModule,
+  MatAutocompleteModule,
+  MatTooltipModule,
   // MatTableDataSource
   // MatSort
   // MatTableDataSource

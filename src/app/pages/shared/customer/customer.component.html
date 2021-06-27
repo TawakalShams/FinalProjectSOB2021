@@ -68,7 +68,35 @@
               <mat-error> Gender is required </mat-error>
             </mat-form-field>
           </div>
+
           <div class="col-sm-4">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Platenumber</mat-label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Pick one"
+                  aria-label="Platenumber"
+                  matInput
+                  [formControl]="platenumber"
+                  [matAutocomplete]="auto"
+                />
+              </div>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let v of filteredOptions | async"
+                  [value]="v"
+                >
+                  {{ v }}
+                </mat-option>
+                <!-- <mat-option [value]="v.vehicleid" *ngFor="let v of vehcle">{{
+                  v.platenumber
+                }}</mat-option> -->
+              </mat-autocomplete>
+              <mat-error> Platenumber is required </mat-error>
+            </mat-form-field>
+          </div>
+          <!-- <div class="col-sm-4">
             <mat-form-field appearance="fill">
               <mat-label>Platenumber</mat-label>
               <mat-select
@@ -82,7 +110,7 @@
               </mat-select>
               <mat-error>Platenumber is required </mat-error>
             </mat-form-field>
-          </div>
+          </div> -->
           <div class="row">
             <input
               type="hidden"

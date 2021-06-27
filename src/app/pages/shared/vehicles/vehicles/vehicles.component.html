@@ -59,32 +59,55 @@
           </div>
 
           <div class="col-sm-4">
-            <mat-form-field appearance="fill">
+            <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Model</mat-label>
-              <mat-select disableRipple name="model" formControlName="model">
-                <mat-option value="bmw">Bmw</mat-option>
-                <mat-option value="hummer">Hummer</mat-option>
-                <mat-option value="isuzu">Isuzu</mat-option>
-                <mat-option value="bmw">Jeep</mat-option>
-                <mat-option value="land rover">Land Rover</mat-option>
-                <mat-option value="lexus">Lexus</mat-option>
-                <mat-option value="mini">Mini</mat-option>
-                <mat-option value="noah">Noah</mat-option>
-                <mat-option value="bmw">Nissan</mat-option>
-                <mat-option value="prado">Prado</mat-option>
-                <mat-option value="pickup">Pickup</mat-option>
-                <mat-option value="suzuki">Suzuku</mat-option>
-                <mat-option value="toyota">Toyota</mat-option>
-                <mat-option value="volvo">Volvo</mat-option>
-                <hr />
-                <mat-option value="vespa">Vespa</mat-option>
-                <mat-option value="honda">Honda</mat-option>
-                <mat-option value="vespa">Kawasaki(BodaBoda)</mat-option>
-                <mat-option value="Other">Other</mat-option>
-              </mat-select>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Pick one"
+                  aria-label="model"
+                  matInput
+                  [formControl]="model"
+                  [matAutocomplete]="auto"
+                />
+              </div>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredOptions | async"
+                  [value]="option"
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
               <mat-error> Model is required </mat-error>
             </mat-form-field>
           </div>
+          <!-- 
+          <div class="col-sm-4">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Color</mat-label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Pick one"
+                  aria-label="color"
+                  matInput
+                  [formControl]="color"
+                  [matAutocomplete]="auto"
+                />
+              </div>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let coloroptions of ColorfilteredOptions | async"
+                  [value]="coloroptions"
+                >
+                  {{ coloroptions }}
+                </mat-option>
+                <mat-option>Color</mat-option>
+              </mat-autocomplete>
+              <mat-error> Color is required </mat-error>
+            </mat-form-field>
+          </div> -->
           <div class="col-md-4">
             <mat-form-field appearance="fill">
               <mat-label>Color</mat-label>

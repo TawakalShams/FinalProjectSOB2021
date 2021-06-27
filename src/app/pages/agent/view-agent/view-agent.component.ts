@@ -59,9 +59,7 @@ export class ViewAgentComponent implements OnInit {
     this.service.viewAgent().subscribe((data: any) => {
       this.rows = data.agents;
       this.filteredRows = data.agents;
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
+      this.loading = false;
     });
   }
 

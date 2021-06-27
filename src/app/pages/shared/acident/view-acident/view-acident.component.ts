@@ -48,10 +48,7 @@ export class ViewAcidentComponent implements OnInit {
     this.service.viewAcident().subscribe((data: any) => {
       this.rows = data.acident;
       this.filteredRows = data.acident;
-      // console.log(data);
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
+      this.loading = false;
     });
   }
 

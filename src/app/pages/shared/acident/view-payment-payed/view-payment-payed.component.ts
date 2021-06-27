@@ -45,10 +45,7 @@ export class ViewPaymentPayedComponent implements OnInit {
     this.service.viewPayInsuard().subscribe((data: any) => {
       this.rows = data.insuaredPay;
       this.filteredRows = data.insuaredPay;
-      // console.log(data);
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
+      this.loading = false;
     });
   }
 

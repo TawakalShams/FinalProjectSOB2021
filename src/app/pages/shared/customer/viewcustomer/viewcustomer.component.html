@@ -35,16 +35,16 @@
         </ngx-datatable-column>
         <ngx-datatable-column name="FullName"> </ngx-datatable-column>
         <ngx-datatable-column name="Gender"> </ngx-datatable-column>
-        <!-- <ngx-datatable-column name="Gender">
-        </ngx-datatable-column> -->
-        <!-- <ngx-datatable-column name="Dob">
-        </ngx-datatable-column> -->
         <ngx-datatable-column name="Address"> </ngx-datatable-column>
         <ngx-datatable-column name="Phone"> </ngx-datatable-column>
-        <ngx-datatable-column name="Type"> </ngx-datatable-column>
-        <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
-        <ngx-datatable-column name="Status"></ngx-datatable-column>
-        <!-- <ngx-datatable-column name="Status" class="status"> </ngx-datatable-column> -->
+        <ngx-datatable-column name="Type" prop="vehicle.type">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Platenumber" prop="vehicle.platenumber">
+        </ngx-datatable-column>
+        <ngx-datatable-column
+          name="Status"
+          prop="payment.status"
+        ></ngx-datatable-column>
         <ngx-datatable-column name="Action">
           <ng-template
             let-row="row"
@@ -52,13 +52,13 @@
             ngx-datatable-cell-template
           >
             <div class="row">
-              <!-- *ngIf="allStatus == 'PAID'" -->
               <div class="col-md-4">
                 <a
                   class="btn"
                   mat-icon-button
                   color="primary"
                   (click)="payment(row)"
+                  matTooltip="Payment"
                   type="button"
                 >
                   <mat-icon>payment</mat-icon>
@@ -70,6 +70,7 @@
                   mat-icon-button
                   color="primary"
                   (click)="edit(row)"
+                  matTooltip="Edit"
                   type="button"
                 >
                   <mat-icon>edit_note</mat-icon>
@@ -82,6 +83,8 @@
                   mat-icon-button
                   color="warn"
                   (click)="delete(row.customerid)"
+                  (click)="edit(row)"
+                  matTooltip="Delete"
                   type="button"
                 >
                   <mat-icon>delete</mat-icon>

@@ -21,6 +21,7 @@ export class ViewInsuaranceComponent implements OnInit {
   vehcle: String | undefined;
   fullName?: string;
   role?: string;
+  loading = true;
 
   columns = [
     { prop: 'No' },
@@ -53,6 +54,7 @@ export class ViewInsuaranceComponent implements OnInit {
     this.service.viewInsuarance().subscribe((data: any) => {
       this.rows = data.insuarances;
       this.filteredRows = data.insuarance;
+      this.loading = false;
     });
   }
   fetch(cb: any) {
