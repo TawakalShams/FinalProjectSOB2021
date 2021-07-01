@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RouterLinkWithHref } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {
   ColumnMode,
@@ -10,8 +9,8 @@ import {
 } from '@swimlane/ngx-datatable';
 // import { ConsoleReporter } from 'jasmine';
 import { ConfirmDeletePaymentComponent } from 'src/app/dialog/confirm-delete-payment/confirm-delete-payment.component';
-import { UpdateCustomerPaymentComponent } from 'src/app/dialog/update-customer-payment/update-customer-payment.component';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
+import { InsuranceReportComponent } from 'src/app/reports/insurance-report/insurance-report.component';
 import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
@@ -53,9 +52,10 @@ export class CustomerPaymentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.viewPayment().subscribe((data: any) => {
+      // console.log(data);
       // console.log((this.rows = data.payment));
-      this.rows = data.payment;
-      this.filteredRows = data.payment;
+      this.rows = data.insuarance;
+      this.filteredRows = data.insuarance;
       setTimeout(() => {
         this.loading = false;
       }, 2000);
@@ -84,21 +84,13 @@ export class CustomerPaymentsComponent implements OnInit {
   }
 
   delete(rows: any) {
-    // console.log(rows);
-    // console.log((this.rows = rows.payment));
     const dialogRef = this.dialog.open(ConfirmDeletePaymentComponent, {
       data: rows,
     });
-    // dialogRef.afterClosed().subscribe(({ agentid }) => {
-    //   this.filteredRows = this.filteredRows.filter(
-    //     //delete auto removed
-    //     (row) => row.agentid !== agentid
-    //   );
-    // });
   }
 
-  edit(row: any) {
-    const dialogRef = this.dialog.open(UpdateCustomerPaymentComponent, {
+  Print(row: any) {
+    const dialogRef = this.dialog.open(InsuranceReportComponent, {
       data: row,
     });
   }

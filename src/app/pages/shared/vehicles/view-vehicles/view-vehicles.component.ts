@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 import { ServiceService } from 'src/app/service/service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -44,9 +44,9 @@ export class ViewVehiclesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.viewVehicles().subscribe((data: any) => {
-      this.rows = data.vehicles;
-      this.filteredRows = data.vehicles;
+    this.service.viewInsuarance().subscribe((data: any) => {
+      this.rows = data.insuarance;
+      this.filteredRows = data.insuarance;
       this.loading = false;
     });
   }
@@ -72,26 +72,11 @@ export class ViewVehiclesComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeleteVehicleComponent, {
       data: row,
     });
-    // dialogRef.afterClosed().subscribe(({ vehicleid }) => {
-    //   // console.log('id' + vehicleid);
-    //   this.filteredRows = this.filteredRows.filter(
-    //     //delete auto removed
-    //     (row) => row.vehicleid !== vehicleid
-    //   );
-    // });
-
-    //  dialogRef.afterClosed().subscribe((vehicleid) => {
-    //   console.log('id' + vehicleid);
-    // this.filteredRows = this.filteredRows.filter(
-    //   //delete auto removed
-    //   (row) => row.vehicleid !== vehicleid
-    // );
-    // console.log(row);
-    // });
   }
   edit(row: any) {
     const dialogRef = this.dialog.open(UpdateVehicleComponent, {
       data: row,
     });
+    console.log('id ' + row);
   }
 }

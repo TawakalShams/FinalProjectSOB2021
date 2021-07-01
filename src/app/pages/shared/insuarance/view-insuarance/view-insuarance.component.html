@@ -1,14 +1,15 @@
 <mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
-  <mat-tab label="View Insuarance">
+  <mat-tab label="Insuarances">
     <div role="status" class="isLoading" *ngIf="loading">
       <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
     </div>
+
     <div>
       <mat-form-field class="full-width-input">
         <input
           matInput
           type="text"
-          placeholder="Search by Platenumber"
+          placeholder="Search by platenumber"
           autocomplete="off"
           (keyup)="updateFilter($event)"
         />
@@ -33,12 +34,21 @@
             {{ rowIndex + 1 }}
           </ng-template>
         </ngx-datatable-column>
+        <ngx-datatable-column name="FullName"> </ngx-datatable-column>
+        <ngx-datatable-column name="Address"> </ngx-datatable-column>
+        <ngx-datatable-column name="Phone"> </ngx-datatable-column>
         <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
-        <ngx-datatable-column name="color"> </ngx-datatable-column>
-        <ngx-datatable-column name="seat"> </ngx-datatable-column>
-        <ngx-datatable-column name="value"> </ngx-datatable-column>
-        <ngx-datatable-column name="Startdate"> </ngx-datatable-column>
+        <ngx-datatable-column name="Type"> </ngx-datatable-column>
+        <ngx-datatable-column name="Model"> </ngx-datatable-column>
+        <ngx-datatable-column name="Seat"> </ngx-datatable-column>
+        <ngx-datatable-column name="Color"> </ngx-datatable-column>
+        <ngx-datatable-column name="TypeOfInsuarance"> </ngx-datatable-column>
+        <ngx-datatable-column name="Value"> </ngx-datatable-column>
+        <ngx-datatable-column name="Sartdate" prop="startdate">
+        </ngx-datatable-column>
         <ngx-datatable-column name="Enddate"> </ngx-datatable-column>
+        <ngx-datatable-column name="Status" prop="payment.status">
+        </ngx-datatable-column>
         <ngx-datatable-column name="Action">
           <ng-template
             let-row="row"
@@ -50,30 +60,30 @@
                 class="btn"
                 mat-icon-button
                 color="primary"
+                (click)="payment(row)"
+                matTooltip="Payment"
+                type="button"
+              >
+                <mat-icon>payment</mat-icon>
+              </a>
+              <a
+                class="btn"
+                mat-icon-button
+                color="primary"
                 (click)="edit(row)"
                 matTooltip="Edit"
                 type="button"
               >
                 <mat-icon>edit_note</mat-icon>
               </a>
-              <a
-                class="btn"
-                mat-icon-button
-                color="accent"
-                (click)="print(row)"
-                matTooltip="Print"
-                type="button"
-              >
-                <mat-icon>print</mat-icon>
-              </a>
               <div *ngIf="role == 'Admin'">
                 <a
                   class="btn"
                   mat-icon-button
                   color="warn"
-                  (click)="delete(row.insuaranceid)"
-                  matTooltip="Delete"
+                  (click)="deleteInsuarance(row.insuaranceid)"
                   type="button"
+                  matTooltip="Delete"
                 >
                   <mat-icon>delete</mat-icon>
                 </a>

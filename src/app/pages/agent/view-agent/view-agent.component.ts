@@ -2,13 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServiceService } from 'src/app/service/service.service';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AgentComponent } from 'src/app/dialog/agent/agent.component';
-import { BehaviorSubject, interval, Observable, Subscription } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { ConfirmDeleteAgentComponent } from 'src/app/dialog/confirm-delete-agent/confirm-delete-agent.component';
-import { validateBasis } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-view-agent',
@@ -86,35 +83,12 @@ export class ViewAgentComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeleteAgentComponent, {
       data: row,
     });
-
-    // if (dialogRef) {
-    //   dialogRef.afterClosed().subscribe(({ agentid }) => {
-    //     this.filteredRows = this.filteredRows.filter(
-
-    //       (row) => row.agentid !== agentid
-    //     );
-    //   });
-    // }
   }
 
   edit(row: any) {
     const dialogRef = this.dialog.open(AgentComponent, {
       data: row,
     });
-    // console.log(row);
-    // dialogRef.afterClosed().subscribe(({ agent }) => {
-
-    //   if (agent) {
-    //     const index = this.filteredRows.findIndex(
-    //       (ag) => ag.agentid === agent.agentid
-    //     );
-    //     const rows = this.filteredRows;
-    //     rows[index] = agent;
-    //     this.filteredRows = rows;
-    //     this.rows = [...this.rows];
-    //   }
-    // });
-    // });
   }
 
   // End

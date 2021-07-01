@@ -65,30 +65,30 @@ export class CustomerComponent implements OnInit {
     dob: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
-    vehicleid: new FormControl(''),
+    platenumber: new FormControl(''),
     created_by: new FormControl(),
   });
 
   onSubmit() {
-    this.form.controls.vehicleid.setValue(this.platenumber.value);
-    console.log(this.form.value);
-    // this.service.createCustomer(this.form.value).subscribe(
-    //   (res) => {
-    //     this.submitted = true;
-    //     this.toastr.success('Customer Successfully to Create', 'Successfully');
-    //     this.router
-    //       .navigateByUrl('/', { skipLocationChange: true })
-    //       .then(() => {
-    //         this.router.navigate(['customer']);
-    //       });
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     this.toastr.error(
-    //       'Customer not Successfully to Create, Platenumber alredy used',
-    //       'Error'
-    //     );
-    //   }
-    // );
+    this.form.controls.platenumber.setValue(this.platenumber.value);
+    // console.log(this.form.value);
+    this.service.createCustomer(this.form.value).subscribe(
+      (res) => {
+        this.submitted = true;
+        this.toastr.success('Customer Successfully to Create', 'Successfully');
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['customer']);
+          });
+      },
+      (error) => {
+        console.log(error);
+        this.toastr.error(
+          'Customer not Successfully to Create, Platenumber alredy used',
+          'Error'
+        );
+      }
+    );
   }
 }

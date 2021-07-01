@@ -5,8 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
 import { ServiceService } from 'src/app/service/service.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
-import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-insuarance',
@@ -14,10 +14,26 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./insuarance.component.css'],
 })
 export class InsuaranceComponent implements OnInit {
+  options: string[] = [
+    'Bmw',
+    'Hummer',
+    'Isuzu',
+    'Jeep',
+    'Land Rover',
+    'Lexus',
+    'Mini',
+    'Noah',
+    'Nissan',
+    'Prado',
+    'Pickup',
+    'Suzuku',
+    'Toyota',
+    'Volvo',
+  ];
+  filteredOptions: Observable<string[]> | undefined;
   fullName?: string;
   role?: string;
   submitted = false;
-  platenumber: any;
   vehcleid: any;
   vehcle: any;
 
@@ -33,36 +49,65 @@ export class InsuaranceComponent implements OnInit {
     this.role = decodedToken.role;
   }
 
+  platenumber = new FormControl('', [Validators.required]);
+
   form = new FormGroup({
-    vehicleid: new FormControl('', [Validators.required]),
+    platenumber: new FormControl('', [Validators.required]),
+    type: new FormControl('', [Validators.required]),
+    model: new FormControl(''),
+    chassiNumber: new FormControl('', [Validators.required]),
+    seat: new FormControl('', [Validators.required]),
+    color: new FormControl('', [Validators.required]),
+    yearOfManufacture: new FormControl('', [Validators.required]),
+    value: new FormControl('', [Validators.required]),
+
+    fullName: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    dob: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required]),
+
     typeOfInsuarance: new FormControl('', [Validators.required]),
     startdate: new FormControl('', [Validators.required]),
     enddate: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
 
-  ngOnInit(): void {
-    this.service.vehiclesPayed().subscribe((data: any) => {
-      this.vehcle = data.vehicles;
-      // console.log(this.form.value);
-    });
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter((option) =>
+      option.toLowerCase().includes(filterValue)
+    );
   }
+  ngOnInit(): void {
+    this.filteredOptions = this.model.valueChanges.pipe(
+      startWith(''),
+      map((value: any) => this._filter(value))
+    );
+  }
+
+  model = new FormControl('', [Validators.required]);
+
   onSubmit() {
+    this.form.controls.model.setValue(this.model.value);
+    // this.form.controls.color.setValue(this.color.value);
+
     this.service.createInsuarance(this.form.value).subscribe(
       (res) => {
-        this.submitted = true;
-        this.toastr.success('Successfully', 'Successfully');
+        // console.log(res);
+        this.toastr.success(' Successfully to Create', 'Successfully');
+        // this.router.navigateByUrl('/');
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
             this.router.navigate(['insuarance']);
           });
+        // this.form.reset();
       },
       (error) => {
-        this.toastr.error(
-          'Not Successfully, Platenumber is already used',
-          'Error'
-        );
+        //  console.log(error);
+        this.toastr.error('Not Successfully to Create', 'Error');
       }
     );
   }

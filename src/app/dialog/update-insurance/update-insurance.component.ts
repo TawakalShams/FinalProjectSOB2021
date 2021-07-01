@@ -43,42 +43,67 @@ export class UpdateInsuranceComponent implements OnInit {
     this.role = decodedToken.role;
   }
 
-  // form = new FormGroup({
-  //   // fullName: new FormControl('', [Validators.required]),
-  //   amount: new FormControl('', [Validators.required]),
-  //   customerid: new FormControl('', [Validators.required]),
-  //   create_by: new FormControl(),
-  // });
+  model = new FormControl('', [Validators.required]);
+
   form = new FormGroup({
-    vehicleid: new FormControl('', [Validators.required]),
-    color: new FormControl('', [Validators.required]),
+    platenumber: new FormControl('', [Validators.required]),
+    type: new FormControl('', [Validators.required]),
+    model: new FormControl(''),
+    chassiNumber: new FormControl('', [Validators.required]),
     seat: new FormControl('', [Validators.required]),
-    manufacture: new FormControl('', [Validators.required]),
+    color: new FormControl('', [Validators.required]),
+    yearOfManufacture: new FormControl('', [Validators.required]),
+    value: new FormControl('', [Validators.required]),
+
+    fullName: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    dob: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required]),
+
+    typeOfInsuarance: new FormControl('', [Validators.required]),
     startdate: new FormControl('', [Validators.required]),
     enddate: new FormControl('', [Validators.required]),
-    value: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
 
   ngOnInit(): void {
     const fullName = (this.fullName = this.DATA.fullName);
     const customerid = (this.customerid = this.DATA.customerid);
-    // console.log(this.form.value);
-    // this.insuarance();
+    // console.log(this.DATA);
+    this.viewSingleInsuarance();
+  }
+  viewSingleInsuarance() {
     this.service
-      .getSingleInsuarance(this.DATA.insuaranceid)
-      .subscribe((data) => {
+      .getSingleInsuarance(this.DATA.vehicleid)
+      .subscribe((data: any) => {
         this.Data = data;
-        // this.form.controls.vehicleid.setValue(this.DATA.platenumber);
-        this.form.controls.color.setValue(this.DATA.color);
-        this.form.controls.seat.setValue(this.DATA.seat);
-        this.form.controls.manufacture.setValue(this.DATA.manufacture);
-        this.form.controls.startdate.setValue(this.DATA.startdate);
+
+        // console.log(this.vehicles.type);
+        this.form.controls.fullName.setValue(this.DATA.fullName);
+        this.form.controls.address.setValue(this.DATA.address);
+        this.form.controls.dob.setValue(this.DATA.dob);
         this.form.controls.enddate.setValue(this.DATA.enddate);
+        this.form.controls.gender.setValue(this.DATA.gender);
+        this.form.controls.phone.setValue(this.DATA.phone);
+        this.form.controls.typeOfInsuarance.setValue(
+          this.DATA.typeOfInsuarance
+        );
+
+        this.form.controls.startdate.setValue(this.DATA.startdate);
+        this.form.controls.type.setValue(this.DATA.type);
+        this.form.controls.platenumber.setValue(this.DATA.platenumber);
+        this.form.controls.type.setValue(this.DATA.type);
+        this.form.controls.model.setValue(this.DATA.model);
+        this.form.controls.chassiNumber.setValue(this.DATA.chassiNumber);
+        this.form.controls.seat.setValue(this.DATA.seat);
+        this.form.controls.color.setValue(this.DATA.color);
+        this.form.controls.yearOfManufacture.setValue(
+          this.DATA.yearOfManufacture
+        );
         this.form.controls.value.setValue(this.DATA.value);
-        this.form.controls.vehicleid.setValue(this.DATA.vehicleid);
-        this.form.controls.create_by.setValue(this.DATA.create_by);
-        // console.log(data);
+
+        // this.form.updateValueAndValidity();
       });
   }
 
@@ -90,9 +115,13 @@ export class UpdateInsuranceComponent implements OnInit {
       });
     if (updatae) {
       this.toastr.success('Updated', 'Successfully');
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['viewinsuarance']);
-      });
+      this.router
+        .navigateByUrl('viewcustomerpayment', { skipLocationChange: true })
+        .then(() => {
+          this.router.navigate(['viewcustomerpayment']);
+        });
+      // this.router.navigate(['viewcustomerpayment']);
+
       this.dialogRef.close();
     } else {
       this.toastr.success('Not Success', 'Error');

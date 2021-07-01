@@ -16,7 +16,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 })
 export class ConfirmDeleteVehicleComponent implements OnInit {
   deteleData: any;
-  agentid: any;
+  platenumber: any;
   agentidi: any;
   @ViewChild('myTable') myTable: any;
   @ViewChild('ngxDatatable')
@@ -35,11 +35,12 @@ export class ConfirmDeleteVehicleComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.vehicles);
+    console.log(this.vehicles);
   }
 
-  vehicle(vehicleid: any) {
-    vehicleid = this.vehicles;
-    this.service.deletVehicle(vehicleid).subscribe((data) => {
+  vehicle(platenumber: any) {
+    platenumber = this.vehicles;
+    this.service.deletVehicle(platenumber).subscribe((data) => {
       this.deteleData = data;
       if (this.deteleData) {
         this.toastr.success('Successfully to Delete', 'Successfully');
@@ -50,7 +51,7 @@ export class ConfirmDeleteVehicleComponent implements OnInit {
             this.router.navigate(['viewvehicle']);
           });
         // this.service.refresh();
-        this.dialogRef.close({ vehicleid });
+        this.dialogRef.close({ platenumber });
       } else {
         this.toastr.error('Not Successfully to Delete', 'Error');
       }

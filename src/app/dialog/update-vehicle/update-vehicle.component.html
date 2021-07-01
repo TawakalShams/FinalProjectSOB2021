@@ -1,91 +1,102 @@
 <h2 mat-dialog-title>UPDATE</h2>
 <mat-dialog-content class="mat-typography">
-  <form [formGroup]="form">
-    <div class="row">
-      <div class="col-sm-4">
-        <mat-form-field class="full-width-input">
-          <input
-            matInput
-            placeholder="Plate number "
-            formControlName="platenumber"
-            autocomplete="off"
-            required
-          />
-          <mat-error> Plate number is required </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-4">
-        <mat-form-field class="full-width-input">
-          <input
-            matInput
-            type="text"
-            placeholder="chassis Number"
-            formControlName="chassiNumber"
-            autocomplete="off"
-            required
-          />
-          <mat-error> chassis Number is required </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-4">
-        <mat-form-field class="full-width-input">
-          <input
-            matInput
-            type="number"
-            placeholder="Seats"
-            formControlName="seat"
-            autocomplete="off"
-            required
-          />
-          <mat-error> Seat Number is required </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <mat-form-field appearance="fill">
-          <mat-label>Type of Vehicle</mat-label>
-          <mat-select disableRipple name="type" formControlName="type">
-            <mat-option value="Car">Car</mat-option>
-            <mat-option value="Motorcycle">Motorcycle</mat-option>
-          </mat-select>
-          <mat-error> Type of Vehicle is required </mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="col-sm-4">
-        <mat-form-field appearance="fill">
-          <mat-label>Model</mat-label>
-          <mat-select disableRipple name="model" formControlName="model">
-            <mat-option value="toyota">Toyota</mat-option>
-            <mat-option value="prado">Prado</mat-option>
-          </mat-select>
-          <mat-error> Model is required </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="col-md-4">
-        <mat-form-field appearance="fill">
-          <mat-label>Color</mat-label>
-          <mat-select disableRipple name="color" formControlName="color">
-            <mat-option value="red">Red</mat-option>
-            <mat-option value="yellow">Yellow</mat-option>
-          </mat-select>
-          <mat-error> color is required </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div>
+  <form [formGroup]="form" (ngSubmit)="update()">
+    <br />
+    <fieldset>
+      <legend>Customer Details</legend>
       <div class="row">
         <div class="col-sm-4">
           <mat-form-field class="full-width-input">
             <input
               matInput
-              type="date"
-              formControlName="yearOfManufacture"
+              placeholder="Full Name"
+              formControlName="fullName"
               autocomplete="off"
               required
             />
-            <mat-error> date is required </mat-error>
+            <mat-error> Full name is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              placeholder="Address"
+              formControlName="address"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Address is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              type="number"
+              matInput
+              placeholder="Phone number"
+              formControlName="phone"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Phone number is required </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              type="date"
+              matInput
+              placeholder="Date of birth"
+              formControlName="dob"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Date number is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Select gender</mat-label>
+            <mat-select disableRipple name="gender" formControlName="gender">
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+            </mat-select>
+            <mat-error> Gender is required </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </fieldset>
+    <hr style="background-color: black" />
+    <fieldset>
+      <legend>Vehicle Details</legend>
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              placeholder="Plate number "
+              formControlName="platenumber"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Plate number is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="text"
+              placeholder="chassis Number"
+              formControlName="chassiNumber"
+              autocomplete="off"
+              required
+            />
+            <mat-error> chassis Number is required </mat-error>
           </mat-form-field>
         </div>
         <div class="col-sm-4">
@@ -93,95 +104,145 @@
             <input
               matInput
               type="number"
-              placeholder="Value of vehicle"
-              formControlName="value"
+              placeholder="Seats"
+              formControlName="seat"
               autocomplete="off"
               required
             />
-            <mat-error> Amount is required </mat-error>
+            <mat-error> Seat Number is required </mat-error>
           </mat-form-field>
         </div>
       </div>
       <div class="row">
-        <input
-          type="hidden"
-          formControlName="created_by"
-          name="created_by"
-          id="created_by"
-          ngModel="{{ fullName }}"
-        />
-      </div>
-
-      <div class="row">
-        <div align="end">
-          <button
-            mat-raised-button
-            color="primary"
-            [disabled]="form.invalid"
-            (click)="update()"
-          >
-            Update
-          </button>
-          &nbsp;&nbsp;
-          <button mat-raised-button color="warn" mat-dialog-close>
-            Cancel
-          </button>
+        <div class="col-md-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="text"
+              placeholder="Type of Vehicle"
+              formControlName="type"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Type of Vehicle required </mat-error>
+          </mat-form-field>
         </div>
-        <!-- <button mat-raised-button color="primary" [disabled]="form.invalid">
-              Regster
-            </button> -->
+
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="text"
+              placeholder="Model"
+              formControlName="model"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Model is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="text"
+              placeholder="Color"
+              formControlName="color"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Color is required </mat-error>
+          </mat-form-field>
+        </div>
       </div>
+      <div>
+        <div class="row">
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                type="date"
+                formControlName="yearOfManufacture"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Year of manufacture is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field class="full-width-input">
+              <input
+                matInput
+                type="number"
+                placeholder="Value of vehicle"
+                formControlName="value"
+                autocomplete="off"
+                required
+              />
+              <mat-error> Amount is required </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <input
+            type="hidden"
+            formControlName="create_by"
+            name="create_by"
+            id="create_by"
+            ngModel="{{ fullName }}"
+          />
+        </div>
+      </div>
+    </fieldset>
+    <hr style="background-color: black" />
+    <fieldset>
+      <legend>Insuarance Details</legend>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="text"
+              placeholder="Insuarance type"
+              formControlName="typeOfInsuarance"
+              autocomplete="off"
+              required
+            />
+            <mat-error> insuarance type required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              type="date"
+              matInput
+              placeholder="Start date of Insuarance"
+              formControlName="startdate"
+              autocomplete="off"
+              required
+            />
+            <mat-error> Start date of Insuarance is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field class="full-width-input">
+            <input
+              type="date"
+              matInput
+              placeholder="End date of Insuarance"
+              formControlName="enddate"
+              autocomplete="off"
+              required
+            />
+            <mat-error>End date is required </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </fieldset>
+    <div class="row">
+      <button mat-raised-button color="primary" [disabled]="form.invalid">
+        Regster
+      </button>
     </div>
   </form>
-  <!-- <form [formGroup]="form">
-    <div class="row">
-      <div class="col-sm-4">
-        <mat-form-field class="full-width-input">
-          <input
-            matInput
-            placeholder="Plate number"
-            formControlName="platenumber"
-            autocomplete="off"
-            required
-          />
-          <mat-error> Plate number is required </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <mat-form-field class="full-width-input">
-          <input
-            matInput
-            placeholder="Type"
-            formControlName="type"
-            autocomplete="off"
-            required
-          />
-          <mat-error> Type is required </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <input
-        type="hidden"
-        formControlName="created_by"
-        name="created_by"
-        id="created_by"
-        ngModel="{{ fullName }}"
-      />
-    </div>
-    <div align="end">
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="form.invalid"
-        (click)="update()"
-      >
-        Update
-      </button>
-      &nbsp;&nbsp;
-      <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
-    </div>
-  </form> -->
 </mat-dialog-content>

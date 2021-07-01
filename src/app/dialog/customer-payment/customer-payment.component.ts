@@ -16,11 +16,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CustomerPaymentComponent implements OnInit {
   rows: any;
-  customerid: any;
+  insuaranceid: any;
   agentDat: any;
   agent = new ImsModule();
   fullName?: string;
-  fullNameCreate?: string;
+  create_by?: string;
   role?: string;
   value?: number;
   select?: string;
@@ -45,11 +45,11 @@ export class CustomerPaymentComponent implements OnInit {
   ) {
     const token = localStorage.getItem('token');
     const decodedToken: DecodedToken = helper.decodeToken(token as string);
-    this.fullNameCreate = decodedToken.fullName;
+    this.create_by = decodedToken.fullName;
   }
 
   form = new FormGroup({
-    customerid: new FormControl('', [Validators.required]),
+    insuaranceid: new FormControl('', [Validators.required]),
     amount: new FormControl('', [Validators.required]),
     // values: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
@@ -57,12 +57,15 @@ export class CustomerPaymentComponent implements OnInit {
   actualAmount(): void {}
   ngOnInit(): void {
     const fullName = (this.fullName = this.Datas.fullName);
-    const value = (this.value = this.Datas.vehicle.value);
-    const customerid = (this.customerid = this.Datas.customerid);
+    const value = (this.value = this.Datas.value);
+    const customerid = (this.insuaranceid = this.Datas.insuaranceid);
     // console.log(this.Datas.vehicle.value);
+    // console.log(this.Datas);
+    // console.log(this.form.value);
   }
 
   payment() {
+    // console.log(this.form.value);
     this.service.createPayment(this.form.value).subscribe((res) => {
       if (res.error) {
         this.toastr.error(res.message, 'Error');

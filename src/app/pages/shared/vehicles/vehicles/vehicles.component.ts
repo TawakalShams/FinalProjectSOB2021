@@ -15,7 +15,6 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class VehiclesComponent implements OnInit {
   fullName?: string;
-  // coloroptions: string[] = ['Yellow', 'Black', 'Brown'];
   options: string[] = [
     'Bmw',
     'Hummer',
@@ -51,11 +50,6 @@ export class VehiclesComponent implements OnInit {
       startWith(''),
       map((value: any) => this._filter(value))
     );
-    // console.log(this.filteredOptions);
-    // this.ColorfilteredOptions = this.color.valueChanges.pipe(
-    //   startWith(''),
-    //   map((value: any) => this._filtere(value))
-    // );
   }
 
   private _filter(value: string): string[] {
@@ -66,16 +60,7 @@ export class VehiclesComponent implements OnInit {
     );
   }
 
-  // private _filtere(value: string): string[] {
-  //   const filterValue = value.toLowerCase();
-
-  //   return this.coloroptions.filter((coloroptions) =>
-  //     coloroptions.toLowerCase().includes(filterValue)
-  //   );
-  // }
   model = new FormControl('', [Validators.required]);
-  // color = new FormControl('', [Validators.required]);
-  // console.log()
 
   form = new FormGroup({
     platenumber: new FormControl('', [Validators.required]),
@@ -86,26 +71,39 @@ export class VehiclesComponent implements OnInit {
     color: new FormControl('', [Validators.required]),
     yearOfManufacture: new FormControl('', [Validators.required]),
     value: new FormControl('', [Validators.required]),
-    created_by: new FormControl(),
+
+    fullName: new FormControl('', [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
+    dob: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required]),
+
+    typeOfInsuarance: new FormControl('', [Validators.required]),
+    startdate: new FormControl('', [Validators.required]),
+    enddate: new FormControl('', [Validators.required]),
+    create_by: new FormControl(),
   });
 
   onSubmit() {
+    // console.log(this.form.value);
     this.form.controls.model.setValue(this.model.value);
     // this.form.controls.color.setValue(this.color.value);
-    this.service.createVehicle(this.form.value).subscribe(
+
+    this.service.createInsuarance(this.form.value).subscribe(
       (res) => {
-        this.toastr.success('Vehicle Successfully to Create', 'Successfully');
+        // console.log(res);
+        this.toastr.success(' Successfully to Create', 'Successfully');
         // this.router.navigateByUrl('/');
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
-            this.router.navigate(['vehicle']);
+            this.router.navigate(['insuarance']);
           });
         // this.form.reset();
       },
       (error) => {
         //  console.log(error);
-        this.toastr.error('Vehicle not Successfully to Create', 'Error');
+        this.toastr.error('Not Successfully to Create', 'Error');
       }
     );
   }

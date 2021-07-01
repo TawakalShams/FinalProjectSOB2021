@@ -57,8 +57,8 @@ export class ViewcustomerComponent implements OnInit {
       this.filteredRows = data;
 
       // const fullName = (this.fullName = this.customerData.customers.fullName);
-      // console.log(data);
       this.loading = false;
+      // console.log(data);
     });
     this.status();
   }

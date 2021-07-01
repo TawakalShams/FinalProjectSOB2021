@@ -37,10 +37,11 @@
         <ngx-datatable-column name="Gender"> </ngx-datatable-column>
         <ngx-datatable-column name="Address"> </ngx-datatable-column>
         <ngx-datatable-column name="Phone"> </ngx-datatable-column>
-        <ngx-datatable-column name="Type" prop="vehicle.type">
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Platenumber" prop="vehicle.platenumber">
-        </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="Type" prop="vehicle.type">
+        </ngx-datatable-column> -->
+        <!-- <ngx-datatable-column name="Platenumber" prop="vehicle.platenumber">
+        </ngx-datatable-column> -->
+        <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
         <ngx-datatable-column
           name="Status"
           prop="payment.status"
@@ -83,7 +84,6 @@
                   mat-icon-button
                   color="warn"
                   (click)="delete(row.customerid)"
-                  (click)="edit(row)"
                   matTooltip="Delete"
                   type="button"
                 >

@@ -7,20 +7,38 @@
     <form [formGroup]="form" enctype="multipart/form-data">
       <div class="row">
         <div class="offset-md-1 col-sm-3">
-          <mat-form-field appearance="fill">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Platenumber</mat-label>
+            <div>
+              <input
+                type="text"
+                placeholder="Pick one"
+                aria-label="Platenumber"
+                matInput
+                [formControl]="platenumber"
+                [matAutocomplete]="auto"
+              />
+            </div>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let v of filteredOptions | async" [value]="v">
+                {{ v }}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error> Platenumber is required </mat-error>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="fill">
             <mat-label>Select Platenumber</mat-label>
             <mat-select
               disableRipple
               name="customerid"
               formControlName="platenumber"
             >
-              <!-- <mat-option value="02">02</mat-option> -->
               <mat-option [value]="v.platenumber" *ngFor="let v of vehcle">{{
                 v.platenumber
               }}</mat-option>
             </mat-select>
             <mat-error> Platenumber is required </mat-error>
-          </mat-form-field>
+          </mat-form-field> -->
         </div>
         <!-- <div class="col-sm-3">
           <div class="preview">

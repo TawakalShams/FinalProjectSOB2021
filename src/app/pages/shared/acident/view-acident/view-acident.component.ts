@@ -49,6 +49,7 @@ export class ViewAcidentComponent implements OnInit {
       this.rows = data.acident;
       this.filteredRows = data.acident;
       this.loading = false;
+      console.log(data);
     });
   }
 

@@ -110,56 +110,6 @@
           <mat-expansion-panel-header>
             <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
             <mat-icon>electric_car</mat-icon>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vehicle</p>
-          </mat-expansion-panel-header>
-          <button class="menu-item" mat-flat-button routerLink="vehicle">
-            <mat-icon>post_add</mat-icon>
-            Regstration
-          </button>
-          <button class="menu-item" mat-flat-button routerLink="viewvehicle">
-            <mat-icon>view_list</mat-icon>
-            View
-          </button>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <!-- ========================Customer============================= -->
-      <mat-accordion>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
-            <mat-icon>supervised_user_circle</mat-icon>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customer</p>
-          </mat-expansion-panel-header>
-          <button class="menu-item" mat-flat-button routerLink="customer">
-            <mat-icon>post_add</mat-icon>
-            Regstration
-          </button>
-          <button class="menu-item" mat-flat-button routerLink="viewcustomer">
-            <mat-icon>view_list</mat-icon>
-            View
-          </button>
-          <button
-            class="menu-item"
-            mat-flat-button
-            routerLink="viewcustomerpayment"
-          >
-            <mat-icon>account_balance_wallet</mat-icon>
-            View Payments
-          </button>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <!-- =========================insuarance============================ -->
-      <mat-accordion>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
-            <mat-icon>electric_car</mat-icon>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insuarance</p>
           </mat-expansion-panel-header>
           <button class="menu-item" mat-flat-button routerLink="insuarance">
@@ -170,8 +120,20 @@
             <mat-icon>view_list</mat-icon>
             View
           </button>
+          <button
+            class="menu-item"
+            mat-flat-button
+            routerLink="viewcustomerpayment"
+          >
+            <mat-icon>payment</mat-icon>
+            Payment
+          </button>
         </mat-expansion-panel>
       </mat-accordion>
+      <!-- ========================Customer============================= -->
+
+      <!-- =========================insuarance============================ -->
+
       <!-- ==============================Accident======================= -->
       <mat-accordion *ngIf="role == 'Admin'">
         <mat-expansion-panel

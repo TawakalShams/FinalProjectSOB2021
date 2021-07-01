@@ -32,11 +32,14 @@ export class ConfirmInsuaranceComponent implements OnInit {
     private dialogRef: MatDialogRef<ConfirmInsuaranceComponent>
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // console.log('DATS' + this.DATA);
+  }
 
   yes(insuaranceid: any) {
     insuaranceid = this.DATA;
     this.service.deleteInsuarance(insuaranceid).subscribe((data) => {
+      // console.log('DATS' + this.DATA);
       this.deteleData = data;
       if (this.deteleData) {
         this.toastr.success('Successfully to Delete', 'Successfully');

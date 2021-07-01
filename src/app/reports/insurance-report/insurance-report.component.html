@@ -19,7 +19,7 @@
       <address>
         <b><h2>Payment</h2></b> <br />
         <b>Customer:&nbsp;</b>{{ fullName | uppercase }}<br />
-        <b>Status:&nbsp;PAID FULL</b> <br />
+        <b>Amount:&nbsp;</b>TZS &nbsp;{{ amount | number }} /=<br />
         <b>Address:</b> {{ address | uppercase }} <br />
       </address>
     </div>
@@ -61,7 +61,7 @@
         <b>Platenumber:</b><br />{{ platenumber | uppercase }}
       </div>
       <div class="col-md-4"><b>Type:</b><br />{{ type | uppercase }}</div>
-      <div class="col-md-4"><b>Value:</b><br />Tzs {{ value | number }}</div>
+      <div class="col-md-4"><b>Value:</b><br />Tzs {{ value | number }}/=</div>
     </div>
     <div class="row">
       <div class="col-md-4"><b>Color:</b><br />{{ color | uppercase }}</div>
@@ -89,10 +89,22 @@
   </fieldset>
   <br /><br />
   <div class="row">
+    <div class="col-md-4"><b>Customer:</b>{{ fullName | uppercase }}</div>
+    <br />
+    <p>Sign.................................</p>
+  </div>
+
+  <div class="row">
     <div class="col-md-4"><b>Issued by:</b>{{ fullNameLogin | uppercase }}</div>
     <br />
     <p>Sign.................................</p>
     <br />
-    <div class="col-md-4"><b>Date and Time:</b>{{ created_at }}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <b><b>Date and Time:</b>:</b>
+    </div>
+    <br />
+    <div class="col-md-4">{{ created_at }}</div>
   </div>
 </div>

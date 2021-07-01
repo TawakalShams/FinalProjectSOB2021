@@ -52,7 +52,7 @@ export class UpdateCustomerComponent implements OnInit {
     address: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
 
-    vehicleid: new FormControl('', [Validators.required]),
+    platenumber: new FormControl('', [Validators.required]),
     created_by: new FormControl(),
   });
   actualAmount(): void {}
@@ -67,7 +67,7 @@ export class UpdateCustomerComponent implements OnInit {
         this.form.controls.dob.setValue(this.Datas.dob);
         this.form.controls.address.setValue(this.Datas.address);
         this.form.controls.phone.setValue(this.Datas.phone);
-        this.form.controls.vehicleid.setValue(this.Datas.vehicleid);
+        this.form.controls.platenumber.setValue(this.Datas.platenumber);
       });
   }
 

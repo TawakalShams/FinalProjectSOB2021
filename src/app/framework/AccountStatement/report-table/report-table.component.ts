@@ -20,12 +20,13 @@ export class ReportTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.viewPayment().subscribe((data: any) => {
-      this.payment = data.payment;
+      this.payment = data;
       this.sum = data.total_balance;
+      console.log(data);
     });
 
     this.service.viewPayInsuard().subscribe((data: any) => {
-      this.insuaredpayment = data.insuaredPay;
+      this.insuaredpayment = data;
       this.sum2 = data.total_balance;
 
       this.profiteLoss = this.sum - this.sum2;

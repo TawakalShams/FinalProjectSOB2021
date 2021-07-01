@@ -42,6 +42,8 @@ export class InsuranceReportComponent implements OnInit {
   model: any;
   chassiNumber: any;
   typeOfInsuarance: any;
+  fullNameCustomer: any;
+  amount: any;
 
   constructor(
     public dialog: MatDialog,
@@ -59,45 +61,50 @@ export class InsuranceReportComponent implements OnInit {
     this.fullNameLogin = decodedToken.fullName;
   }
   ngOnInit(): void {
-    this.getsinglecustomer();
+    // this.getsinglecustomer();
     const randam = (this.randam = Math.floor(Math.random() * this.max));
-    this.vehicle();
+    this.getSingleInsuarance();
+    // console.log(this.Datas);
   }
 
-  vehicle() {
-    const color = (this.color = this.Datas.color);
-    const platenumber = (this.platenumber = this.Datas.platenumber);
-    const value = (this.value = this.Datas.value);
-    const seat = (this.seat = this.Datas.seat);
-    const manufacture = (this.yearOfManufacture = this.Datas.yearOfManufacture);
-    const type = (this.type = this.Datas.type);
-    const fullName = (this.fullName = this.Datas.fullName);
-    const gender = (this.gender = this.Datas.gender);
-    const dob = (this.dob = this.Datas.dob);
-    const address = (this.address = this.Datas.address);
-    const phone = (this.phone = this.Datas.phone);
-    const date = (this.date = this.Datas.date);
-    const model = (this.model = this.Datas.model);
-    const chassiNumber = (this.chassiNumber = this.Datas.chassiNumber);
-    const startdate = (this.startdate = this.Datas.startdate);
+  getSingleInsuarance() {
+    const color = (this.color = this.Datas.insuarance.color);
+    const platenumber = (this.platenumber = this.Datas.insuarance.platenumber);
+    const value = (this.value = this.Datas.insuarance.value);
+    const seat = (this.seat = this.Datas.insuarance.seat);
+    const manufacture = (this.yearOfManufacture =
+      this.Datas.insuarance.yearOfManufacture);
+    const type = (this.type = this.Datas.insuarance.type);
+    const fullName = (this.fullName = this.Datas.insuarance.fullName);
+    const gender = (this.gender = this.Datas.insuarance.gender);
+    const dob = (this.dob = this.Datas.insuarance.dob);
+    const status = (this.amount = this.Datas.amount);
+
+    const address = (this.address = this.Datas.insuarance.address);
+    const phone = (this.phone = this.Datas.insuarance.phone);
+    const date = (this.date = this.Datas.insuarance.date);
+    const model = (this.model = this.Datas.insuarance.model);
+    const chassiNumber = (this.chassiNumber =
+      this.Datas.insuarance.chassiNumber);
+    const startdate = (this.startdate = this.Datas.insuarance.startdate);
     const typeOfInsuarance = (this.typeOfInsuarance =
-      this.Datas.typeOfInsuarance);
-    const starenddatetdate = (this.enddate = this.Datas.enddate);
-    const created_at = (this.created_at = this.Datas.created_at);
+      this.Datas.insuarance.typeOfInsuarance);
+    const starenddatetdate = (this.enddate = this.Datas.insuarance.enddate);
+    const created_at = (this.created_at = this.Datas.insuarance.create_at);
   }
 
-  getsinglecustomer() {
-    this.service
-      .getSingleCustomerReport(this.Datas.vehicleid)
-      .subscribe((data) => {
-        // console.log(data);
-        this.customerData = data;
-        const fullName = (this.fullName = this.customerData.customers.fullName);
-        // const value = (this.value = this.customerData.customers.value);
-        const address = (this.address = this.customerData.customers.address);
-        const gender = (this.gender = this.customerData.customers.gender);
-        const dob = (this.dob = this.customerData.customers.dob);
-        const phone = (this.phone = this.customerData.customers.phone);
-      });
-  }
+  // getsinglecustomer() {
+  //   this.service
+  //     .getSingleCustomerReport(this.Datas.vehicleid)
+  //     .subscribe((data) => {
+  //       console.log(data);
+  //       this.customerData = data;
+  //       // const fullName = (this.fullName = this.customerData.customers.fullName);
+  //       // const value = (this.value = this.customerData.customers.value);
+  //       const address = (this.address = this.customerData.customers.address);
+  //       const gender = (this.gender = this.customerData.customers.gender);
+  //       const dob = (this.dob = this.customerData.customers.dob);
+  //       const phone = (this.phone = this.customerData.customers.phone);
+  //     });
+  // }
 }
