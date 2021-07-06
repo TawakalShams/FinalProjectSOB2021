@@ -43,9 +43,10 @@ export class ViewPaymentPayedComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.viewPayInsuard().subscribe((data: any) => {
-      this.rows = data.insuaredPay;
-      this.filteredRows = data.insuaredPay;
+      this.rows = data.accident;
+      this.filteredRows = data.accident;
       this.loading = false;
+      // console.log(data);
     });
   }
 

@@ -8,7 +8,6 @@ import {
   sortRows,
 } from '@swimlane/ngx-datatable';
 import { ConfirmInsuaranceComponent } from 'src/app/dialog/confirm-insuarance/confirm-insuarance.component';
-import { ConfirmPaymentInsuaredComponent } from 'src/app/dialog/confirm-payment-insuared/confirm-payment-insuared.component';
 import { CustomerPaymentComponent } from 'src/app/dialog/customer-payment/customer-payment.component';
 import { UpdateInsuranceComponent } from 'src/app/dialog/update-insurance/update-insurance.component';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
@@ -63,6 +62,7 @@ export class ViewInsuaranceComponent implements OnInit {
       // console.log(data);
     });
   }
+
   fetch(cb: any) {
     const req = new XMLHttpRequest();
     req.open('GET', `assets/data/company.json`);
@@ -76,29 +76,42 @@ export class ViewInsuaranceComponent implements OnInit {
 
   updateFilter(event: any) {
     const val = event.target.value.toLowerCase();
+
     // filter our data
     this.filteredRows = this.rows.filter(function (d: any) {
       return d.fullName.toLowerCase().includes(val);
     });
+    // Whenever the filter changes, always go back to the first page
+    this.table.offset = 0;
   }
+  // fetch(cb: any) {
+  //   const req = new XMLHttpRequest();
+  //   req.open('GET', `assets/data/company.json`);
 
-  // deleteInsuarance(row: any) {
-  //   const dialogRef = this.dialog.open(ConfirmInsuaranceComponent, {
-  //     data: row,
-  //   });
-  //   // console.log(dialogRef);
+  //   req.onload = () => {
+  //     cb(JSON.parse(req.response));
+  //   };
+
+  //   req.send();
   // }
+
+  // updateFilter(event: any) {
+  //   const val = event.target.value.toLowerCase();
+
+  //   // filter our data
+  //   this.filteredRows = this.rows.filter(function (d: any) {
+  //     return d.platenumber.toLowerCase().includes(val);
+  //   });
+  //   // Whenever the filter changes, always go back to the first page
+  //   this.table.offset = 0;
+  // }
+
   deleteInsuarance(row: any) {
     const dialogRef = this.dialog.open(ConfirmInsuaranceComponent, {
       data: row,
     });
     // console.log(row);
   }
-  // edit(row: any) {
-  //   const dialogRef = this.dialog.open(UpdateInsuranceComponent, {
-  //     data: row,
-  //   });
-  // }
 
   edit(row: any) {
     const dialogRef = this.dialog.open(UpdateInsuranceComponent, {

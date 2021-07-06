@@ -29,7 +29,7 @@
           <mat-error> Email is required </mat-error>
         </mat-form-field>
       </div>
-      <div class="col-sm-4">
+      <!-- <div class="col-sm-4">
         <mat-form-field class="full-width-input">
           <input
             matInput
@@ -40,9 +40,7 @@
           />
           <mat-error> Password is required </mat-error>
         </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
+      </div> -->
       <div class="col-sm-4">
         <mat-form-field class="full-width-input">
           <input
@@ -55,6 +53,8 @@
           <mat-error> Addressis required </mat-error>
         </mat-form-field>
       </div>
+    </div>
+    <div class="row">
       <div class="col-sm-4">
         <mat-form-field class="full-width-input">
           <input
@@ -67,6 +67,7 @@
           <mat-error> Branch name is required </mat-error>
         </mat-form-field>
       </div>
+
       <div class="col-sm-4">
         <mat-form-field class="full-width-input">
           <input
@@ -77,6 +78,18 @@
             required
           />
           <mat-error> Date is required </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            placeholder="Gender"
+            formControlName="gender"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Gender is required </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -92,18 +105,6 @@
             required
           />
           <mat-error> Phone number is required </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="col-sm-4">
-        <mat-form-field class="full-width-input">
-          <input
-            matInput
-            placeholder="Gender"
-            formControlName="gender"
-            autocomplete="off"
-            required
-          />
-          <mat-error> Gender is required </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -134,14 +135,7 @@
         Update
       </button>
       &nbsp;&nbsp;
-      <button
-        mat-raised-button
-        color="warn"
-        mat-dialog-close
-        routerLink="agent"
-      >
-        Cancel
-      </button>
+      <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
     </div>
   </form>
 </mat-dialog-content>

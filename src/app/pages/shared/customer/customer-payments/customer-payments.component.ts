@@ -61,6 +61,7 @@ export class CustomerPaymentsComponent implements OnInit {
       }, 2000);
     });
   }
+
   fetch(cb: any) {
     const req = new XMLHttpRequest();
     req.open('GET', `assets/data/company.json`);
@@ -77,7 +78,7 @@ export class CustomerPaymentsComponent implements OnInit {
 
     // filter our data
     this.filteredRows = this.rows.filter(function (d: any) {
-      return d.fullName.toLowerCase().includes(val);
+      return d.platenumber.toLowerCase().includes(val);
     });
     // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;
@@ -87,6 +88,7 @@ export class CustomerPaymentsComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeletePaymentComponent, {
       data: rows,
     });
+    console.log(rows);
   }
 
   Print(row: any) {

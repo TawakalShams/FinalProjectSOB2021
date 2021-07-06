@@ -50,7 +50,7 @@ export class AgentComponent implements OnInit {
   form = new FormGroup({
     fullName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+    // password: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
     branch: new FormControl('', [Validators.required]),
     dob: new FormControl('', [Validators.required]),
@@ -72,7 +72,7 @@ export class AgentComponent implements OnInit {
         const agent = data.agents;
         this.form.controls.fullName.setValue(agent.fullName);
         this.form.controls.email.setValue(agent.email);
-        this.form.controls.password.setValue(agent.password);
+        // this.form.controls.password.setValue(agent.password);
         this.form.controls.address.setValue(agent.address);
         this.form.controls.branch.setValue(agent.branch);
         this.form.controls.dob.setValue(agent.dob);

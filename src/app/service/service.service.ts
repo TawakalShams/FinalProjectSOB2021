@@ -97,20 +97,20 @@ export class ServiceService {
 
   // =============================Acident CRUD======================================
   createAcident(data: any): Observable<any> {
-    return this.httpClient.post(baseUrl + '/acident', data);
+    return this.httpClient.post(baseUrl + '/accident', data);
   }
   viewAcident() {
-    return this.httpClient.get(baseUrl + '/acident');
+    return this.httpClient.get(baseUrl + '/accident');
   }
 
   getSingleAcident(acidentid: any) {
-    return this.httpClient.get(baseUrl + '/acident' + '/' + acidentid);
+    return this.httpClient.get(baseUrl + '/accident' + '/' + acidentid);
   }
   updateAcident(acidentid: any, data: any) {
-    return this.httpClient.put(baseUrl + '/acident' + '/' + acidentid, data);
+    return this.httpClient.put(baseUrl + '/accident' + '/' + acidentid, data);
   }
   deleteAcident(acidentid: any) {
-    return this.httpClient.delete(baseUrl + '/acident' + '/' + acidentid);
+    return this.httpClient.delete(baseUrl + '/accident' + '/' + acidentid);
   }
   // =============================PayInsuared CRUD======================================
   createPayInsuard(data: any): Observable<any> {
@@ -149,8 +149,8 @@ export class ServiceService {
   updatePayment(paymentId: any, data: any) {
     return this.httpClient.put(baseUrl + '/payment' + '/' + paymentId, data);
   }
-  deletePayment(paymentId: any) {
-    return this.httpClient.delete(baseUrl + '/payment' + '/' + paymentId);
+  deletePayment(paymentid: any) {
+    return this.httpClient.delete(baseUrl + '/payment' + '/' + paymentid);
   }
 
   // =============================Customers CRUD======================================

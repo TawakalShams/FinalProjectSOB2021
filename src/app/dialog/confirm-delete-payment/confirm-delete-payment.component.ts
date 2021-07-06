@@ -17,7 +17,7 @@ import { ServiceService } from 'src/app/service/service.service';
 })
 export class ConfirmDeletePaymentComponent implements OnInit {
   deteleData: any;
-  paymentId: any;
+  paymentid: any;
   customerid: any;
   @ViewChild('myTable') myTable: any;
   @ViewChild('ngxDatatable')
@@ -38,9 +38,11 @@ export class ConfirmDeletePaymentComponent implements OnInit {
     // console.log('Datas' + this.Datas);
   }
 
-  yes(customerid: any) {
-    customerid = this.Datas;
-    this.service.deletePayment(customerid).subscribe((data) => {
+  yes(paymentid: any) {
+    paymentid = this.Datas;
+    console.log(this.Datas);
+    this.service.deletePayment(paymentid).subscribe((data) => {
+      console.log(data);
       this.deteleData = this.Datas;
       if (this.deteleData) {
         this.toastr.success(' Successfully to Delete', 'Successfully');
@@ -51,7 +53,7 @@ export class ConfirmDeletePaymentComponent implements OnInit {
           .then(() => {
             this.router.navigate(['viewcustomerpayment']);
           });
-        this.dialogRef.close({ customerid });
+        this.dialogRef.close({ paymentid });
       } else {
         this.toastr.error('Not Successfully to Delete', 'Error');
       }

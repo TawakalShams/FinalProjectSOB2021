@@ -27,6 +27,7 @@ export class AcidentComponent implements OnInit {
   url = '';
   url2 = '';
   url3 = '';
+  // platenumber: any;
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize | undefined;
 
@@ -42,25 +43,30 @@ export class AcidentComponent implements OnInit {
     this.fullName = decodedToken.fullName;
   }
   ngOnInit(): void {
-    this.filteredOptions = this.service
-      .viewVehicles()
-      .pipe(map((data) => data.vehicles.map((item: any) => item.platenumber)));
+    // this.service.viewInsuarance().subscribe((data) => {
+    //   console.log(data);
+    // });
+    // this.filteredOptions =
+    //  this.service
+    //    .viewInsuarance()
+    //    .pipe(map((data) => data.map((item: any) => item.platenumber)));
 
     this.filteredOptions = this.platenumber.valueChanges.pipe(
       startWith(''),
       map((value: any) => this._filter(value))
     );
 
-    this.service.vehiclesPayed().subscribe((data: any) => {
-      this.vehcle = data.vehicles;
-      this.options = data.vehicles.map((item: any) => item.platenumber);
+    this.service.viewInsuarance().subscribe((data: any) => {
+      // this.vehcle = data;
       // console.log(data);
+      this.options = data.map((item: any) => item.platenumber);
+      // console.log('option' + this.options);
     });
 
-    this.service.vehiclesPayed().subscribe((data: any) => {
-      this.vehcle = data.vehicles;
-      // console.log(data);
-    });
+    // this.service.vehiclesPayed().subscribe((data: any) => {
+    //   this.vehcle = data.vehicles;
+    //   // console.log(data);
+    // });
   }
 
   selectimage1(event: any) {
@@ -70,7 +76,7 @@ export class AcidentComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {
         this.url = event.target.result;
-        console.log(event);
+        // console.log(event);
       };
     }
   }
@@ -111,19 +117,20 @@ export class AcidentComponent implements OnInit {
   }
   onSubmit() {
     this.form.controls.platenumber.setValue(this.platenumber.value);
+    console.log(this.form.value);
 
-    // this.service.createAcident(this.form.value).subscribe(
-    //   (res) => {
-    //     this.toastr.success(' Successfully', 'Successfully');
-    //     this.router
-    //       .navigateByUrl('/', { skipLocationChange: true })
-    //       .then(() => {
-    //         this.router.navigate(['acident']);
-    //       });
-    //   },
-    //   (error) => {
-    //     this.toastr.error('Platenumber is already verified', 'Error');
-    //   }
-    // );
+    this.service.createAcident(this.form.value).subscribe(
+      (res) => {
+        this.toastr.success(' Successfully', 'Successfully');
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['accident']);
+          });
+      },
+      (error) => {
+        this.toastr.error('Platenumber is already verified', 'Error');
+      }
+    );
   }
 }

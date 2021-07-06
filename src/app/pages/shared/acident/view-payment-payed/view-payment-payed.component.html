@@ -34,8 +34,12 @@
             {{ rowIndex + 1 }}
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="FullName"> </ngx-datatable-column>
-        <ngx-datatable-column name="Address"> </ngx-datatable-column>
+        <ngx-datatable-column name="FullName" prop="insuarance.fullName">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Address" prop="insuarance.address">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Phone" prop="insuarance.phone">
+        </ngx-datatable-column>
         <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
         <ngx-datatable-column name="Amount"> </ngx-datatable-column>
       </ngx-datatable>

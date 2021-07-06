@@ -62,7 +62,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'acident',
+        path: 'accident',
         component: AcidentComponent,
         canActivate: [AuthGuard],
       },

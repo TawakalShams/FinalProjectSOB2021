@@ -22,7 +22,7 @@ export class ReportTableComponent implements OnInit {
     this.service.viewPayment().subscribe((data: any) => {
       this.payment = data;
       this.sum = data.total_balance;
-      console.log(data);
+      // console.log(data);
     });
 
     this.service.viewPayInsuard().subscribe((data: any) => {

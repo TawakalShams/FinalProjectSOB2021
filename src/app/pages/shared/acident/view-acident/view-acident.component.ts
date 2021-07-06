@@ -46,8 +46,8 @@ export class ViewAcidentComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.viewAcident().subscribe((data: any) => {
-      this.rows = data.acident;
-      this.filteredRows = data.acident;
+      this.rows = data;
+      this.filteredRows = data;
       this.loading = false;
       console.log(data);
     });
