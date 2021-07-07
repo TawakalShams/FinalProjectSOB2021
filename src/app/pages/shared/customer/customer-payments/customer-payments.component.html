@@ -42,28 +42,6 @@
         <ngx-datatable-column name="Platenumber" prop="insuarance.platenumber">
         </ngx-datatable-column>
         <ngx-datatable-column name="'Amount"> </ngx-datatable-column>
-        <!-- <ngx-datatable-column name="Action" *ngIf="role == 'Admin'">
-          <ng-template
-            let-row="row"
-            let-value="value"
-            ngx-datatable-cell-template
-          >
-            <div class="row">
-              <div>
-                <a
-                  class="btn"
-                  mat-icon-button
-                  color="warn"
-                  (click)="delete(row.customerid)"
-                  type="button"
-                  matTooltip="Delete"
-                >
-                  <mat-icon>delete</mat-icon>
-                </a>
-              </div>
-            </div>
-          </ng-template>
-        </ngx-datatable-column> -->
         <ngx-datatable-column name="Action">
           <ng-template
             let-row="row"

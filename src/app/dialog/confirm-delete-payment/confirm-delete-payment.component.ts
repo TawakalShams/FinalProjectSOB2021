@@ -40,9 +40,9 @@ export class ConfirmDeletePaymentComponent implements OnInit {
 
   yes(paymentid: any) {
     paymentid = this.Datas;
-    console.log(this.Datas);
+    // console.log(this.Datas);
     this.service.deletePayment(paymentid).subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.deteleData = this.Datas;
       if (this.deteleData) {
         this.toastr.success(' Successfully to Delete', 'Successfully');

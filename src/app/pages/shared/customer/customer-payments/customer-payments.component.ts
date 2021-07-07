@@ -88,7 +88,7 @@ export class CustomerPaymentsComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeletePaymentComponent, {
       data: rows,
     });
-    console.log(rows);
+    // console.log(rows);
   }
 
   Print(row: any) {

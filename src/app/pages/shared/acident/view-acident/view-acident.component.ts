@@ -49,7 +49,7 @@ export class ViewAcidentComponent implements OnInit {
       this.rows = data;
       this.filteredRows = data;
       this.loading = false;
-      console.log(data);
+      // console.log(data);
     });
   }
 
@@ -79,15 +79,7 @@ export class ViewAcidentComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeleteAcidentComponent, {
       data: row,
     });
-
-    // if (dialogRef) {
-    //   dialogRef.afterClosed().subscribe(({ acidentid }) => {
-    //     this.filteredRows = this.filteredRows.filter(
-    //       //delete auto removed
-    //       (row) => row.acidentid !== acidentid
-    //     );
-    //   });
-    // }
+    console.log(row);
   }
   edit(row: any) {
     const dialogRef = this.dialog.open(UpdateAcidentComponent, {

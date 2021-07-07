@@ -42,10 +42,12 @@ export class UpdateAcidentComponent implements OnInit {
   form = new FormGroup({
     platenumber: new FormControl('', [Validators.required]),
     typeofacident: new FormControl('', [Validators.required]),
+    policeReportNo: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
 
   ngOnInit(): void {
+    // console.log(this.Datas);
     this.ViewSingVehicle();
     const customerid = this.Datas.customerid;
   }
@@ -56,6 +58,7 @@ export class UpdateAcidentComponent implements OnInit {
         const vehicles = data.vehicles;
         this.form.controls.platenumber.setValue(this.Datas.platenumber);
         this.form.controls.typeofacident.setValue(this.Datas.typeofacident);
+        this.form.controls.policeReportNo.setValue(this.Datas.policeReportNo);
         this.form.updateValueAndValidity();
       });
   }
@@ -67,7 +70,7 @@ export class UpdateAcidentComponent implements OnInit {
       const acidentid = this.Datas.acidentid;
       this.toastr.success('Updated', 'Successfully');
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['viewacident']);
+        this.router.navigate(['accident']);
       });
       this.dialogRef.close({ acidentid });
     }
