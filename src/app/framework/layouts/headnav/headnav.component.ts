@@ -9,6 +9,8 @@ import {
   MatTreeFlattener,
 } from '@angular/material/tree';
 import { FlatTreeControl } from '@angular/cdk/tree';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangePasswordComponent } from 'src/app/dialog/change-password/change-password.component';
 
 interface FoodNode {
   name: string;
@@ -62,22 +64,27 @@ export class HeadnavComponent implements OnInit {
   fullName?: string;
   role?: string;
   email?: string;
+  id?: string;
 
   constructor(
     private helper: JwtHelperService,
     private service: ServiceService,
     private router: Router,
-    public toggler: TogglerService
+    public toggler: TogglerService,
+    public dialog: MatDialog
   ) {
     const token = localStorage.getItem('token');
     const decodedToken: DecodedToken = helper.decodeToken(token as string);
+    this.id = decodedToken.id;
     this.fullName = decodedToken.fullName;
     this.role = decodedToken.role;
     this.email = decodedToken.email;
     this.dataSource.data = TREE_DATA;
   }
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // console.log(this.id);
+  }
 
   isMenuOpen = true;
   contentMargin = 240;
@@ -93,6 +100,11 @@ export class HeadnavComponent implements OnInit {
   }
 
   ngOnDestroy() {}
+  ChangePasswordAdmin() {
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      // data: row,
+    });
+  }
 
   get isLoggedIn() {
     return this.service.isLoggedIn();

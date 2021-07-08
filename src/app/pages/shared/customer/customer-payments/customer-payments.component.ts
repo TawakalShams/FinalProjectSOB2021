@@ -52,8 +52,7 @@ export class CustomerPaymentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.viewPayment().subscribe((data: any) => {
-      // console.log(data);
-      // console.log((this.rows = data.payment));
+      // console.log(data.insuarance);
       this.rows = data.insuarance;
       this.filteredRows = data.insuarance;
       setTimeout(() => {
@@ -75,11 +74,11 @@ export class CustomerPaymentsComponent implements OnInit {
 
   updateFilter(event: any) {
     const val = event.target.value.toLowerCase();
-
     // filter our data
     this.filteredRows = this.rows.filter(function (d: any) {
       return d.platenumber.toLowerCase().includes(val);
     });
+
     // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;
   }

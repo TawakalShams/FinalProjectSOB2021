@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface DecodedToken {
+  id?: string;
   fullName?: string;
   role?: string;
   email?: string;

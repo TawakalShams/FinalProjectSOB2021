@@ -30,6 +30,13 @@ export class ServiceService {
     }),
   };
 
+  // =========================CHANGE PASSWORD=====================================
+  // changePassword(id: any, data:any): Observable<any> {
+  //   return this.httpClient.post(baseUrl + '/changePassword' + '/' + id, data);
+  // }
+  changePassword(id: any, data: any) {
+    return this.httpClient.put(baseUrl + '/changePassword' + '/' + id, data);
+  }
   // =========================AGENT CRUD=====================================
   createAgent(data: any): Observable<any> {
     return this.httpClient.post(baseUrl + '/agents', data);

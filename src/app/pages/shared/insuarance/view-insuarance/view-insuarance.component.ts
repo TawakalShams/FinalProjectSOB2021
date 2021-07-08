@@ -59,7 +59,7 @@ export class ViewInsuaranceComponent implements OnInit {
       this.rows = data;
       this.filteredRows = data;
       this.loading = false;
-      // console.log(data);
+      console.log(data);
     });
   }
 
@@ -79,7 +79,7 @@ export class ViewInsuaranceComponent implements OnInit {
 
     // filter our data
     this.filteredRows = this.rows.filter(function (d: any) {
-      return d.fullName.toLowerCase().includes(val);
+      return d.platenumber.toLowerCase().includes(val);
     });
     // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;

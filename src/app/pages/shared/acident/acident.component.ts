@@ -43,14 +43,6 @@ export class AcidentComponent implements OnInit {
     this.fullName = decodedToken.fullName;
   }
   ngOnInit(): void {
-    // this.service.viewInsuarance().subscribe((data) => {
-    //   console.log(data);
-    // });
-    // this.filteredOptions =
-    //  this.service
-    //    .viewInsuarance()
-    //    .pipe(map((data) => data.map((item: any) => item.platenumber)));
-
     this.filteredOptions = this.platenumber.valueChanges.pipe(
       startWith(''),
       map((value: any) => this._filter(value))
@@ -62,16 +54,11 @@ export class AcidentComponent implements OnInit {
       this.options = data.map((item: any) => item.platenumber);
       // console.log('option' + this.options);
     });
-
-    // this.service.vehiclesPayed().subscribe((data: any) => {
-    //   this.vehcle = data.vehicles;
-    //   // console.log(data);
-    // });
   }
 
   selectimage1(event: any) {
     // console.log(event);
-    if (event.target.files) {
+    if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {
@@ -81,7 +68,7 @@ export class AcidentComponent implements OnInit {
     }
   }
   selectimage2(event: any) {
-    if (event.target.files) {
+    if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {
@@ -90,7 +77,7 @@ export class AcidentComponent implements OnInit {
     }
   }
   selectimage3(event: any) {
-    if (event.target.files) {
+    if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {

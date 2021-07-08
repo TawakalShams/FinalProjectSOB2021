@@ -2,189 +2,184 @@
 <mat-toolbar id="mainToolbar" color="primary">
   <mat-icon (click)="onToolbarMenuToggle()" id="toolbarMenu">subject</mat-icon>
   Insuarance Management System (Motor Vehicles)
-
-  <!-- <mat-list-item *ngIf="isLoggedIn">
-    <button class="menu-item" mat-flat-button (click)="logout()">
-      <mat-icon>logout</mat-icon>
-    </button>
-  </mat-list-item> -->
-
+  <!-- Change Password Admin -->
   <span class="toolbar-spacer"></span>
-  <mat-icon
-    class="toolbar-icon"
-    matBadgePosition="after"
-    matBadgeColor="accent"
-    (click)="logout()"
-    >logout</mat-icon
-  >
+  <div>
+    <button
+      matBadgePosition="after"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="ChangePasswordAdmin()">
+        <mat-icon>settings</mat-icon>
+        <span>Change password</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon
+          class="toolbar-icon"
+          matBadgePosition="after"
+          matBadgeColor="accent"
+          ><span class="material-icons"> power_settings_new </span></mat-icon
+        >logout
+      </button>
+    </mat-menu>
+  </div>
+
+  <!-- Change Password Agent -->
+  <!-- <div *ngIf="role == 'Agent'">
+    <button
+      matBadgePosition="after"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon
+          class="toolbar-icon"
+          matBadgePosition="after"
+          matBadgeColor="accent"
+          ><span class="material-icons"> power_settings_new </span></mat-icon
+        >logout
+      </button>
+    </mat-menu>
+  </div> -->
+
+  <!-- End header -->
+
+  <mat-sidenav-container id="sidenavContainer" fullscreen>
+    <mat-sidenav
+      mode="side"
+      #sidenav
+      id="sidenav"
+      [class.menu-open]="isMenuOpen"
+      [class.menu-close]="!isMenuOpen"
+      opened
+    >
+      <mat-list id="menus">
+        <mat-card>
+          <mat-card-header
+            style="
+              font-family: 'Courier New', Courier, monospace;
+              margin-left: -32px;
+            "
+          >
+            <mat-card-title>{{ fullName }}</mat-card-title>
+            <mat-card-subtitle>{{ role }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ email }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+
+        <mat-list-item>
+          <button class="menu-item" mat-flat-button routerLink="/">
+            <mat-icon>dashboard</mat-icon>
+            Dashboard
+          </button>
+        </mat-list-item>
+
+        <!-- =======================================end======================== -->
+        <mat-accordion *ngIf="role == 'Admin'">
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
+              <mat-icon>supervised_user_circle</mat-icon>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agent</p>
+            </mat-expansion-panel-header>
+            <button class="menu-item" mat-flat-button routerLink="agent">
+              <mat-icon>post_add</mat-icon>
+              Regstration
+            </button>
+            <button class="menu-item" mat-flat-button routerLink="viewagent">
+              <mat-icon>view_list</mat-icon>
+              View
+            </button>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <!-- ======================Vehicle=============================== -->
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
+              <mat-icon>electric_car</mat-icon>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insuarance</p>
+            </mat-expansion-panel-header>
+            <button class="menu-item" mat-flat-button routerLink="insuarance">
+              <mat-icon>post_add</mat-icon>
+              Regstration
+            </button>
+            <button
+              class="menu-item"
+              mat-flat-button
+              routerLink="viewinsuarance"
+            >
+              <mat-icon>view_list</mat-icon>
+              View
+            </button>
+            <button
+              class="menu-item"
+              mat-flat-button
+              routerLink="viewcustomerpayment"
+            >
+              <mat-icon>payment</mat-icon>
+              Payment
+            </button>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <!-- ==============================Accident======================= -->
+        <div *ngIf="role == 'Admin'">
+          <mat-accordion>
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false"
+            >
+              <mat-expansion-panel-header>
+                <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
+                <mat-icon>electric_car</mat-icon>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accident</p>
+              </mat-expansion-panel-header>
+
+              <button class="menu-item" mat-flat-button routerLink="accident">
+                <mat-icon>post_add</mat-icon>
+                Regstration
+              </button>
+              <button
+                class="menu-item"
+                mat-flat-button
+                routerLink="viewacident"
+              >
+                <mat-icon>view_list</mat-icon>
+                View
+              </button>
+              <button
+                class="menu-item"
+                mat-flat-button
+                routerLink="viewinsuaredpayment"
+              >
+                <mat-icon>account_balance_wallet</mat-icon>
+                View Payments
+              </button>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <!-- ===================================================== -->
+      </mat-list>
+      <!-- ============================================= -->
+    </mat-sidenav>
+    <mat-sidenav-content [ngStyle]="{ 'margin-left.px': contentMargin }">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!--    sales-->
 </mat-toolbar>
-<!-- End header -->
-
-<mat-sidenav-container id="sidenavContainer" fullscreen>
-  <mat-sidenav
-    mode="side"
-    #sidenav
-    id="sidenav"
-    [class.menu-open]="isMenuOpen"
-    [class.menu-close]="!isMenuOpen"
-    opened
-  >
-    <mat-list id="menus">
-      <mat-card>
-        <mat-card-header style="font-family: 'Courier New', Courier, monospace">
-          <mat-card-title>{{ fullName }}</mat-card-title>
-          <mat-card-subtitle>{{ role }}</mat-card-subtitle>
-          <mat-card-subtitle style="margin-right: 5%">{{
-            email
-          }}</mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-
-      <mat-list-item>
-        <button class="menu-item" mat-flat-button routerLink="/">
-          <mat-icon>dashboard</mat-icon>
-          Dashboard
-        </button>
-      </mat-list-item>
-
-      <!-- <mat-list-item *ngIf="role == 'Admin'">
-        <button class="menu-item" mat-flat-button routerLink="agent">
-          <mat-icon>supervised_user_circle</mat-icon>
-          Agents
-        </button>
-      </mat-list-item>
-
-      <mat-list-item>
-        <button class="menu-item" mat-flat-button routerLink="vehicle">
-          <mat-icon>electric_car</mat-icon>
-          Vehicle
-        </button>
-      </mat-list-item>
-
-      <mat-list-item>
-        <button class="menu-item" mat-flat-button routerLink="customer">
-          <mat-icon>supervised_user_circle</mat-icon>
-          Customer
-        </button>
-      </mat-list-item> -->
-      <!-- 
-      <mat-list-item>
-        <button class="menu-item" mat-flat-button routerLink="insuarance">
-          <mat-icon>style</mat-icon>
-          Insuarance
-        </button>
-      </mat-list-item>
-      <mat-list-item *ngIf="role == 'Admin'">
-        <button class="menu-item" mat-flat-button routerLink="acident">
-          <mat-icon>style</mat-icon>
-          Accident
-        </button>
-      </mat-list-item> -->
-      <!-- =======================================end======================== -->
-      <mat-accordion *ngIf="role == 'Admin'">
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
-            <mat-icon>supervised_user_circle</mat-icon>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agent</p>
-          </mat-expansion-panel-header>
-          <button class="menu-item" mat-flat-button routerLink="agent">
-            <mat-icon>post_add</mat-icon>
-            Regstration
-          </button>
-          <button class="menu-item" mat-flat-button routerLink="viewagent">
-            <mat-icon>view_list</mat-icon>
-            View
-          </button>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <!-- ======================Vehicle=============================== -->
-      <mat-accordion>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
-            <mat-icon>electric_car</mat-icon>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insuarance</p>
-          </mat-expansion-panel-header>
-          <button class="menu-item" mat-flat-button routerLink="insuarance">
-            <mat-icon>post_add</mat-icon>
-            Regstration
-          </button>
-          <button class="menu-item" mat-flat-button routerLink="viewinsuarance">
-            <mat-icon>view_list</mat-icon>
-            View
-          </button>
-          <button
-            class="menu-item"
-            mat-flat-button
-            routerLink="viewcustomerpayment"
-          >
-            <mat-icon>payment</mat-icon>
-            Payment
-          </button>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <!-- ========================Customer============================= -->
-
-      <!-- =========================insuarance============================ -->
-
-      <!-- ==============================Accident======================= -->
-      <mat-accordion *ngIf="role == 'Admin'">
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
-        >
-          <mat-expansion-panel-header>
-            <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
-            <mat-icon>electric_car</mat-icon>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accident</p>
-          </mat-expansion-panel-header>
-          <button class="menu-item" mat-flat-button routerLink="accident">
-            <mat-icon>post_add</mat-icon>
-            Regstration
-          </button>
-          <button class="menu-item" mat-flat-button routerLink="viewacident">
-            <mat-icon>view_list</mat-icon>
-            View
-          </button>
-          <button
-            class="menu-item"
-            mat-flat-button
-            routerLink="viewinsuaredpayment"
-          >
-            <mat-icon>account_balance_wallet</mat-icon>
-            View Payments
-          </button>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <!-- ===================================================== -->
-      <!-- ===================================================== -->
-    </mat-list>
-
-    <!-- <ul class="navbar-nav ml-auto">
-  <li class="nav-item dropdown">
-      <button mat-button [matMenuTriggerFor]="admin">ADMIN</button>
-      <mat-menu #admin="matMenu">
-        <button mat-menu-item>User Management</button>
-      </mat-menu>
-  </li>
-  <li class="nav-item dropdown">
-      <button mat-button [matMenuTriggerFor]="profile">PROFILE</button>
-      <mat-menu #profile="matMenu">
-        <button mat-menu-item>Change Password</button>
-        <button mat-menu-item>Logout</button>
-      </mat-menu>
-  </li> -->
-    <!-- ============================================= -->
-  </mat-sidenav>
-  <mat-sidenav-content [ngStyle]="{ 'margin-left.px': contentMargin }">
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-<!--    sales-->

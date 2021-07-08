@@ -61,6 +61,8 @@ export class ViewcustomerComponent implements OnInit {
       // console.log(data);
     });
     this.status();
+
+    // console.log(this.rows);
   }
   fetch(cb: any) {
     const req = new XMLHttpRequest();
@@ -75,7 +77,6 @@ export class ViewcustomerComponent implements OnInit {
 
   updateFilter(event: any) {
     const val = event.target.value.toLowerCase();
-
     // filter our data
     this.filteredRows = this.rows.filter(function (d: any) {
       return d.fullName.toLowerCase().includes(val);
