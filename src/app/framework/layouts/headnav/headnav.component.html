@@ -84,6 +84,20 @@
         </mat-list-item>
 
         <!-- =======================================end======================== -->
+        <!-- <div>
+          <button class="menu-item" mat-flat-button routerLink="agent">
+            <mat-icon>post_add</mat-icon>
+            Regstration
+          </button>
+        </div>
+        <div>
+          <button class="menu-item" mat-flat-button routerLink="viewagent">
+            <mat-icon>view_list</mat-icon>
+            View
+          </button>
+        </div>
+        <hr /> -->
+        <!-- // -->
         <mat-accordion *ngIf="role == 'Admin'">
           <mat-expansion-panel
             (opened)="panelOpenState = true"
@@ -94,14 +108,18 @@
               <mat-icon>supervised_user_circle</mat-icon>
               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agent</p>
             </mat-expansion-panel-header>
-            <button class="menu-item" mat-flat-button routerLink="agent">
-              <mat-icon>post_add</mat-icon>
-              Regstration
-            </button>
-            <button class="menu-item" mat-flat-button routerLink="viewagent">
-              <mat-icon>view_list</mat-icon>
-              View
-            </button>
+            <div>
+              <button class="menu-item" mat-flat-button routerLink="agent">
+                <mat-icon>post_add</mat-icon>
+                Regstration
+              </button>
+            </div>
+            <div>
+              <button class="menu-item" mat-flat-button routerLink="viewagent">
+                <mat-icon>view_list</mat-icon>
+                View
+              </button>
+            </div>
           </mat-expansion-panel>
         </mat-accordion>
         <!-- ======================Vehicle=============================== -->
@@ -115,26 +133,32 @@
               <mat-icon>electric_car</mat-icon>
               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insuarance</p>
             </mat-expansion-panel-header>
-            <button class="menu-item" mat-flat-button routerLink="insuarance">
-              <mat-icon>post_add</mat-icon>
-              Regstration
-            </button>
-            <button
-              class="menu-item"
-              mat-flat-button
-              routerLink="viewinsuarance"
-            >
-              <mat-icon>view_list</mat-icon>
-              View
-            </button>
-            <button
-              class="menu-item"
-              mat-flat-button
-              routerLink="viewcustomerpayment"
-            >
-              <mat-icon>payment</mat-icon>
-              Payment
-            </button>
+            <div>
+              <button class="menu-item" mat-flat-button routerLink="insuarance">
+                <mat-icon>post_add</mat-icon>
+                Regstration
+              </button>
+            </div>
+            <div>
+              <button
+                class="menu-item"
+                mat-flat-button
+                routerLink="viewinsuarance"
+              >
+                <mat-icon>view_list</mat-icon>
+                View
+              </button>
+            </div>
+            <div>
+              <button
+                class="menu-item"
+                mat-flat-button
+                routerLink="viewcustomerpayment"
+              >
+                <mat-icon>payment</mat-icon>
+                Payment
+              </button>
+            </div>
           </mat-expansion-panel>
         </mat-accordion>
         <!-- ==============================Accident======================= -->
@@ -150,26 +174,32 @@
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accident</p>
               </mat-expansion-panel-header>
 
-              <button class="menu-item" mat-flat-button routerLink="accident">
-                <mat-icon>post_add</mat-icon>
-                Regstration
-              </button>
-              <button
-                class="menu-item"
-                mat-flat-button
-                routerLink="viewacident"
-              >
-                <mat-icon>view_list</mat-icon>
-                View
-              </button>
-              <button
-                class="menu-item"
-                mat-flat-button
-                routerLink="viewinsuaredpayment"
-              >
-                <mat-icon>account_balance_wallet</mat-icon>
-                View Payments
-              </button>
+              <div>
+                <button class="menu-item" mat-flat-button routerLink="accident">
+                  <mat-icon>post_add</mat-icon>
+                  Regstration
+                </button>
+              </div>
+              <div>
+                <button
+                  class="menu-item"
+                  mat-flat-button
+                  routerLink="viewacident"
+                >
+                  <mat-icon>view_list</mat-icon>
+                  View
+                </button>
+              </div>
+              <div>
+                <button
+                  class="menu-item"
+                  mat-flat-button
+                  routerLink="viewinsuaredpayment"
+                >
+                  <mat-icon>account_balance_wallet</mat-icon>
+                  View Payments
+                </button>
+              </div>
             </mat-expansion-panel>
           </mat-accordion>
         </div>

@@ -1,5 +1,10 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpRequest,
+  HttpEvent,
+} from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { ImsModule } from '../module/ims/ims.module';
 import { baseUrl } from 'src/environments/environment';
@@ -102,6 +107,22 @@ export class ServiceService {
     return this.httpClient.delete(baseUrl + '/insuarance' + '/' + insuaranceid);
   }
 
+  // =============================IMAGE======================================
+  getFiles(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/files`);
+  }
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
+
+    return this.http.request(req);
+  }
   // =============================Acident CRUD======================================
   createAcident(data: any): Observable<any> {
     return this.httpClient.post(baseUrl + '/accident', data);

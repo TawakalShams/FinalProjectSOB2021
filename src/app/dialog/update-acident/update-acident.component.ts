@@ -21,6 +21,8 @@ export class UpdateAcidentComponent implements OnInit {
   fullName: any;
   role: string | undefined;
   customerid: any;
+  image1: any;
+
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA)

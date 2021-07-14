@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   returnUrl!: string;
   error: {} | undefined;
   loginError!: string;
+  hide = true;
 
   constructor(
     private router: Router,

@@ -23,7 +23,12 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { MatAccordionHarness } from '@angular/material/expansion/testing';
+// import { MatExpansionModule } from '@angular/material/expansion';
 const MaterialComponents = [
+  // MatAccordionHarness,
+  CdkAccordionModule,
   MatButtonModule,
   MatDialogModule,
   MatButtonToggleModule,

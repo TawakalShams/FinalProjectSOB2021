@@ -10,11 +10,7 @@
       fxLayout="column"
       class="login-form"
       [formGroup]="loginForm"
-      (ngSubmit)="onSubmit()"
     >
-      <!-- <mat-error *ngIf="loginInvalid">
-            The username and password were not recognised
-          </mat-error> -->
       <mat-form-field class="full-width-input">
         <input
           matInput
@@ -23,20 +19,37 @@
           autocomplete="off"
           required
         />
+        <!-- <span matPrefix> <mat-icon>mail_outline &nbsp;</mat-icon></span> -->
         <mat-error> Please enter email address </mat-error>
       </mat-form-field>
+
       <mat-form-field class="full-width-input">
         <input
           matInput
-          type="password"
+          [type]="hide ? 'password' : 'text'"
           placeholder="Password"
           formControlName="password"
           autocomplete="off"
           required
         />
+        <!-- <span matPrefix> <mat-icon>https &nbsp;</mat-icon></span> -->
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
         <mat-error> Please enter password </mat-error> </mat-form-field
       ><br />
-      <button mat-raised-button color="primary" [disabled]="loginForm.invalid">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="loginForm.invalid"
+        (click)="onSubmit()"
+      >
         Login
       </button>
     </form>

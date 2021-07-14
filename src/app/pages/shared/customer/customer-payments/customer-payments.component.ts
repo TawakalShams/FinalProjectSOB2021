@@ -52,7 +52,7 @@ export class CustomerPaymentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.viewPayment().subscribe((data: any) => {
-      // console.log(data.insuarance);
+      console.log(data.insuarance);
       this.rows = data.insuarance;
       this.filteredRows = data.insuarance;
       setTimeout(() => {

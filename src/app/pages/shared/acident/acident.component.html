@@ -4,7 +4,7 @@
       <strong>Accident Verification</strong>
     </h3>
 
-    <form [formGroup]="form" enctype="multipart/form-data">
+    <form [formGroup]="form">
       <div class="row">
         <div class="offset-md-1 col-sm-3">
           <mat-form-field class="example-full-width" appearance="fill">
@@ -57,34 +57,35 @@
           </mat-form-field>
         </div>
       </div>
-
       <!-- image -->
       <div class="row">
-        <div class="offset-md-1 col-md-3">
+        <div class="offset-md-1 col-md-3 img-fluid">
           <div class="preview">
             <img
               mat-card-image
-              [src]="url"
+              [src]="url[0]"
               style="width: 200px; height: 150px; border-radius: 5px"
             />
           </div>
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input
+            multiple
             mat-card-image
-            name="image1"
-            formControlName="image1"
             type="file"
+            name="image1"
+            id="image1"
+            formControlName="image1"
             class="btn btn-success btn-sm"
             (change)="selectimage1($event)"
           />
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 img-fluid">
           <div class="preview">
             <img
               mat-card-image
-              [src]="url2"
+              [src]="url[1]"
               style="width: 200px; height: 150px; border-radius: 5px"
             />
           </div>
@@ -95,15 +96,15 @@
             name="image2"
             type="file"
             class="btn btn-success btn-sm"
-            (change)="selectimage2($event)"
+            (change)="selectimage1($event)"
           />
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 img-fluid">
           <div class="preview">
             <img
               mat-card-image
-              [src]="url3"
+              [src]="url[2]"
               style="width: 200px; height: 150px; border-radius: 5px"
             />
           </div>
@@ -114,13 +115,13 @@
             name="image3"
             type="file"
             class="btn btn-success btn-sm"
-            (change)="selectimage3($event)"
+            (change)="selectimage1($event)"
           />
         </div>
       </div>
       <!-- end image -->
       <br />
-      <div class="col-sm-4">
+      <div class="col-sm-4 img-fluid">
         <div class="row">
           <input
             type="hidden"

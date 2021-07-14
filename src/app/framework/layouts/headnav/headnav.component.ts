@@ -59,8 +59,8 @@ export class HeadnavComponent implements OnInit {
   );
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-
   panelOpenState = false;
+
   fullName?: string;
   role?: string;
   email?: string;

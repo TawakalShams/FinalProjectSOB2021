@@ -1,6 +1,7 @@
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import {
+  FormBuilder,
   FormControl,
   FormGroup,
   MaxLengthValidator,
@@ -24,10 +25,13 @@ export class AcidentComponent implements OnInit {
   options: string[] = [];
   fullName?: string;
   vehcle: any;
-  url = '';
+  url: any[] = [];
   url2 = '';
   url3 = '';
-  // platenumber: any;
+  image1: any;
+  image2: any;
+  image3: any;
+  images: any[] = [];
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize | undefined;
 
@@ -36,7 +40,8 @@ export class AcidentComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private helper: JwtHelperService,
-    private _ngZone: NgZone
+    private _ngZone: NgZone,
+    private formBuilder: FormBuilder
   ) {
     const token = localStorage.getItem('token');
     const decodedToken: DecodedToken = helper.decodeToken(token as string);
@@ -57,18 +62,31 @@ export class AcidentComponent implements OnInit {
   }
 
   selectimage1(event: any) {
-    // console.log(event);
     if (event.target.files && event.target.files[0]) {
+      const imageFile = event.target.files[0];
+      this.images.push(imageFile);
+
+      // const reader = new FileReader();
+      // reader.onload = () => this.url.push(reader.result);
+      // reader.readAsDataURL(imageFile);
+
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {
-        this.url = event.target.result;
-        // console.log(event);
+        this.url.push(event.target.result);
       };
     }
+    // this.image1 = event.target.files[0];
+    // var reader = new FileReader();
+    // reader.readAsDataURL(event.target.files[0]);
+    // reader.onload = (event: any) => {
+    //   this.url = event.target.result;
+    // };
   }
+
   selectimage2(event: any) {
-    if (event.target.files && event.target.files[0]) {
+    const image2 = (this.image2 = event.target.files[0]);
+    if (image2) {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {
@@ -77,7 +95,9 @@ export class AcidentComponent implements OnInit {
     }
   }
   selectimage3(event: any) {
-    if (event.target.files && event.target.files[0]) {
+    const imag3 = (this.image3 = event.target.files[0]);
+    // console.log(this.image3);
+    if (imag3) {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event: any) => {
@@ -91,11 +111,12 @@ export class AcidentComponent implements OnInit {
     platenumber: new FormControl(''),
     typeofacident: new FormControl('', [Validators.required]),
     policeReportNo: new FormControl('', [Validators.required]),
-    image1: new FormControl('', [Validators.required]),
-    image2: new FormControl('', [Validators.required]),
-    image3: new FormControl('', [Validators.required]),
+    image1: new FormControl(''),
+    image2: new FormControl(''),
+    image3: new FormControl(''),
     create_by: new FormControl(),
   });
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.options.filter((option: any) =>
@@ -103,10 +124,22 @@ export class AcidentComponent implements OnInit {
     );
   }
   onSubmit() {
-    this.form.controls.platenumber.setValue(this.platenumber.value);
-    console.log(this.form.value);
+    // this.form.controls.platenumber.setValue(this.platenumber.value);
 
-    this.service.createAcident(this.form.value).subscribe(
+    const values = this.form.value;
+    // console.log(this.images);
+
+    const formData = new FormData();
+    this.images.forEach((image) => {
+      formData.append('files[]', image);
+    });
+
+    formData.append('platenumber', this.platenumber.value);
+    formData.append('typeofacident', values.typeofacident);
+    formData.append('policeReportNo', values.policeReportNo);
+    formData.append('create_by', values.create_by);
+
+    this.service.createAcident(formData).subscribe(
       (res) => {
         this.toastr.success(' Successfully', 'Successfully');
         this.router
@@ -114,6 +147,7 @@ export class AcidentComponent implements OnInit {
           .then(() => {
             this.router.navigate(['accident']);
           });
+        // console.log(res);
       },
       (error) => {
         this.toastr.error('Platenumber is already verified', 'Error');

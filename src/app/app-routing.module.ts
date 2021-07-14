@@ -117,6 +117,11 @@ const routes: Routes = [
         component: AgentComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'image',
+        component: InsuaredComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];
