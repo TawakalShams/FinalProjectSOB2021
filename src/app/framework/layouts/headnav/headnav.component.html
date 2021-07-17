@@ -18,6 +18,16 @@
         <mat-icon>settings</mat-icon>
         <span>Change password</span>
       </button>
+
+      <button
+        *ngIf="role == 'Admin'"
+        mat-menu-item
+        (click)="CreateAdminLogin()"
+      >
+        <mat-icon>settings</mat-icon>
+        <span>Create Admin Login </span>
+      </button>
+
       <button mat-menu-item (click)="logout()">
         <mat-icon
           class="toolbar-icon"
@@ -28,29 +38,6 @@
       </button>
     </mat-menu>
   </div>
-
-  <!-- Change Password Agent -->
-  <!-- <div *ngIf="role == 'Agent'">
-    <button
-      matBadgePosition="after"
-      mat-icon-button
-      [matMenuTriggerFor]="menu"
-      aria-label="Example icon-button with a menu"
-    >
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="logout()">
-        <mat-icon
-          class="toolbar-icon"
-          matBadgePosition="after"
-          matBadgeColor="accent"
-          ><span class="material-icons"> power_settings_new </span></mat-icon
-        >logout
-      </button>
-    </mat-menu>
-  </div> -->
-
   <!-- End header -->
 
   <mat-sidenav-container id="sidenavContainer" fullscreen>
@@ -84,21 +71,7 @@
         </mat-list-item>
 
         <!-- =======================================end======================== -->
-        <!-- <div>
-          <button class="menu-item" mat-flat-button routerLink="agent">
-            <mat-icon>post_add</mat-icon>
-            Regstration
-          </button>
-        </div>
-        <div>
-          <button class="menu-item" mat-flat-button routerLink="viewagent">
-            <mat-icon>view_list</mat-icon>
-            View
-          </button>
-        </div>
-        <hr /> -->
-        <!-- // -->
-        <mat-accordion *ngIf="role == 'Admin'">
+        <mat-accordion *ngIf="role != 'Agent'">
           <mat-expansion-panel
             (opened)="panelOpenState = true"
             (closed)="panelOpenState = false"
@@ -106,16 +79,37 @@
             <mat-expansion-panel-header>
               <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
               <mat-icon>supervised_user_circle</mat-icon>
-              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agent</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Users</p>
             </mat-expansion-panel-header>
             <div>
-              <button class="menu-item" mat-flat-button routerLink="agent">
+              <button
+                class="menu-item"
+                mat-flat-button
+                routerLink="usersRegstration"
+              >
                 <mat-icon>post_add</mat-icon>
-                Regstration
+                User Regstration
               </button>
             </div>
             <div>
-              <button class="menu-item" mat-flat-button routerLink="viewagent">
+              <!-- View All Users -->
+              <button
+                class="menu-item"
+                mat-flat-button
+                routerLink="users"
+                *ngIf="role == 'Admin'"
+              >
+                <mat-icon>view_list</mat-icon>
+                View
+              </button>
+
+              <!-- View Agents Only -->
+              <button
+                class="menu-item"
+                mat-flat-button
+                routerLink="user"
+                *ngIf="role == 'Staff'"
+              >
                 <mat-icon>view_list</mat-icon>
                 View
               </button>
@@ -162,7 +156,7 @@
           </mat-expansion-panel>
         </mat-accordion>
         <!-- ==============================Accident======================= -->
-        <div *ngIf="role == 'Admin'">
+        <div *ngIf="role != 'Agent'">
           <mat-accordion>
             <mat-expansion-panel
               (opened)="panelOpenState = true"

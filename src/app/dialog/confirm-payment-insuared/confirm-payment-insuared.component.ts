@@ -42,20 +42,22 @@ export class ConfirmPaymentInsuaredComponent implements OnInit {
   }
 
   form = new FormGroup({
-    insuaranceid: new FormControl('', [Validators.required]),
+    platenumber: new FormControl('', [Validators.required]),
     amount: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
   actualAmount(): void {}
   ngOnInit(): void {
     const platenumber = (this.platenumber = this.Datas.platenumber);
-    const insuaranceid = (this.insuaranceid = this.Datas.insuaranceid);
+    // const insuaranceid = (this.platenumber = this.Datas.platenumber);
     const fullName = (this.fullName = this.Datas.fullName);
     const phone = (this.phone = this.Datas.phone);
+    console.log(this.Datas);
   }
 
   payment() {
     this.service.createPayInsuard(this.form.value).subscribe((res) => {
+      console.log(res);
       if (res.error) {
         this.toastr.error(res.message, 'Error');
       } else {

@@ -24,6 +24,7 @@ export class ViewcustomerComponent implements OnInit {
   loading = true;
   allStatus: string | undefined;
   customerData: any;
+  typeOfInsuarance: any;
 
   columns = [
     { prop: 'No' },

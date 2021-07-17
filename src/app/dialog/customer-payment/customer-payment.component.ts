@@ -25,7 +25,8 @@ export class CustomerPaymentComponent implements OnInit {
   value?: number;
   select?: string;
   events?: string;
-  type?: string = 'part';
+  type?: string;
+  pay?: number;
 
   valuess(event: any) {
     if (event) {
@@ -59,9 +60,11 @@ export class CustomerPaymentComponent implements OnInit {
     const fullName = (this.fullName = this.Datas.fullName);
     const value = (this.value = this.Datas.value);
     const customerid = (this.insuaranceid = this.Datas.insuaranceid);
+    const type = (this.type = this.Datas.typeOfInsuarance);
     // console.log(this.Datas.vehicle.value);
     // console.log(this.Datas);
     // console.log(this.form.value);
+    // const pay = (this.pay = this.Datas.value * 0.035 + this.Datas.value * 0.15);
   }
 
   payment() {

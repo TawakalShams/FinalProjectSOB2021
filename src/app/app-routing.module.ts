@@ -7,6 +7,7 @@ import { HeadnavComponent } from './framework/layouts/headnav/headnav.component'
 import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
 import { AgentregstrationComponent } from './pages/agent/agentregstration/agentregstration.component';
 import { ViewAgentComponent } from './pages/agent/view-agent/view-agent.component';
+import { ViewAllUsersComponent } from './pages/agent/view-all-users/view-all-users.component';
 import { CommissionComponent } from './pages/commission/commission.component';
 import { AcidentComponent } from './pages/shared/acident/acident.component';
 import { ViewAcidentComponent } from './pages/shared/acident/view-acident/view-acident.component';
@@ -52,13 +53,20 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'agent',
+        path: 'usersRegstration',
         component: AgentregstrationComponent,
         canActivate: [AuthGuard],
       },
       {
-        path: 'viewagent',
+        // for Agent
+        path: 'user',
         component: ViewAgentComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        // for Admin only
+        path: 'users',
+        component: ViewAllUsersComponent,
         canActivate: [AuthGuard],
       },
       {
@@ -107,6 +115,7 @@ const routes: Routes = [
         component: VehiclesComponent,
         canActivate: [AuthGuard],
       },
+
       {
         path: 'viewvehicle',
         component: ViewVehiclesComponent,

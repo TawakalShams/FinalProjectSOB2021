@@ -1,8 +1,8 @@
 <div class="container">
   <mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
-    <mat-tab label="Agent Regstraion">
+    <mat-tab label="User Regstraion">
       <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
-        <strong>Agent Regstraion</strong>
+        <strong>User Regstraion</strong>
       </h3>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="row">
@@ -121,6 +121,22 @@
                 <mat-option value="Female">Female</mat-option>
               </mat-select>
               <mat-error> Gender is required </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Role</mat-label>
+              <mat-select disableRipple name="role" formControlName="role">
+                <mat-option value="Admin" *ngIf="role == 'Admin'"
+                  >Admin</mat-option
+                >
+                <mat-option value="Staff" *ngIf="role == 'Admin'"
+                  >Staff</mat-option
+                >
+                <mat-option value="Agent">Agent</mat-option>
+              </mat-select>
+              <mat-error> Role is required </mat-error>
             </mat-form-field>
           </div>
         </div>

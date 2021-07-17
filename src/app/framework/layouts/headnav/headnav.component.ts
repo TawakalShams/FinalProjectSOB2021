@@ -11,6 +11,7 @@ import {
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangePasswordComponent } from 'src/app/dialog/change-password/change-password.component';
+import { CreateLoginAdminComponent } from 'src/app/pages/admin/create-login-admin/create-login-admin.component';
 
 interface FoodNode {
   name: string;
@@ -100,6 +101,11 @@ export class HeadnavComponent implements OnInit {
   }
 
   ngOnDestroy() {}
+  CreateAdminLogin() {
+    const dialogRef = this.dialog.open(CreateLoginAdminComponent, {
+      // data: row,
+    });
+  }
   ChangePasswordAdmin() {
     const dialogRef = this.dialog.open(ChangePasswordComponent, {
       // data: row,

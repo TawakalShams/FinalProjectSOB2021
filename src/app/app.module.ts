@@ -56,6 +56,8 @@ import { ConfirmPaymentInsuaredComponent } from './dialog/confirm-payment-insuar
 import { ViewPaymentPayedComponent } from './pages/shared/acident/view-payment-payed/view-payment-payed.component';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
+import { CreateLoginAdminComponent } from './pages/admin/create-login-admin/create-login-admin.component';
+import { ViewAllUsersComponent } from './pages/agent/view-all-users/view-all-users.component';
 
 export const tokenGetter = () => {
   return localStorage.getItem('token');
@@ -101,6 +103,8 @@ export const tokenGetter = () => {
     ConfirmPaymentInsuaredComponent,
     ViewPaymentPayedComponent,
     ChangePasswordComponent,
+    CreateLoginAdminComponent,
+    ViewAllUsersComponent,
   ],
   imports: [
     MatPasswordStrengthModule.forRoot(),

@@ -46,7 +46,7 @@ export class ViewPaymentPayedComponent implements OnInit {
       this.rows = data.accident;
       this.filteredRows = data.accident;
       this.loading = false;
-      // console.log(data);
+      // console.log(data.accident);
     });
   }
 

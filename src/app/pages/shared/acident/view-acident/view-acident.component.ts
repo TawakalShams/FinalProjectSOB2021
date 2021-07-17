@@ -79,7 +79,7 @@ export class ViewAcidentComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeleteAcidentComponent, {
       data: row,
     });
-    console.log(row);
+    // console.log(row);
   }
   edit(row: any) {
     const dialogRef = this.dialog.open(UpdateAcidentComponent, {

@@ -35,6 +35,15 @@ export class ServiceService {
     }),
   };
 
+  // =========================Admin CRUD=====================================
+  createAdmin(data: any): Observable<any> {
+    return this.httpClient.post(baseUrl + '/register', data);
+  }
+
+  ViewUsers() {
+    return this.httpClient.get(baseUrl + '/users');
+  }
+
   // =========================CHANGE PASSWORD=====================================
   // changePassword(id: any, data:any): Observable<any> {
   //   return this.httpClient.post(baseUrl + '/changePassword' + '/' + id, data);

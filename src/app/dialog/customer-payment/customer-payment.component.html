@@ -11,6 +11,7 @@
   <div style="text-align: center">
     <h3>Payment from</h3>
     <h2>{{ fullName }}</h2>
+    <p>Type of insurance &nbsp; {{ type }}</p>
     <p>Value of Vehicle Tzs &nbsp; {{ value | number }}</p>
   </div>
 </div>
@@ -19,16 +20,29 @@
     <div class="container" id="summary">
       <div class="row">
         <div class="col-md-8">
-          <div>
-            From 1 Million to 5 Million &nbsp;&nbsp;&nbsp;&nbsp;
+          <!-- <div>
+            <h2>Motorcycle &nbsp; Mandoratory</h2>
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <input
               type="radio"
               name="amount"
               formControlName="amount"
               (change)="valuess($event)"
-              value="300000"
+              value="57500"
             />
-            <label> Tzs 300,000</label>
+            <label> Tzs 57,500</label>
+          </div>
+          <hr /> -->
+          <div>
+            From 1 Million to 4 Million &nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+              type="radio"
+              name="amount"
+              formControlName="amount"
+              (change)="valuess($event)"
+              value="115000"
+            />
+            <label> Tzs 115,000</label>
           </div>
 
           <div>

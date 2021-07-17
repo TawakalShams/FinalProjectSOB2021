@@ -26,6 +26,7 @@ export class ViewInsuaranceComponent implements OnInit {
   fullName?: string;
   role?: string;
   loading = true;
+  typeOfInsuarance?: string;
 
   columns = [
     { prop: 'No' },
@@ -59,7 +60,13 @@ export class ViewInsuaranceComponent implements OnInit {
       this.rows = data;
       this.filteredRows = data;
       this.loading = false;
-      console.log(data);
+
+      const typeOfInsuarances: any[] = data;
+
+      const typeOfInsuarance = typeOfInsuarances.map(
+        (item) => item.typeOfInsuarance
+      );
+      console.log(typeOfInsuarance);
     });
   }
 
