@@ -3,17 +3,18 @@
     <div role="status" class="isLoading" *ngIf="loading">
       <mat-spinner style="top: 50%; left: 50%"></mat-spinner>
     </div>
-    Type of Insuarance {{ typeOfInsuarance }}
     <div>
-      <mat-form-field class="full-width-input">
-        <input
-          matInput
-          type="text"
-          placeholder="Search by platenumber"
-          autocomplete="off"
-          (keyup)="updateFilter($event)"
-        />
-      </mat-form-field>
+      <div>
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            type="text"
+            placeholder="Search by platenumber"
+            autocomplete="off"
+            (keyup)="updateFilter($event)"
+          />
+        </mat-form-field>
+      </div>
       <ngx-datatable
         #table
         class="material"
@@ -35,23 +36,31 @@
           </ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column name="FullName"> </ngx-datatable-column>
-        <ngx-datatable-column name="Address"> </ngx-datatable-column>
-        <ngx-datatable-column name="Phone"> </ngx-datatable-column>
-        <ngx-datatable-column name="Platenumber"> </ngx-datatable-column>
-        <ngx-datatable-column name="Type"> </ngx-datatable-column>
-        <ngx-datatable-column name="Model"> </ngx-datatable-column>
-        <ngx-datatable-column name="Seat"> </ngx-datatable-column>
-        <ngx-datatable-column name="Color"> </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="Address"> </ngx-datatable-column> -->
+        <!-- <ngx-datatable-column name="Phone"> </ngx-datatable-column> -->
+        <!-- <ngx-datatable-column name="Platenumber"> </ngx-datatable-column> -->
+        <!-- <ngx-datatable-column name="Type"> </ngx-datatable-column> -->
+        <!-- <ngx-datatable-column name="Model"> </ngx-datatable-column> -->
+        <!-- <ngx-datatable-column name="Seat"> </ngx-datatable-column> -->
+        <!-- <ngx-datatable-column name="Color"> </ngx-datatable-column> -->
         <ngx-datatable-column name="TypeOfInsuarance"> </ngx-datatable-column>
-        <ngx-datatable-column name="Value"> </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="Value"> </ngx-datatable-column> -->
         <ngx-datatable-column name="Sartdate" prop="startdate">
         </ngx-datatable-column>
         <ngx-datatable-column name="Enddate"> </ngx-datatable-column>
         <ngx-datatable-column name="Status" prop="payment.status">
         </ngx-datatable-column>
-        <ngx-datatable-column name="Created by" prop="create_by">
+        <ngx-datatable-column
+          name="Created by"
+          prop="create_by"
+          *ngIf="role == 'Admin'"
+        >
         </ngx-datatable-column>
-        <ngx-datatable-column name="Created Time" prop="create_at">
+        <ngx-datatable-column
+          name="Created Time"
+          prop="create_at"
+          *ngIf="role == 'Admin'"
+        >
         </ngx-datatable-column>
         <ngx-datatable-column name="Action">
           <ng-template
@@ -61,19 +70,21 @@
           >
             <div class="row">
               <!-- mandolatory -->
+
               <a
+                *ngIf="row.typeOfInsuarance === 'Mondatory'"
                 class="btn"
                 mat-icon-button
                 color="primary"
-                (click)="payment(row)"
+                (click)="mandotory(row)"
                 matTooltip="Payment"
                 type="button"
               >
-                <mat-icon>payment</mat-icon>
+                <mat-icon>payment v</mat-icon>
               </a>
               <!-- Comprehensive -->
               <a
-                *ngIf="typeOfInsuarance == 'Comprehensive'"
+                *ngIf="row.typeOfInsuarance === 'Comprehensive'"
                 class="btn"
                 mat-icon-button
                 color="primary"

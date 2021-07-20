@@ -1,91 +1,88 @@
 <div class="container">
-  <mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
-    <mat-tab label="User Regstraion">
-      <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
-        <strong>User Regstraion</strong>
-      </h3>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="row">
-          <div class="col-sm-4">
-            <mat-form-field class="full-width-input">
-              <input
-                matInput
-                placeholder="Full Name"
-                formControlName="fullName"
-                autocomplete="off"
-                required
-              />
-              <mat-error> Full name is required </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-sm-4">
-            <mat-form-field class="full-width-input">
-              <input
-                matInput
-                placeholder="Email"
-                name="email"
-                formControlName="email"
-                autocomplete="off"
-                required
-              />
-              <mat-error> Email is required </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-sm-4">
-            <mat-form-field class="full-width-input">
-              <input
-                matInput
-                type="password"
-                placeholder="Password"
-                formControlName="password"
-                autocomplete="off"
-                required
-              />
+  <!-- <mat-tab-group mat-align-tabs="center" style="margin-left: 10px">
+    <mat-tab label="User Regstraion"> -->
 
-              <mat-error> Password is required </mat-error>
-            </mat-form-field>
-          </div>
+  <mat-divider></mat-divider>
+  <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
+    <span>User Regstraion</span>
+  </h3>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              placeholder="Full Name"
+              formControlName="fullName"
+              required
+            />
+            <mat-error> Full name is required </mat-error>
+          </mat-form-field>
         </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <mat-form-field class="full-width-input">
-              <input
-                matInput
-                placeholder="Address"
-                formControlName="address"
-                autocomplete="off"
-                required
-              />
-              <mat-error> Address is required </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-sm-4">
-            <mat-form-field class="full-width-input">
-              <input
-                matInput
-                placeholder="Branch"
-                formControlName="branch"
-                autocomplete="off"
-                required
-              />
-              <mat-error> Branch is required </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-sm-4">
-            <mat-form-field class="full-width-input">
-              <input
-                matInput
-                type="number"
-                placeholder="Phone number"
-                formControlName="phone"
-                autocomplete="off"
-                required
-              />
-              <mat-error> Phone number is required </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- <div class="col-sm-4"> -->
-          <!-- <mat-form-field class="full-width-input">
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              placeholder="Email"
+              name="email"
+              formControlName="email"
+              required
+            />
+            <mat-error> Email is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              required
+            />
+
+            <mat-error> Password is required </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              placeholder="Address"
+              formControlName="address"
+              required
+            />
+            <mat-error> Address is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              placeholder="Branch"
+              formControlName="branch"
+              required
+            />
+            <mat-error> Branch is required </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="number"
+              placeholder="Phone number"
+              formControlName="phone"
+              required
+            />
+            <mat-error> Phone number is required </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <div class="col-sm-4"> -->
+        <!-- <mat-form-field class="full-width-input">
               <input
                 matInput
                 type="password"
@@ -96,67 +93,66 @@
               />
               <mat-error> Re-type Password is required </mat-error>
             </mat-form-field> -->
-          <!-- </div> -->
+        <!-- </div> -->
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="date"
+              placeholder="Date of birth"
+              formControlName="dob"
+              required
+            />
+            <mat-error> Date is required </mat-error>
+          </mat-form-field>
         </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <mat-form-field class="full-width-input">
-              <input
-                matInput
-                type="date"
-                placeholder="Date of birth"
-                formControlName="dob"
-                autocomplete="off"
-                required
-              />
-              <mat-error> Date is required </mat-error>
-            </mat-form-field>
-          </div>
 
-          <div class="col-sm-4">
-            <mat-form-field appearance="fill">
-              <mat-label>Select gender</mat-label>
-              <mat-select disableRipple name="gender" formControlName="gender">
-                <mat-option value="Male">Male</mat-option>
-                <mat-option value="Female">Female</mat-option>
-              </mat-select>
-              <mat-error> Gender is required </mat-error>
-            </mat-form-field>
-          </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <mat-label>Select gender</mat-label>
+            <mat-select disableRipple name="gender" formControlName="gender">
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+            </mat-select>
+            <mat-error> Gender is required </mat-error>
+          </mat-form-field>
+        </div>
 
-          <div class="col-sm-4">
-            <mat-form-field appearance="fill">
-              <mat-label>Role</mat-label>
-              <mat-select disableRipple name="role" formControlName="role">
-                <mat-option value="Admin" *ngIf="role == 'Admin'"
-                  >Admin</mat-option
-                >
-                <mat-option value="Staff" *ngIf="role == 'Admin'"
-                  >Staff</mat-option
-                >
-                <mat-option value="Agent">Agent</mat-option>
-              </mat-select>
-              <mat-error> Role is required </mat-error>
-            </mat-form-field>
-          </div>
+        <div class="col-sm-4">
+          <mat-form-field class="full-width-input">
+            <mat-label>Role</mat-label>
+            <mat-select disableRipple name="role" formControlName="role">
+              <mat-option value="Admin" *ngIf="role == 'Admin'"
+                >Admin</mat-option
+              >
+              <mat-option value="Staff" *ngIf="role == 'Admin'"
+                >Staff</mat-option
+              >
+              <mat-option value="Agent">Agent</mat-option>
+            </mat-select>
+            <mat-error> Role is required </mat-error>
+          </mat-form-field>
         </div>
-        <div class="row">
-          <input
-            type="hidden"
-            formControlName="created_by"
-            name="created_by"
-            id="created_by"
-            ngModel="{{ fullName }}"
-          />
-        </div>
-        <br />
-        <div>
-          <button mat-raised-button color="primary" [disabled]="form.invalid">
-            Save
-          </button>
-        </div>
-      </form>
-    </mat-tab>
-    <!-- View Agents tab -->
-  </mat-tab-group>
+      </div>
+      <div class="row">
+        <input
+          type="hidden"
+          formControlName="created_by"
+          name="created_by"
+          id="created_by"
+          ngModel="{{ fullName }}"
+        />
+      </div>
+      <br />
+      <div>
+        <button mat-raised-button color="primary" [disabled]="form.invalid">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+  <!-- </mat-tab>
+  </mat-tab-group> -->
 </div>

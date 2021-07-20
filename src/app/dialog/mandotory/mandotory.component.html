@@ -1,0 +1,123 @@
+<div mat-dialog-title>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <div align="end" class="col-md-4">
+      <button mat-raised-button mat-dialog-close>
+        <mat-icon>cancell</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div style="text-align: center">
+    <h3>Payment from</h3>
+    <h2>{{ fullName }}</h2>
+    <p>Type of insurance &nbsp; {{ typeOfInsuarance }}</p>
+    <p>{{ type }}</p>
+    <p>Value of Vehicle Tzs &nbsp; {{ amount | number }}</p>
+  </div>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="row">
+    <div class="col-md-3">
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="number"
+          placeholder="VAT"
+          autocomplete="off"
+          name="vat"
+          id="vat"
+          required
+          [(ngModel)]="vat"
+        />
+        <span matPrefix>VAT &nbsp;</span>
+        <span matSuffix>%</span>
+        <mat-error> VAT is required </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="number"
+          placeholder="Charge rate"
+          autocomplete="off"
+          name="rate"
+          [(ngModel)]="rate"
+          required
+        />
+        <span matPrefix>Rate &nbsp;</span>
+        <span matSuffix>%</span>
+        <mat-error> Rate is required </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div>
+    <button mat-raised-button color="primary" (click)="calc()">
+      Calculate
+    </button>
+  </div>
+  <!-- <button (click)="calc()" class="btn btn-primary">cal</button> -->
+
+  <form [formGroup]="form">
+    <div class="container" id="summary">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              type="number"
+              autocomplete="off"
+              required
+              formControlName="amount"
+              [(ngModel)]="value"
+              readonly
+            />
+            <span matPrefix>Tzs &nbsp;</span>
+            <mat-error> Amount is required </mat-error>
+          </mat-form-field>
+          <div align="end">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="payment()"
+              mat-dialog-close
+              [disabled]="form.invalid"
+            >
+              Save
+            </button>
+            &nbsp;&nbsp;
+            <!-- <p>{{ events }}</p> -->
+          </div>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+
+    <br />
+    <div class="row">
+      <div class="col-sm-4">
+        <input
+          type="hidden"
+          formControlName="insuaranceid"
+          name="insuaranceid"
+          id="insuaranceid"
+          ngModel="{{ insuaranceid }}"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <input
+        type="hidden"
+        formControlName="create_by"
+        name="create_by"
+        id="create_by"
+        ngModel="{{ create_by }}"
+      />
+    </div>
+  </form>
+</mat-dialog-content>

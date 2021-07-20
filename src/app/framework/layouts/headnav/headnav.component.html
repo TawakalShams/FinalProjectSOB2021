@@ -1,9 +1,17 @@
 <!-- Start header -->
 <mat-toolbar id="mainToolbar" color="primary">
   <mat-icon (click)="onToolbarMenuToggle()" id="toolbarMenu">subject</mat-icon>
-  Insuarance Management System (Motor Vehicles)
+  IMS (Motor Vehicles)
+  <!-- <div>
+    <img src="../../../assets/image/ZIC.jpg" width="60px" height="60px" />
+  </div> -->
   <!-- Change Password Admin -->
   <span class="toolbar-spacer"></span>
+  <span> {{ fullName }}</span
+  >&nbsp;
+  <span
+    ><i>{{ role }}</i></span
+  >
   <div>
     <button
       matBadgePosition="after"
@@ -15,7 +23,7 @@
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="ChangePasswordAdmin()">
-        <mat-icon>settings</mat-icon>
+        <mat-icon color="primary">settings</mat-icon>
         <span>Change password</span>
       </button>
 
@@ -24,12 +32,13 @@
         mat-menu-item
         (click)="CreateAdminLogin()"
       >
-        <mat-icon>settings</mat-icon>
+        <mat-icon color="primary">settings</mat-icon>
         <span>Create Admin Login </span>
       </button>
 
       <button mat-menu-item (click)="logout()">
         <mat-icon
+          color="primary"
           class="toolbar-icon"
           matBadgePosition="after"
           matBadgeColor="accent"
@@ -50,7 +59,7 @@
       opened
     >
       <mat-list id="menus">
-        <mat-card>
+        <!-- <mat-card>
           <mat-card-header
             style="
               font-family: 'Courier New', Courier, monospace;
@@ -61,11 +70,11 @@
             <mat-card-subtitle>{{ role }}</mat-card-subtitle>
             <mat-card-subtitle>{{ email }}</mat-card-subtitle>
           </mat-card-header>
-        </mat-card>
+        </mat-card> -->
 
         <mat-list-item>
           <button class="menu-item" mat-flat-button routerLink="/">
-            <mat-icon>dashboard</mat-icon>
+            <mat-icon color="primary">dashboard</mat-icon>
             Dashboard
           </button>
         </mat-list-item>
@@ -78,7 +87,7 @@
           >
             <mat-expansion-panel-header>
               <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
-              <mat-icon>supervised_user_circle</mat-icon>
+              <mat-icon color="primary">supervised_user_circle</mat-icon>
               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Users</p>
             </mat-expansion-panel-header>
             <div>
@@ -87,7 +96,7 @@
                 mat-flat-button
                 routerLink="usersRegstration"
               >
-                <mat-icon>post_add</mat-icon>
+                <mat-icon color="primary">post_add</mat-icon>
                 User Regstration
               </button>
             </div>
@@ -99,7 +108,7 @@
                 routerLink="users"
                 *ngIf="role == 'Admin'"
               >
-                <mat-icon>view_list</mat-icon>
+                <mat-icon color="primary">view_list</mat-icon>
                 View
               </button>
 
@@ -110,12 +119,36 @@
                 routerLink="user"
                 *ngIf="role == 'Staff'"
               >
-                <mat-icon>view_list</mat-icon>
+                <mat-icon color="primary">view_list</mat-icon>
                 View
               </button>
             </div>
           </mat-expansion-panel>
         </mat-accordion>
+        <!-- ======================Model=============================== -->
+        <!-- <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-icon color="primary">electric_car</mat-icon>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Model</p>
+            </mat-expansion-panel-header>
+            <div>
+              <button class="menu-item" mat-flat-button routerLink="model">
+                <mat-icon color="primary">post_add</mat-icon>
+                Regstration
+              </button>
+            </div>
+            <div>
+              <button class="menu-item" mat-flat-button routerLink="viewmodel">
+                <mat-icon color="primary">view_list</mat-icon>
+                View
+              </button>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion> -->
         <!-- ======================Vehicle=============================== -->
         <mat-accordion>
           <mat-expansion-panel
@@ -124,12 +157,12 @@
           >
             <mat-expansion-panel-header>
               <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
-              <mat-icon>electric_car</mat-icon>
+              <mat-icon color="primary">electric_car</mat-icon>
               <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insuarance</p>
             </mat-expansion-panel-header>
             <div>
               <button class="menu-item" mat-flat-button routerLink="insuarance">
-                <mat-icon>post_add</mat-icon>
+                <mat-icon color="primary">post_add</mat-icon>
                 Regstration
               </button>
             </div>
@@ -139,7 +172,7 @@
                 mat-flat-button
                 routerLink="viewinsuarance"
               >
-                <mat-icon>view_list</mat-icon>
+                <mat-icon color="primary">view_list</mat-icon>
                 View
               </button>
             </div>
@@ -149,7 +182,7 @@
                 mat-flat-button
                 routerLink="viewcustomerpayment"
               >
-                <mat-icon>payment</mat-icon>
+                <mat-icon color="primary">payment</mat-icon>
                 Payment
               </button>
             </div>
@@ -164,13 +197,13 @@
             >
               <mat-expansion-panel-header>
                 <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
-                <mat-icon>electric_car</mat-icon>
+                <mat-icon color="primary">electric_car</mat-icon>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accident</p>
               </mat-expansion-panel-header>
 
               <div>
                 <button class="menu-item" mat-flat-button routerLink="accident">
-                  <mat-icon>post_add</mat-icon>
+                  <mat-icon color="primary">post_add</mat-icon>
                   Regstration
                 </button>
               </div>
@@ -180,7 +213,7 @@
                   mat-flat-button
                   routerLink="viewacident"
                 >
-                  <mat-icon>view_list</mat-icon>
+                  <mat-icon color="primary">view_list</mat-icon>
                   View
                 </button>
               </div>
@@ -190,7 +223,7 @@
                   mat-flat-button
                   routerLink="viewinsuaredpayment"
                 >
-                  <mat-icon>account_balance_wallet</mat-icon>
+                  <mat-icon color="primary">account_balance_wallet</mat-icon>
                   View Payments
                 </button>
               </div>

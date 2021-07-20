@@ -52,9 +52,17 @@
         <ngx-datatable-column name="Platenumber" prop="insuarance.platenumber">
         </ngx-datatable-column>
         <ngx-datatable-column name="'Amount"> </ngx-datatable-column>
-        <ngx-datatable-column name="Created by" prop="create_by">
+        <ngx-datatable-column
+          name="Created by"
+          prop="create_by"
+          *ngIf="role == 'Admin'"
+        >
         </ngx-datatable-column>
-        <ngx-datatable-column name="Created Time" prop="create_at">
+        <ngx-datatable-column
+          name="Created Time"
+          prop="create_at"
+          *ngIf="role == 'Admin'"
+        >
         </ngx-datatable-column>
         <ngx-datatable-column name="Action">
           <ng-template

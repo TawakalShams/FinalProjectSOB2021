@@ -58,6 +58,9 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
 import { CreateLoginAdminComponent } from './pages/admin/create-login-admin/create-login-admin.component';
 import { ViewAllUsersComponent } from './pages/agent/view-all-users/view-all-users.component';
+import { MandotoryComponent } from './dialog/mandotory/mandotory.component';
+import { RegstrationComponent } from './pages/shared/modelOfCar/regstration/regstration.component';
+import { ViewModelComponent } from './pages/shared/modelOfCar/view-model/view-model.component';
 
 export const tokenGetter = () => {
   return localStorage.getItem('token');
@@ -105,6 +108,9 @@ export const tokenGetter = () => {
     ChangePasswordComponent,
     CreateLoginAdminComponent,
     ViewAllUsersComponent,
+    MandotoryComponent,
+    RegstrationComponent,
+    ViewModelComponent,
   ],
   imports: [
     MatPasswordStrengthModule.forRoot(),

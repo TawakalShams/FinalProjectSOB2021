@@ -1,38 +1,30 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ImsModule } from 'src/app/module/ims/ims.module';
-import { ServiceService } from 'src/app/service/service.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { DecodedToken } from 'src/app/module/ims/ims.module';
 import { ToastrService } from 'ngx-toastr';
+import { DecodedToken } from 'src/app/module/ims/ims.module';
+import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
-  selector: 'app-customer-payment',
-  templateUrl: './customer-payment.component.html',
-  styleUrls: ['./customer-payment.component.css'],
+  selector: 'app-mandotory',
+  templateUrl: './mandotory.component.html',
+  styleUrls: ['./mandotory.component.css'],
 })
-export class CustomerPaymentComponent implements OnInit {
-  rows: any;
-  insuaranceid: any;
-  agentDat: any;
-  agent = new ImsModule();
-  fullName?: string;
-  create_by?: string;
-  role?: string;
+export class MandotoryComponent implements OnInit {
+  create_by: any;
+  typeOfInsuarance?: string;
   value?: number;
-  select?: string;
-  events?: string;
-  type?: string;
-  pay?: number;
-
-  valuess(event: any) {
-    if (event) {
-      const events = (this.select = event.target.value);
-    }
-  }
+  fullName?: string;
+  insuaranceid?: any;
+  pay?: String;
+  vat?: any;
+  rate?: any;
+  cal?: any;
+  type?: any;
+  amount?: any;
 
   constructor(
     public dialog: MatDialog,
@@ -50,26 +42,35 @@ export class CustomerPaymentComponent implements OnInit {
     this.create_by = decodedToken.fullName;
   }
 
+  ngOnInit(): void {
+    // console.log('This' + this.vat);
+    this.calc();
+
+    const fullName = (this.fullName = this.Datas.fullName);
+
+    const amount = (this.amount = this.Datas.value);
+    const customerid = (this.insuaranceid = this.Datas.insuaranceid);
+    const typeOfInsuarance = (this.typeOfInsuarance =
+      this.Datas.typeOfInsuarance);
+    const type = (this.type = this.Datas.type);
+
+    const cal = (this.cal = this.vat);
+  }
+
   form = new FormGroup({
     insuaranceid: new FormControl('', [Validators.required]),
     amount: new FormControl('', [Validators.required]),
     // values: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
-  actualAmount(): void {}
-  ngOnInit(): void {
-    const fullName = (this.fullName = this.Datas.fullName);
-    const value = (this.value = this.Datas.value);
-    const customerid = (this.insuaranceid = this.Datas.insuaranceid);
-    const type = (this.type = this.Datas.typeOfInsuarance);
-    // console.log(this.Datas.vehicle.value);
-    // console.log(this.Datas);
-    // console.log(this.form.value);
-    // const pay = (this.pay = this.Datas.value * 0.035 + this.Datas.value * 0.15);
+
+  calc() {
+    const value = (this.value =
+      this.Datas.value * (this.vat / 100) +
+      this.Datas.value * (this.rate / 100));
   }
 
   payment() {
-    // console.log(this.form.value);
     this.service.createPayment(this.form.value).subscribe((res) => {
       if (res.error) {
         this.toastr.error(res.message, 'Error');

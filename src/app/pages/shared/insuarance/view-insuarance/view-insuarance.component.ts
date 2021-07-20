@@ -9,6 +9,7 @@ import {
 } from '@swimlane/ngx-datatable';
 import { ConfirmInsuaranceComponent } from 'src/app/dialog/confirm-insuarance/confirm-insuarance.component';
 import { CustomerPaymentComponent } from 'src/app/dialog/customer-payment/customer-payment.component';
+import { MandotoryComponent } from 'src/app/dialog/mandotory/mandotory.component';
 import { UpdateInsuranceComponent } from 'src/app/dialog/update-insurance/update-insurance.component';
 import { DecodedToken } from 'src/app/module/ims/ims.module';
 import { ServiceService } from 'src/app/service/service.service';
@@ -26,7 +27,7 @@ export class ViewInsuaranceComponent implements OnInit {
   fullName?: string;
   role?: string;
   loading = true;
-  typeOfInsuarance?: string;
+  // typeOfInsuarance?: string;
 
   columns = [
     { prop: 'No' },
@@ -61,12 +62,12 @@ export class ViewInsuaranceComponent implements OnInit {
       this.filteredRows = data;
       this.loading = false;
 
-      const typeOfInsuarances: any[] = data;
+      // const typeOfInsuarances: any[] = data;
 
-      const typeOfInsuarance = typeOfInsuarances.map(
-        (item) => item.typeOfInsuarance
-      );
-      console.log(typeOfInsuarance);
+      // const typeOfInsuarance = typeOfInsuarances.map(
+      //   (item) => item.typeOfInsuarance
+      // );
+      // console.log(typeOfInsuarance);
     });
   }
 
@@ -128,6 +129,13 @@ export class ViewInsuaranceComponent implements OnInit {
   }
   payment(row: any) {
     const dialogRef = this.dialog.open(CustomerPaymentComponent, {
+      data: row,
+    });
+    // console.log(row);
+  }
+
+  mandotory(row: any) {
+    const dialogRef = this.dialog.open(MandotoryComponent, {
       data: row,
     });
     // console.log(row);

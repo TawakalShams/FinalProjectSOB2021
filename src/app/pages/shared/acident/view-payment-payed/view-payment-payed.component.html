@@ -45,9 +45,17 @@
 
         <ngx-datatable-column name="Paid Amount" prop="amount">
         </ngx-datatable-column>
-        <ngx-datatable-column name="Created by" prop="create_by">
+        <ngx-datatable-column
+          name="Created by"
+          prop="create_by"
+          *ngIf="role == 'Admin'"
+        >
         </ngx-datatable-column>
-        <ngx-datatable-column name="Created Time" prop="create_at">
+        <ngx-datatable-column
+          name="Created Time"
+          prop="create_at"
+          *ngIf="role == 'Admin'"
+        >
         </ngx-datatable-column>
       </ngx-datatable>
     </div>

@@ -19,6 +19,8 @@ import { InsuaranceComponent } from './pages/shared/insuarance/insuarance.compon
 import { ViewInsuaranceComponent } from './pages/shared/insuarance/view-insuarance/view-insuarance.component';
 import { InsuaredComponent } from './pages/shared/insuared/insuared.component';
 import { LoginComponent } from './pages/shared/login/login.component';
+import { RegstrationComponent } from './pages/shared/modelOfCar/regstration/regstration.component';
+import { ViewModelComponent } from './pages/shared/modelOfCar/view-model/view-model.component';
 import { VehiclesComponent } from './pages/shared/vehicles/vehicles/vehicles.component';
 import { ViewVehiclesComponent } from './pages/shared/vehicles/view-vehicles/view-vehicles.component';
 import { AuthGuardService as AuthGuard } from './service/auth-guard.service';
@@ -55,6 +57,16 @@ const routes: Routes = [
       {
         path: 'usersRegstration',
         component: AgentregstrationComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'model',
+        component: RegstrationComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'viewmodel',
+        component: ViewModelComponent,
         canActivate: [AuthGuard],
       },
       {

@@ -1,147 +1,147 @@
-<mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Accident Verification">
-    <h3 style="text-align: center; margin-top: 5%; font-size: 24px">
-      <strong>Accident Verification</strong>
-    </h3>
+<!-- <mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Accident Verification"> -->
+<h3 style="text-align: center; margin-top: 5%; font-size: 24px">
+  <strong>Accident Verification</strong>
+</h3>
 
-    <form [formGroup]="form">
-      <div class="row">
-        <div class="offset-md-1 col-sm-3">
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Platenumber</mat-label>
-            <div>
-              <input
-                type="text"
-                placeholder="Pick one"
-                aria-label="Platenumber"
-                matInput
-                [formControl]="platenumber"
-                [matAutocomplete]="auto"
-              />
-            </div>
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let v of filteredOptions | async" [value]="v">
-                {{ v }}
-              </mat-option>
-            </mat-autocomplete>
-            <mat-error> Platenumber is required </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-sm-3">
-          <mat-form-field>
-            <mat-label>Eyee Witness</mat-label>
-            <textarea
-              matInput
-              formControlName="typeofacident"
-              name="typeofacident"
-              cdkTextareaAutosize
-              #autosize="cdkTextareaAutosize"
-              cdkAutosizeMinRows="1"
-              cdkAutosizeMaxRows="5"
-            ></textarea>
-            <mat-error>Description is required </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-md-3">
-          <mat-form-field class="full-width-input">
-            <input
-              name="policeReportNo"
-              formControlName="policeReportNo"
-              type="text"
-              matInput
-              placeholder="Police report number"
-              autocomplete="off"
-              required
-            />
-            <mat-error>Police report no is required </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <!-- image -->
-      <div class="row">
-        <div class="offset-md-1 col-md-3 img-fluid">
-          <div class="preview">
-            <img
-              mat-card-image
-              [src]="url[0]"
-              style="width: 200px; height: 150px; border-radius: 5px"
-            />
-          </div>
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input
-            multiple
-            mat-card-image
-            type="file"
-            name="image1"
-            id="image1"
-            formControlName="image1"
-            class="btn btn-success btn-sm"
-            (change)="selectimage1($event)"
-          />
-        </div>
-
-        <div class="col-md-3 img-fluid">
-          <div class="preview">
-            <img
-              mat-card-image
-              [src]="url[1]"
-              style="width: 200px; height: 150px; border-radius: 5px"
-            />
-          </div>
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input
-            formControlName="image2"
-            name="image2"
-            type="file"
-            class="btn btn-success btn-sm"
-            (change)="selectimage1($event)"
-          />
-        </div>
-
-        <div class="col-md-3 img-fluid">
-          <div class="preview">
-            <img
-              mat-card-image
-              [src]="url[2]"
-              style="width: 200px; height: 150px; border-radius: 5px"
-            />
-          </div>
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input
-            formControlName="image3"
-            name="image3"
-            type="file"
-            class="btn btn-success btn-sm"
-            (change)="selectimage1($event)"
-          />
-        </div>
-      </div>
-      <!-- end image -->
-      <br />
-      <div class="col-sm-4 img-fluid">
-        <div class="row">
-          <input
-            type="hidden"
-            formControlName="create_by"
-            name="create_by"
-            id="create_by"
-            ngModel="{{ fullName }}"
-          />
-        </div>
+<form [formGroup]="form">
+  <div class="row">
+    <div class="offset-md-1 col-sm-3">
+      <mat-form-field class="example-full-width" class="full-width-input">
+        <mat-label>Platenumber</mat-label>
         <div>
-          <button
-            mat-raised-button
-            color="primary"
-            [disabled]="form.invalid"
-            (click)="onSubmit()"
-          >
-            Regster
-          </button>
+          <input
+            type="text"
+            placeholder="Pick one"
+            aria-label="Platenumber"
+            matInput
+            [formControl]="platenumber"
+            [matAutocomplete]="auto"
+          />
         </div>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let v of filteredOptions | async" [value]="v">
+            {{ v }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error> Platenumber is required </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-3">
+      <mat-form-field>
+        <mat-label>Eyee Witness</mat-label>
+        <textarea
+          matInput
+          formControlName="typeofacident"
+          name="typeofacident"
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
+        <mat-error>Description is required </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="full-width-input">
+        <input
+          name="policeReportNo"
+          formControlName="policeReportNo"
+          type="text"
+          matInput
+          placeholder="Police report number"
+          autocomplete="off"
+          required
+        />
+        <mat-error>Police report no is required </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <!-- image -->
+  <div class="row">
+    <div class="offset-md-1 col-md-3 img-fluid">
+      <div class="preview">
+        <img
+          mat-card-image
+          [src]="url[0]"
+          style="width: 200px; height: 150px; border-radius: 5px"
+        />
       </div>
-    </form>
-  </mat-tab>
-</mat-tab-group>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input
+        multiple
+        mat-card-image
+        type="file"
+        name="image1"
+        id="image1"
+        formControlName="image1"
+        class="btn btn-success btn-sm"
+        (change)="selectimage1($event)"
+      />
+    </div>
+
+    <div class="col-md-3 img-fluid">
+      <div class="preview">
+        <img
+          mat-card-image
+          [src]="url[1]"
+          style="width: 200px; height: 150px; border-radius: 5px"
+        />
+      </div>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input
+        formControlName="image2"
+        name="image2"
+        type="file"
+        class="btn btn-success btn-sm"
+        (change)="selectimage1($event)"
+      />
+    </div>
+
+    <div class="col-md-3 img-fluid">
+      <div class="preview">
+        <img
+          mat-card-image
+          [src]="url[2]"
+          style="width: 200px; height: 150px; border-radius: 5px"
+        />
+      </div>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input
+        formControlName="image3"
+        name="image3"
+        type="file"
+        class="btn btn-success btn-sm"
+        (change)="selectimage1($event)"
+      />
+    </div>
+  </div>
+  <!-- end image -->
+  <br />
+  <div class="col-sm-4 img-fluid">
+    <div class="row">
+      <input
+        type="hidden"
+        formControlName="create_by"
+        name="create_by"
+        id="create_by"
+        ngModel="{{ fullName }}"
+      />
+    </div>
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid"
+        (click)="onSubmit()"
+      >
+        Regster
+      </button>
+    </div>
+  </div>
+</form>
+<!-- </mat-tab>
+</mat-tab-group> -->

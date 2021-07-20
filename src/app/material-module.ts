@@ -25,9 +25,13 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatAccordionHarness } from '@angular/material/expansion/testing';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
 // import { MatExpansionModule } from '@angular/material/expansion';
 const MaterialComponents = [
   // MatAccordionHarness,
+  MatDividerModule,
+  MatCheckboxModule,
   CdkAccordionModule,
   MatButtonModule,
   MatDialogModule,
