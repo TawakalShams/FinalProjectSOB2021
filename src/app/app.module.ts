@@ -61,6 +61,7 @@ import { ViewAllUsersComponent } from './pages/agent/view-all-users/view-all-use
 import { MandotoryComponent } from './dialog/mandotory/mandotory.component';
 import { RegstrationComponent } from './pages/shared/modelOfCar/regstration/regstration.component';
 import { ViewModelComponent } from './pages/shared/modelOfCar/view-model/view-model.component';
+import { AddCarModelComponent } from './dialog/add-car-model/add-car-model.component';
 
 export const tokenGetter = () => {
   return localStorage.getItem('token');
@@ -111,6 +112,7 @@ export const tokenGetter = () => {
     MandotoryComponent,
     RegstrationComponent,
     ViewModelComponent,
+    AddCarModelComponent,
   ],
   imports: [
     MatPasswordStrengthModule.forRoot(),

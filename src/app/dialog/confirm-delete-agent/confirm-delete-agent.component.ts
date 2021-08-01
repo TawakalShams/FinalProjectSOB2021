@@ -41,15 +41,15 @@ export class ConfirmDeleteAgentComponent implements OnInit {
     this.service.deleteAgent(agentid).subscribe((data) => {
       this.deteleData = data;
       if (this.deteleData) {
-        this.toastr.success('Agent Successfully to Delete', 'Successfully');
+        this.toastr.success(' Successfully to Delete', 'Successfully');
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
-            this.router.navigate(['viewagent']);
+            this.router.navigate(['users']);
           });
         this.dialogRef.close({ agentid });
       } else {
-        this.toastr.error('Agent not Successfully to Delete', 'Error');
+        this.toastr.error('Not Successfully to Delete', 'Error');
       }
     });
   }

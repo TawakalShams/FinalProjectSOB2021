@@ -31,7 +31,7 @@ export class AgentregstrationComponent implements OnInit {
   form = new FormGroup({
     fullName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    password: new FormControl(''),
     // retypePassword: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
     dob: new FormControl('', [Validators.required]),
@@ -39,19 +39,20 @@ export class AgentregstrationComponent implements OnInit {
     branch: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
     role: new FormControl('', [Validators.required]),
-    created_by: new FormControl(),
+    create_by: new FormControl(),
   });
 
   ngOnInit(): void {}
   onSubmit() {
     this.service.createAgent(this.form.value).subscribe(
       (res) => {
+        // console.log(res);
         this.submitted = true;
         this.toastr.success('Successfully to Create', 'Successfully');
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
-            this.router.navigate(['agent']);
+            this.router.navigate(['usersRegstration']);
           });
         // this.router.navigateByUrl('/');
         // this.form.reset();

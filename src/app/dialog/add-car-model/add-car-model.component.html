@@ -1,0 +1,66 @@
+<div mat-dialog-title>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <!-- <div align="end" class="col-md-4">
+      <button mat-raised-button mat-dialog-close>
+        <mat-icon>cancell</mat-icon>
+      </button>
+    </div> -->
+  </div>
+  <div style="text-align: center">Add New Model</div>
+</div>
+<mat-dialog-content class="mat-typography">
+  <!-- <button (click)="calc()" class="btn btn-primary">cal</button> -->
+
+  <form [formGroup]="form">
+    <div class="container" id="summary">
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field class="full-width-input">
+            <input
+              matInput
+              placeholder="Model"
+              autocomplete="off"
+              name="name"
+              formControlName="name"
+              required
+            />
+            <mat-error> Model is required </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+
+    <br />
+    <div class="row"></div>
+    <br />
+    <div class="row">
+      <input
+        type="hidden"
+        formControlName="create_by"
+        name="create_by"
+        id="create_by"
+        ngModel="{{ fullName }}"
+      />
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md 5">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="AddModel()"
+        mat-dialog-close
+        [disabled]="form.invalid"
+      >
+        Save
+      </button>
+    </div>
+    <div class="col-md-5">
+      <button mat-raised-button color="warn" mat-dialog-close>Cancell</button>
+    </div>
+    <!-- <p>{{ events }}</p> -->
+  </div>
+</mat-dialog-content>

@@ -57,7 +57,7 @@
             autocomplete="off"
             required
           />
-          <mat-error> Date number is required </mat-error>
+          <mat-error> Date of birth is required </mat-error>
         </mat-form-field>
       </div>
       <div class="col-sm-4">
@@ -68,6 +68,20 @@
             <mat-option value="Female">Female</mat-option>
           </mat-select>
           <mat-error> Gender is required </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-4">
+        <mat-form-field class="full-width-input">
+          <input
+            type="text"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+            autocomplete="off"
+            required
+          />
+          <mat-error> Date of birth is required </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -128,7 +142,39 @@
       </div>
 
       <div class="col-sm-4">
-        <mat-form-field class="example-full-width" class="full-width-input">
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field class="example-full-width" class="full-width-input">
+              <mat-label>Model</mat-label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Pick one"
+                  aria-label="Model"
+                  matInput
+                  [formControl]="model"
+                  [matAutocomplete]="auto"
+                />
+              </div>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let v of filteredOptions | async"
+                  [value]="v"
+                >
+                  {{ v }}
+                </mat-option>
+                <!-- <mat-option (click)="addmodel()"> Add New Model </mat-option> -->
+              </mat-autocomplete>
+              <mat-error> Model is required </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <span (click)="addmodel()" color="primary"
+              ><b>Add New Model</b></span
+            >
+          </div>
+        </div>
+        <!-- <mat-form-field class="example-full-width" class="full-width-input">
           <mat-label>Model</mat-label>
           <div>
             <input
@@ -147,9 +193,14 @@
             >
               {{ option }}
             </mat-option>
+            <div>
+              <mat-option (click)="addmodel()" align="center">
+                <b> Add New Model </b>
+              </mat-option>
+            </div>
           </mat-autocomplete>
           <mat-error> Model is required </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
       </div>
       <div class="col-md-4">
         <mat-form-field class="full-width-input">

@@ -55,9 +55,10 @@ export class AgentComponent implements OnInit {
     branch: new FormControl('', [Validators.required]),
     dob: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
+    role: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
     created_by: new FormControl(),
-    role: new FormControl(),
+    // role: new FormControl(),
   });
   ngOnInit(): void {
     this.ViewSingAgent();
@@ -72,6 +73,7 @@ export class AgentComponent implements OnInit {
         const agent = data.agents;
         this.form.controls.fullName.setValue(agent.fullName);
         this.form.controls.email.setValue(agent.email);
+        this.form.controls.role.setValue(agent.role);
         // this.form.controls.password.setValue(agent.password);
         this.form.controls.address.setValue(agent.address);
         this.form.controls.branch.setValue(agent.branch);
@@ -90,7 +92,7 @@ export class AgentComponent implements OnInit {
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
-            this.router.navigate(['viewagent']);
+            this.router.navigate(['users']);
           });
         this.dialogRef.close({ agent: res.agents });
       });

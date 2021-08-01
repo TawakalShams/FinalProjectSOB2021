@@ -51,6 +51,13 @@ export class ServiceService {
   changePassword(id: any, data: any) {
     return this.httpClient.put(baseUrl + '/changePassword' + '/' + id, data);
   }
+  // =========================CarModel CRUD==================================
+  createCarModel(data: any): Observable<any> {
+    return this.httpClient.post(baseUrl + '/carModel', data);
+  }
+  viewCarModel() {
+    return this.httpClient.get(baseUrl + '/carModel');
+  }
   // =========================AGENT CRUD=====================================
   createAgent(data: any): Observable<any> {
     return this.httpClient.post(baseUrl + '/agents', data);
