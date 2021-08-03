@@ -143,6 +143,11 @@ const routes: Routes = [
         component: InsuaredComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'carModel',
+        component: ViewModelComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];

@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>UPDATE</h2>
+<h2 mat-dialog-title>UPDATE USER</h2>
 <mat-dialog-content class="mat-typography">
   <form [formGroup]="form">
     <div class="row">
@@ -29,18 +29,6 @@
           <mat-error> Email is required </mat-error>
         </mat-form-field>
       </div>
-      <!-- <div class="col-sm-4">
-        <mat-form-field class="full-width-input">
-          <input
-            matInput
-            placeholder="Password"
-            formControlName="password"
-            autocomplete="off"
-            required
-          />
-          <mat-error> Password is required </mat-error>
-        </mat-form-field>
-      </div> -->
       <div class="col-sm-4">
         <mat-form-field class="full-width-input">
           <input
@@ -123,13 +111,13 @@
       </div>
     </div>
     <div class="row">
-      <input
+      <!-- <input
         type="hidden"
         formControlName="created_by"
         name="created_by"
         id="created_by"
         ngModel="{{ fullName }}"
-      />
+      /> -->
       <input
         type="hidden"
         formControlName="role"

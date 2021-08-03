@@ -34,19 +34,17 @@ export class AddCarModelComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     create_by: new FormControl(),
   });
+
   AddModel() {
-    // console.log(this.form.value);
-    // alert('Work' + this.form.value);
     this.service.createCarModel(this.form.value).subscribe(
       (res) => {
         this.submitted = true;
         this.toastr.success('Successfully to Create', 'Successfully');
-        //  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        //    this.router.navigate(['usersRegstration']);
-        //  });
-        // this.router.navigateByUrl('/');
-        // this.form.reset();
-        // console.log(res);
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['carModel']);
+          });
       },
       (error) => {
         console.log(error);

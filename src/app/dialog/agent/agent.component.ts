@@ -57,7 +57,7 @@ export class AgentComponent implements OnInit {
     phone: new FormControl('', [Validators.required]),
     role: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
-    created_by: new FormControl(),
+    create_by: new FormControl(),
     // role: new FormControl(),
   });
   ngOnInit(): void {
@@ -88,6 +88,9 @@ export class AgentComponent implements OnInit {
     const updatae = this.service
       .updateAgent(this.agentData.agentid, this.form.value)
       .subscribe((res: any) => {
+        // console.log('Data', this.agentDat.agentid);
+        // console.log('Res', res);
+
         this.toastr.success('Updated', 'Successfully');
         this.router
           .navigateByUrl('/', { skipLocationChange: true })

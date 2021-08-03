@@ -230,6 +230,40 @@
             </mat-expansion-panel>
           </mat-accordion>
         </div>
+        <!-- ==============================Other======================= -->
+        <div *ngIf="role == 'Admin'">
+          <mat-accordion>
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false"
+            >
+              <mat-expansion-panel-header>
+                <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
+                <mat-icon color="primary">electric_car</mat-icon>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Others</p>
+              </mat-expansion-panel-header>
+              <!-- 
+              <div>
+                <button class="menu-item" mat-flat-button routerLink="accident">
+                  <mat-icon color="primary">post_add</mat-icon>
+                  Car Model
+                </button>
+              </div> -->
+              <div>
+                <button class="menu-item" mat-flat-button routerLink="carModel">
+                  <mat-icon color="primary">View</mat-icon>
+                  Car Model
+                </button>
+                <mat-divider></mat-divider>
+                <!-- <button class="menu-item" mat-flat-button>
+                  <mat-icon color="primary">post_add</mat-icon>
+                  Company Purchase
+                </button> -->
+              </div>
+              <div></div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
         <!-- ===================================================== -->
       </mat-list>
       <!-- ============================================= -->

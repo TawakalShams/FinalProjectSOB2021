@@ -94,30 +94,12 @@ export class InsuaranceComponent implements OnInit {
       map((value: any) => this._filter(value))
     );
 
-    this.service.viewCarModel().subscribe((data: any) => {
-      // this.vehcle = data;
-      console.log(data);
-      this.options = [
-        'Bmw',
-        'Hummer',
-        'Isuzu',
-        'Jeep',
-        'Land Rover',
-        'Lexus',
-        'Mini',
-        'Noah',
-        'Nissan',
-        'Prado',
-        'Pickup',
-        'Suzuku',
-        'Toyota',
-        'Volvo',
-      ];
-      // console.log(this.options);
+    this.viewModel();
+  }
 
-      // this.options = ['Carsf', 'gar'];
-      // this.options = data.map((item: any) => item.name);
-      // console.log('option' + this.options);
+  viewModel() {
+    this.service.viewCarModel().subscribe((data: any) => {
+      this.options = data.car.map((item: any) => item.name);
     });
   }
 
